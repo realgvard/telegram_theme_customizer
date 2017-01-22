@@ -1,0 +1,83 @@
+
+
+.inner-container {
+    padding: 52px 0 40px;
+}
+
+.title {
+    margin-top: 0;
+}
+
+.detail-editor {
+    padding: 0 20px;
+}
+
+/*.list-options > button + button {*/
+    /*margin-top: 10px !important;*/
+/*}*/
+
+
+.active {
+    color: red;
+}
+
+.download-button {
+    text-align: center;
+    margin: 40px 0 0;
+}
+
+.editing-block {
+    background: rgb(229, 229, 229);
+    font-size: 14px;
+    line-height: 1.55;
+    padding: 9px 20px;
+}
+
+.editing-title {
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.editing-element {
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 9px;
+}
+
+.options-editor {
+    margin-top: 40px;
+}
+
+.form-group {
+
+}
+
+.form-group:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.control-label {
+    line-height: 20px;
+    padding-top: 8px;
+    font-size: 13px;
+    float: left;
+    width: 55%;
+}
+
+.form-control {
+    float: right;
+    width: 38%;
+    text-overflow: ellipsis;
+}
+
+.bottom-block {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #999;
+    font-size: 10px;
+}

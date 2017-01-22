@@ -1,0 +1,12 @@
+body {
+  font: 14px/16px 'Roboto', Arial;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}

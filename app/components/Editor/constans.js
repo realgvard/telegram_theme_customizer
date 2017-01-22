@@ -1,0 +1,9 @@
+export const SET_EDITOR_ELEMENTS = 'components/Editor/SET_EDITOR_ELEMENTS';
+export const CHANGE_EDITOR_DATA = 'components/Editor/CHANGE_EDITOR_DATA';
+export const SET_ACTIVE_ELEMENT = 'components/Editor/SET_ACTIVE_ELEMENT';
+export const UNSET_ACTIVE_ELEMENT = 'components/Editor/UNSET_ACTIVE_ELEMENT';
+export const SET_EDITING_ELEMENT = 'components/Editor/SET_EDITING_ELEMENT';
+export const CHANGE_EDITOR_IMAGE_DATA = 'components/Editor/CHANGE_EDITOR_IMAGE_DATA';
+export const SET_HOVER_ON_ELEMENT = 'components/Editor/SET_HOVER_ON_ELEMENT';
+export const UNSET_HOVER_ON_ELEMENT = 'components/Editor/UNSET_HOVER_ON_ELEMENT';
+export const RESET_EDITOR = 'components/Editor/RESET_EDITOR';

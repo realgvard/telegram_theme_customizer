@@ -1,0 +1,27 @@
+
+
+.wrapper {
+  /*max-width: 1120px;*/
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+  padding-left: 300px;
+
+}
+
+.container {
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.stepper {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.description {
+  margin: 10px 0;
+}
