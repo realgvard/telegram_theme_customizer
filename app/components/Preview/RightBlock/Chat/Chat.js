@@ -7,15 +7,10 @@ import _ from 'lodash';
 import defaultBackgroundImage from './images/background.png';
 
 // Config
-import * as id from 'components/config/idElements.config';
+import * as id from 'config/idElements.config';
 
 // Actions
-import {
-    setHoverOnElement,
-    unsetHoverOnElement,
-    switchActiveStateElement,
-    setEditingElement,
-} from 'components/Editor/actions';
+import { injectActionsToElement } from 'components/Editor/actions';
 
 // Styles
 import { getActiveStyle } from 'components/Preview/cssStyles.js';
@@ -23,25 +18,6 @@ import styles from './Chat.css';
 
 
 class Chat extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-        }
-    }
-
-    _onComponentClick() {
-        this.props.dispatch(setEditingElement(id.BACKGROUND));
-    }
-
-    _onComponentMouseEnter() {
-        this.props.dispatch(setHoverOnElement(id.BACKGROUND));
-    }
-
-    _onComponentMouseLeaveEnter() {
-        this.props.dispatch(unsetHoverOnElement(id.BACKGROUND));
-    }
 
     render() {
         const {
@@ -59,9 +35,10 @@ class Chat extends Component {
                     ...getActiveStyle(hovered || editing),
                     background: `url(${backgroundBase64 ? backgroundBase64 : defaultBackgroundImage}) no-repeat`,
                 }}
-                onClick={::this._onComponentClick}
-                onMouseEnter={::this._onComponentMouseEnter}
-                onMouseLeave={::this._onComponentMouseLeaveEnter}
+                {...injectActionsToElement({
+                    id: id.BACKGROUND,
+                    dispatch: this.props.dispatch
+                })}
             >
 
             </div>

@@ -18,7 +18,6 @@ import {
 import styles from './UploadImage.css';
 
 
-
 class UploadImage extends Component {
 
     _onChangeInput(e) {
@@ -51,6 +50,8 @@ class UploadImage extends Component {
                     label={label}
                     fullWidth={true}
                     icon={<ImageIcon />}
+                    containerElement="label"
+                    labelPosition="after"
                 >
                     <input type="file" styleName="image-input" onChange={::this._onChangeInput} />
                 </RaisedButton>

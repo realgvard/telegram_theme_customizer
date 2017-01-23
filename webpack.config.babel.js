@@ -8,12 +8,12 @@ const NODE_ENV = process.env.NODE_ENV;
 const IS_PROD = NODE_ENV === 'production' ? true : false;
 const IS_DEV = NODE_ENV !== 'production' ? true : false;
 
-
 const dirs = {
     compiled: path.resolve(__dirname, '../compiled'),
     public: IS_DEV ? '/' : '/tg_theme_customizer/',
     node_modules: path.resolve(__dirname, 'node_modules')
 };
+
 
 const config = {
     // Entry points to the project
@@ -75,6 +75,7 @@ const config = {
             verbose: false
         })
     ],
+
     module: {
         loaders: [
             {
@@ -111,10 +112,10 @@ if (IS_PROD) {
 }
 
 if (IS_DEV) {
-    config.plugins.push(
-        // Enables Hot Modules Replacement
-        new webpack.HotModuleReplacementPlugin()
-    );
+    // config.plugins.push(
+    //     // Enables Hot Modules Replacement
+    //     new webpack.HotModuleReplacementPlugin()
+    // );
 
 }
 

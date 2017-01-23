@@ -23,19 +23,19 @@ export function unsetHoverOnElement(id) {
     }
 }
 
-export function setActiveElement(id) {
-    return {
-        type: action.SET_ACTIVE_ELEMENT,
-        id
-    }
-}
-
-export function unsetActiveElement(id) {
-    return {
-        type: action.UNSET_ACTIVE_ELEMENT,
-        id
-    }
-}
+// export function setActiveElement(id) {
+//     return {
+//         type: action.SET_ACTIVE_ELEMENT,
+//         id
+//     }
+// }
+//
+// export function unsetActiveElement(id) {
+//     return {
+//         type: action.UNSET_ACTIVE_ELEMENT,
+//         id
+//     }
+// }
 
 export function setEditingElement(id) {
     return {
@@ -60,22 +60,12 @@ export function changeEditorImageData(id, data) {
     }
 }
 
-
-// export function switchActiveStateElement(id) {
-//     return (dispatch, ownState) => {
-//         const {
-//             activeElement
-//         } = ownState().editor;
-//
-//         if(activeElement.id && activeElement.id !== id) {
-//             dispatch(unsetActiveElement(activeElement.id));
-//         }
-//
-//         if(!activeElement.id || activeElement.id !== id) {
-//             dispatch(setActiveElement(id));
-//         }
-//     }
-// }
+export function changeFileName(fileName) {
+    return {
+        type: action.CHANGE_FILE_NAME,
+        fileName
+    }
+}
 
 export function resetEditor() {
     return {
@@ -116,7 +106,7 @@ export function injectActionsToElement({ id, condition = true, editCondition = t
 //
 //         const getBaseElements = (cb) => {
 //             require.ensure([], (require) => {
-//                 cb(require('components/config/optionDispatcher.config').default);
+//                 cb(require('config/optionDispatcher.config').default);
 //             });
 //         };
 //

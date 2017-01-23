@@ -7,13 +7,13 @@ import { pink500 } from 'material-ui/styles/colors';
 // Components
 import Drawer from 'material-ui/Drawer';
 import ColorPicker from 'components/ColorPicker';
-import RaisedButton from 'material-ui/RaisedButton';
+import FileNameField from 'components/FileNameField';
 import ResetButton from 'components/ResetButton';
 import SaveButton from 'components/SaveButton';
 import UploadImage from 'components/UploadImage';
 
 // JS
-// import optionData from 'components/config/optionDispatcher.config';
+// import optionData from 'config/optionDispatcher.config';
 
 // Actions
 import {
@@ -103,17 +103,25 @@ class Editor extends Component {
                             {controlOptions}
                         </div>
 
-                        <div styleName="download-button">
-                            <SaveButton />
-                        </div>
+                        <div styleName="panel-controls">
+                            <div styleName="control-element">
+                                <FileNameField />
+                            </div>
 
-                        <ResetButton />
+                            <div styleName="control-element">
+                                <SaveButton />
+                            </div>
+
+                            <div styleName="control-element">
+                                <ResetButton />
+                            </div>
+                        </div>
                     </div>
 
 
                     <div styleName="bottom-block">
                         <div>Telegram Theme Customizer (alpha)</div>
-                        <div>Version 0.1.0</div>
+                        <div>Version 0.1.5</div>
                     </div>
                 </div>
             </Drawer>

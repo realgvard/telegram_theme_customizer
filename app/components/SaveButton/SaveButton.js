@@ -69,7 +69,7 @@ class SaveButton extends Component {
 
     render() {
         const {
-            disabledDownload
+            disabledButton
         } = this.props;
 
         return (
@@ -78,7 +78,7 @@ class SaveButton extends Component {
                     label="Save theme!"
                     primary={true}
                     fullWidth={true}
-                    disabled={disabledDownload}
+                    disabled={disabledButton}
                     onClick={::this._onButtonClick}
                 />
             </div>
@@ -89,7 +89,7 @@ class SaveButton extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        disabledDownload: Object.keys(state.editor.data).length > 0 || state.editor.backgroundData ? false : true,
+        disabledButton: Object.keys(state.editor.data).length > 0 || state.editor.backgroundData ? false : true,
         payload: state.editor.data,
         backgroundData: state.editor.backgroundData,
         fileName: state.editor.fileName

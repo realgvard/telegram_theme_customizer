@@ -14,7 +14,7 @@ import ClearIcon from 'material-ui/svg-icons/content/clear';
 import MinimizeIcon from 'material-ui/svg-icons/toggle/check-box-outline-blank';
 
 // Config
-import * as id from 'components/config/idElements.config';
+import * as id from 'config/idElements.config';
 
 // Styles
 import { getActiveStyle } from 'components/Preview/cssStyles.js';

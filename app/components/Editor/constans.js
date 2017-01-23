@@ -7,3 +7,4 @@ export const CHANGE_EDITOR_IMAGE_DATA = 'components/Editor/CHANGE_EDITOR_IMAGE_D
 export const SET_HOVER_ON_ELEMENT = 'components/Editor/SET_HOVER_ON_ELEMENT';
 export const UNSET_HOVER_ON_ELEMENT = 'components/Editor/UNSET_HOVER_ON_ELEMENT';
 export const RESET_EDITOR = 'components/Editor/RESET_EDITOR';
+export const CHANGE_FILE_NAME = 'components/Editor/CHANGE_FILE_NAME';

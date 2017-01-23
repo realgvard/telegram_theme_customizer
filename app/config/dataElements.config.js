@@ -1,4 +1,4 @@
-import * as id from 'components/config/idElements.config';
+import * as id from 'config/idElements.config';
 
 
 export default [
@@ -158,5 +158,98 @@ export default [
                 label: 'Background-color'
             }
         ]
-    }
+    },
+    {
+        id: id.DIALOGS_DATE_FG,
+        key: 'dialogsDateFg',
+        color: '#999999',
+        hovered: false,
+        editing: false,
+        settings: [
+            {
+                type: 'colorPicker',
+                label: 'Text-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DATE_FG_ACTIVE,
+        key: 'dialogsDateFgActive',
+        color: '#ffffff',
+        hovered: false,
+        editing: false,
+        settings: [
+            {
+                type: 'colorPicker',
+                label: 'Text-color'
+            }
+        ]
+    },
+    {
+        id: id.WINDOW_ACTIVE_TEXT_FG,
+        key: 'windowActiveTextFg',
+        color: '#168acd',
+        hovered: false,
+        editing: false,
+        settings: [
+            {
+                type: 'colorPicker',
+                label: 'Text-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_TEXT_FG_SERVICE_ACTIVE,
+        key: 'dialogsTextFgServiceActive',
+        color: '#ffffff',
+        hovered: false,
+        editing: false,
+        settings: [
+            {
+                type: 'colorPicker',
+                label: 'Text-color'
+            }
+        ]
+    },
+    {
+        id: id.HISTORY_PEER_USER_PIC_FG,
+        key: 'historyPeerUserpicFg',
+        color: '#ffffff',
+        hovered: false,
+        editing: false,
+        settings: [
+            {
+                type: 'colorPicker',
+                label: 'Text-color'
+            }
+        ]
+    },
+    {
+        id: id.TOP_BAR_BG,
+        key: 'topBarBg',
+        color: '#ffffff',
+        hovered: false,
+        editing: false,
+        settings: [
+            {
+                type: 'colorPicker',
+                label: 'Background-color'
+            }
+        ]
+    },
+    {
+        id: id.HISTORY_COMPOSE_AREA_BG,
+        key: 'historyComposeAreaBg',
+        color: '#ffffff',
+        hovered: false,
+        editing: false,
+        settings: [
+            {
+                type: 'colorPicker',
+                label: 'Background-color'
+            }
+        ]
+    },
+
+
 ]

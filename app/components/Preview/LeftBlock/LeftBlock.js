@@ -7,18 +7,13 @@ import _ from 'lodash';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
-import UserList from 'components/Preview/UserList';
+import UserList from 'components/Preview/LeftBlock/UserList';
 
 // Actions
-import {
-    injectActionsToElement,
-    setHoverOnElement,
-    unsetHoverOnElement,
-    setEditingElement,
-} from 'components/Editor/actions';
+import { injectActionsToElement } from 'components/Editor/actions';
 
 // Config
-import * as id from 'components/config/idElements.config';
+import * as id from 'config/idElements.config';
 
 // Styles
 import { getActiveStyle } from 'components/Preview/cssStyles.js';
@@ -59,7 +54,6 @@ class LeftBlock extends Component {
         const dialogsBg = _.head(this.props.dialogsBg);
         const menuIconFg = _.head(this.props.menuIconFg);
         const filterInputInactiveBg = _.head(this.props.filterInputInactiveBg);
-
 
         return (
             <div

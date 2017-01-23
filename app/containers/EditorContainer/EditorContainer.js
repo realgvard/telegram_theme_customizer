@@ -77,7 +77,7 @@ class EditorContainer extends Component {
 
                     <div styleName="description">
                         <strong>Telegram Theme Customizer (alpha)</strong> — editor for modification themes in telegram.
-                        Just hover mouse on some of element below, and follow next setting in the left bar.
+                        Just hover mouse on some of element below, and follow the next setting in the left bar.
                     </div>
 
                     <Editor />

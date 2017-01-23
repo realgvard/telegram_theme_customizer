@@ -80,7 +80,11 @@ class ColorPicker extends Component {
                 </div>
                 { this.state.displayColorPicker ? <div styleName="popover">
                     <div styleName="cover" onClick={ this.handleClose }/>
-                    <SketchPicker color={ defaultColor } onChange={ this.handleChange } />
+                    <SketchPicker
+                        width={225}
+                        color={ defaultColor }
+                        onChange={ this.handleChange }
+                    />
                 </div> : null }
             </div>
         );

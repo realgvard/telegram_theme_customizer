@@ -22,7 +22,7 @@ class ResetButton extends Component {
 
     render() {
         const {
-            isCanReset
+            disabledButton
         } = this.props;
 
         return (
@@ -30,7 +30,7 @@ class ResetButton extends Component {
                 <RaisedButton
                     label="Reset by default"
                     fullWidth={true}
-                    disabled={isCanReset}
+                    disabled={disabledButton}
                     onClick={::this._onButtonClick}
                 />
             </div>
@@ -41,7 +41,7 @@ class ResetButton extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        isCanReset: Object.keys(state.editor.data).length > 0 || state.editor.backgroundData ? false : true
+        disabledButton: Object.keys(state.editor.data).length > 0 || state.editor.backgroundData ? false : true
     }
 };
 

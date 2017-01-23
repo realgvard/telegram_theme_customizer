@@ -48,6 +48,15 @@
     margin-top: 40px;
 }
 
+.panel-controls {
+    margin-top: 30px;
+}
+
+.control-element + .control-element {
+    margin-top: 10px;
+}
+
+
 .form-group {
 
 }

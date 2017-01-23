@@ -2,20 +2,10 @@ import _ from 'lodash';
 import initialState from 'reducers/initialState';
 
 // Config
-import elementsData from 'components/config/optionDispatcher.config';
+import dataElements from 'config/dataElements.config';
 
 // Constants
-import {
-    SET_EDITOR_ELEMENTS,
-    SET_HOVER_ON_ELEMENT,
-    UNSET_HOVER_ON_ELEMENT,
-    CHANGE_EDITOR_IMAGE_DATA,
-    SET_EDITING_ELEMENT,
-    CHANGE_EDITOR_DATA,
-    SET_ACTIVE_ELEMENT,
-    UNSET_ACTIVE_ELEMENT,
-    RESET_EDITOR
-} from './constans';
+import * as id from './constans';
 
 
 const editor = (state = initialState.editor, action) => {
@@ -24,14 +14,14 @@ const editor = (state = initialState.editor, action) => {
 
     switch (action.type) {
 
-        case SET_EDITOR_ELEMENTS:
+        case id.SET_EDITOR_ELEMENTS:
 
             return {
                 ...state,
                 elements: action.data,
             };
 
-        case SET_HOVER_ON_ELEMENT:
+        case id.SET_HOVER_ON_ELEMENT:
 
             newElementsData = state.elements;
 
@@ -49,7 +39,7 @@ const editor = (state = initialState.editor, action) => {
                 hoveredElementCount: newHoveredElementCount
             };
 
-        case UNSET_HOVER_ON_ELEMENT:
+        case id.UNSET_HOVER_ON_ELEMENT:
 
             newElementsData = state.elements;
 
@@ -101,7 +91,7 @@ const editor = (state = initialState.editor, action) => {
         //         elements: newElementsData
         //     };
 
-        case CHANGE_EDITOR_DATA:
+        case id.CHANGE_EDITOR_DATA:
             newElementsData = state.elements;
 
             newElementsData.forEach((item) => {
@@ -122,14 +112,14 @@ const editor = (state = initialState.editor, action) => {
                 elements: newElementsData
             };
 
-        case CHANGE_EDITOR_IMAGE_DATA:
+        case id.CHANGE_EDITOR_IMAGE_DATA:
 
             return {
                 ...state,
                 backgroundData: action.data.image
             };
 
-        case SET_EDITING_ELEMENT:
+        case id.SET_EDITING_ELEMENT:
 
             newElementsData = state.elements;
 
@@ -150,7 +140,15 @@ const editor = (state = initialState.editor, action) => {
                 hoveredElementCount: newHoveredElementCount
             };
 
-        case RESET_EDITOR:
+        case id.CHANGE_FILE_NAME:
+            const fileName = action.fileName.trim().length > 0 ? action.fileName : 'theme';
+
+            return {
+                ...state,
+                fileName
+            };
+
+        case id.RESET_EDITOR:
 
             return {
                 editingElement: {},
@@ -163,7 +161,7 @@ const editor = (state = initialState.editor, action) => {
 
                 activeElement: {},
 
-                elements: _.cloneDeep(elementsData),
+                elements: _.cloneDeep(dataElements),
 
                 data: {}
             };

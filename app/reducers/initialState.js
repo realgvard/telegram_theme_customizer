@@ -1,4 +1,4 @@
-import elementsData from 'components/config/optionDispatcher.config';
+import dataElements from 'config/dataElements.config';
 import _ from 'lodash';
 
 
@@ -15,7 +15,7 @@ export default {
 
         activeElement: {},
 
-        elements: _.cloneDeep(elementsData),
+        elements: _.cloneDeep(dataElements),
 
         data: {}
     }
