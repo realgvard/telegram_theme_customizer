@@ -15,6 +15,9 @@ import * as id from 'config/idElements.config';
 // Actions
 import { injectActionsToElement } from 'components/Editor/actions';
 
+// JS
+import { selector } from 'components/Editor/selector';
+
 // Styles
 import { getActiveStyle } from 'components/Preview/cssStyles.js';
 import styles from './ChatHeader.css';
@@ -23,10 +26,13 @@ import styles from './ChatHeader.css';
 class ChatHeader extends Component {
 
     render() {
-        const dialogsNameFg = _.head(this.props.dialogsNameFg);
-        const menuIconFg = _.head(this.props.menuIconFg);
-        const topBarBg = _.head(this.props.topBarBg);
-        const windowActiveTextFg = _.head(this.props.windowActiveTextFg);
+        const {
+            dialogsNameFg,
+            menuIconFg,
+            topBarBg,
+            windowActiveTextFg
+        } = this.props;
+
 
         return (
             <AppBar
@@ -37,15 +43,14 @@ class ChatHeader extends Component {
                             style={{
                                 fontSize: 12,
                                 letterSpacing: 0.5,
-                                height: 10,
                                 marginTop: 8,
                                 fontWeight: 'bold',
                             }}
                         ><span
                             style={{
-                                color: dialogsNameFg.color,
+                                color: dialogsNameFg.element.color,
                                 marginTop: 8,
-                                ...getActiveStyle(dialogsNameFg.editing || dialogsNameFg.hovered)
+                                ...getActiveStyle(dialogsNameFg.state.editing || dialogsNameFg.state.hovered)
                             }}
                             {...injectActionsToElement({
                                 id: id.DIALOGS_NAME_FG,
@@ -54,14 +59,12 @@ class ChatHeader extends Component {
                         >Eva Summer</span></div>
                         <span
                             style={{
-                                color: windowActiveTextFg.color,
+                                color: windowActiveTextFg.element.color,
                                 fontSize: 12,
                                 height: 10,
                                 letterSpacing: 0.5,
                                 fontWidth: 100,
-                                position: 'relative',
-                                bottom: -5,
-                                ...getActiveStyle(windowActiveTextFg.editing || windowActiveTextFg.hovered)
+                                ...getActiveStyle(windowActiveTextFg.state.editing || windowActiveTextFg.state.hovered)
                             }}
                             {...injectActionsToElement({
                                 id: id.WINDOW_ACTIVE_TEXT_FG,
@@ -76,10 +79,10 @@ class ChatHeader extends Component {
                     lineHeight: 'inherit',
                 }}
                 style={{
-                    background: topBarBg.color,
+                    background: topBarBg.element.color,
                     borderBottom: '1px solid #E7E7E7',
                     height: 52,
-                    ...getActiveStyle(topBarBg.editing || topBarBg.hovered)
+                    ...getActiveStyle(topBarBg.state.editing || topBarBg.state.hovered)
                 }}
                 iconElementRight={
                     <div>
@@ -88,9 +91,9 @@ class ChatHeader extends Component {
                                 marginTop: -6
                             }}
                             iconStyle={{
-                                fill: menuIconFg.color,
+                                fill: menuIconFg.element.color,
                                 transform: 'rotate(90deg)',
-                                ...getActiveStyle(menuIconFg.editing || menuIconFg.hovered)
+                                ...getActiveStyle(menuIconFg.state.editing || menuIconFg.state.hovered)
                             }}
                         >
                             <SearchIcon
@@ -105,8 +108,8 @@ class ChatHeader extends Component {
                                 marginTop: -6
                             }}
                             iconStyle={{
-                                fill: menuIconFg.color,
-                                ...getActiveStyle(menuIconFg.editing || menuIconFg.hovered)
+                                fill: menuIconFg.element.color,
+                                ...getActiveStyle(menuIconFg.state.editing || menuIconFg.state.hovered)
                             }}
                         >
                             <MoreVertIcon
@@ -130,10 +133,10 @@ class ChatHeader extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        windowActiveTextFg: _.filter(state.editor.elements, { id: id.WINDOW_ACTIVE_TEXT_FG }),
-        topBarBg: _.filter(state.editor.elements, { id: id.TOP_BAR_BG }),
-        dialogsNameFg: _.filter(state.editor.elements, { id: id.DIALOGS_NAME_FG }),
-        menuIconFg: _.filter(state.editor.elements, { id: id.MENU_ICON_FG }),
+        windowActiveTextFg: selector({ id: id.WINDOW_ACTIVE_TEXT_FG, editor: state.editor }),
+        topBarBg: selector({ id: id.TOP_BAR_BG, editor: state.editor }),
+        dialogsNameFg: selector({ id: id.DIALOGS_NAME_FG, editor: state.editor }),
+        menuIconFg: selector({ id: id.MENU_ICON_FG, editor: state.editor }),
     }
 };
 

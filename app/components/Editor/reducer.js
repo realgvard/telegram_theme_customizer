@@ -14,12 +14,12 @@ const editor = (state = initialState.editor, action) => {
 
     switch (action.type) {
 
-        case id.SET_EDITOR_ELEMENTS:
-
-            return {
-                ...state,
-                elements: action.data,
-            };
+        // case id.SET_EDITOR_ELEMENTS:
+        //
+        //     return {
+        //         ...state,
+        //         elements: action.data,
+        //     };
 
         case id.SET_HOVER_ON_ELEMENT:
 
@@ -31,7 +31,7 @@ const editor = (state = initialState.editor, action) => {
                 }
             });
 
-            newHoveredElementCount = _.size(_.filter(newElementsData, { hovered: true }));
+            // newHoveredElementCount = _.size(_.filter(newElementsData, { hovered: true }));
 
             return {
                 ...state,
@@ -49,7 +49,7 @@ const editor = (state = initialState.editor, action) => {
                 }
             });
 
-            newHoveredElementCount = _.size(_.filter(newElementsData, { hovered: true }));
+            // newHoveredElementCount = _.size(_.filter(newElementsData, { hovered: true }));
 
             return {
                 ...state,
@@ -57,54 +57,25 @@ const editor = (state = initialState.editor, action) => {
                 hoveredElementCount: newHoveredElementCount
             };
 
-        // case UNSET_ACTIVE_ELEMENT:
-        //
-        //     newElementsData = state.elements;
-        //
-        //     newElementsData.forEach((item) => {
-        //         if(item.id === action.id) {
-        //             item.active = false;
-        //         }
-        //     });
-        //
-        //     return {
-        //         ...state,
-        //         activeElement: {},
-        //         elements: newElementsData
-        //     };
-        //
-        // case SET_ACTIVE_ELEMENT:
-        //
-        //     newElementsData = state.elements;
-        //
-        //     newElementsData.forEach((item) => {
-        //         if(item.id === action.id) {
-        //             item.active = true;
-        //         }
-        //     });
-        //
-        //     return {
-        //         ...state,
-        //         activeElement: Object.assign(_.find(state.elements, { id: action.id }), {
-        //             active: true
-        //         }),
-        //         elements: newElementsData
-        //     };
-
         case id.CHANGE_EDITOR_DATA:
             newElementsData = state.elements;
 
             newElementsData.forEach((item) => {
+
                 if(item.id === action.id) {
-                    item.color = action.data.color;
+
+                    item.settings.forEach(childItem => {
+
+                        if(childItem.id === action.id) {
+
+                            childItem.color = action.data.color;
+                        }
+                    });
                 }
             });
 
             return {
                 ...state,
-                // activeElement: Object.assign(_.find(state.elements, { id: action.id }), {
-                //     color: action.data.color
-                // }),
                 data: {
                     ...state.data,
                     [action.data.key]: action.data.color
@@ -131,7 +102,7 @@ const editor = (state = initialState.editor, action) => {
                 }
             });
 
-            newHoveredElementCount = _.size(_.filter(newElementsData, { hovered: true }));
+            // newHoveredElementCount = _.size(_.filter(newElementsData, { hovered: true }));
 
             return {
                 ...state,
@@ -158,8 +129,6 @@ const editor = (state = initialState.editor, action) => {
                 fileName: 'theme',
 
                 hoveredElementCount: 0,
-
-                activeElement: {},
 
                 elements: _.cloneDeep(dataElements),
 

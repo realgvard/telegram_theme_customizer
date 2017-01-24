@@ -14,6 +14,9 @@ import InsertEmoticonIcon from 'material-ui/svg-icons/editor/insert-emoticon';
 // Config
 import * as id from 'config/idElements.config';
 
+// JS
+import { selector } from 'components/Editor/selector';
+
 // Actions
 import { injectActionsToElement } from 'components/Editor/actions';
 
@@ -25,8 +28,10 @@ import styles from './MessageDispatcher.css';
 class MessageDispatcher extends Component {
 
     render() {
-        const menuIconFg = _.head(this.props.menuIconFg);
-        const historyComposeAreaBg = _.head(this.props.historyComposeAreaBg);
+        const {
+            menuIconFg,
+            historyComposeAreaBg
+        } = this.props;
 
 
         return (
@@ -40,10 +45,10 @@ class MessageDispatcher extends Component {
                     lineHeight: '46px',
                 }}
                 style={{
-                    background: historyComposeAreaBg.color,
+                    background: historyComposeAreaBg.element.color,
                     borderTop: '1px solid #E7E7E7',
                     height: 46,
-                    ...getActiveStyle(historyComposeAreaBg.editing || historyComposeAreaBg.hovered)
+                    ...getActiveStyle(historyComposeAreaBg.state.editing || historyComposeAreaBg.state.hovered)
                 }}
                 iconElementLeft={
                     <IconButton
@@ -52,10 +57,10 @@ class MessageDispatcher extends Component {
                             width: 'auto',
                             padding: 0,
                             margin: '3px 2px 0',
-                            ...getActiveStyle(menuIconFg.editing || menuIconFg.hovered)
+                            ...getActiveStyle(menuIconFg.state.editing || menuIconFg.state.hovered)
                         }}
                         iconStyle={{
-                            fill: menuIconFg.color,
+                            fill: menuIconFg.element.color,
                             transform: 'rotate(-145deg)'
                         }}
                     >
@@ -77,8 +82,8 @@ class MessageDispatcher extends Component {
                                 marginTop: -6,
                             }}
                             iconStyle={{
-                                fill: menuIconFg.color,
-                                ...getActiveStyle(menuIconFg.editing || menuIconFg.hovered)
+                                fill: menuIconFg.element.color,
+                                ...getActiveStyle(menuIconFg.state.editing || menuIconFg.state.hovered)
                             }}
                         >
                             <InsertEmoticonIcon
@@ -96,8 +101,8 @@ class MessageDispatcher extends Component {
                                 marginTop: -6,
                             }}
                             iconStyle={{
-                                fill: menuIconFg.color,
-                                ...getActiveStyle(menuIconFg.editing || menuIconFg.hovered)
+                                fill: menuIconFg.element.color,
+                                ...getActiveStyle(menuIconFg.state.editing || menuIconFg.state.hovered)
                             }}
                         >
                             <MicIcon
@@ -120,8 +125,8 @@ class MessageDispatcher extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        historyComposeAreaBg: _.filter(state.editor.elements, { id: id.HISTORY_COMPOSE_AREA_BG }),
-        menuIconFg: _.filter(state.editor.elements, { id: id.MENU_ICON_FG }),
+        historyComposeAreaBg: selector({ id: id.HISTORY_COMPOSE_AREA_BG, editor: state.editor }),
+        menuIconFg: selector({ id: id.MENU_ICON_FG, editor: state.editor }),
     }
 };
 

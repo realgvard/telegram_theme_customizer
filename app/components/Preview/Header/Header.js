@@ -13,6 +13,9 @@ import RemoveIcon from 'material-ui/svg-icons/content/remove';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 import MinimizeIcon from 'material-ui/svg-icons/toggle/check-box-outline-blank';
 
+// JS
+import { selector } from 'components/Editor/selector';
+
 // Config
 import * as id from 'config/idElements.config';
 
@@ -24,15 +27,18 @@ import styles from './Header.css';
 class Header extends Component {
 
     render() {
-        const titleBg = _.head(this.props.titleBg);
+        const {
+            titleBg,
+            titleButtonFg
+        } =  this.props;
 
 
         return (
             <div
                 styleName='container'
                 style={{
-                    background: titleBg.color,
-                    ...getActiveStyle(titleBg.hovered || titleBg.editing)
+                    background: titleBg.element.color,
+                    ...getActiveStyle(titleBg.state.hovered || titleBg.state.editing)
                 }}
                 {...injectActionsToElement({
                     id: id.TITLE_BG,
@@ -40,34 +46,61 @@ class Header extends Component {
                 })}
             >
                 <div styleName="buttons-container">
-                    <div styleName="button">
+                    <div
+                        styleName="button"
+                        style={{
+                            ...getActiveStyle(titleButtonFg.state.hovered || titleButtonFg.state.editing)
+                        }}
+                    >
                         <RemoveIcon
-                            color="#ababab"
+                            color={titleButtonFg.element.color}
                             style={{
                                 paddingTop: 4,
                                 marginBottom: -14
                             }}
+                            {...injectActionsToElement({
+                                id: id.TITLE_BUTTON_FG,
+                                dispatch: this.props.dispatch
+                            })}
                         />
                     </div>
-                    <div styleName="button">
+                    <div
+                        styleName="button"
+                        style={{
+                            ...getActiveStyle(titleButtonFg.state.hovered || titleButtonFg.state.editing)
+                        }}
+                    >
                         <MinimizeIcon
-                            color="#ababab"
+                            color={titleButtonFg.element.color}
                             style={{
                                 width: 16,
                                 height: 16,
                                 marginTop: 2,
-                                marginBottom: -8
+                                marginBottom: -8,
                             }}
+                            {...injectActionsToElement({
+                                id: id.TITLE_BUTTON_FG,
+                                dispatch: this.props.dispatch
+                            })}
                         />
                     </div>
-                    <div styleName="button">
+                    <div
+                        styleName="button"
+                        style={{
+                            ...getActiveStyle(titleButtonFg.state.hovered || titleButtonFg.state.editing)
+                        }}
+                    >
                         <ClearIcon
-                            color="#ababab"
+                            color={titleButtonFg.element.color}
                             style={{
                                 width: 20,
                                 height: 20,
                                 marginBottom: -10
                             }}
+                            {...injectActionsToElement({
+                                id: id.TITLE_BUTTON_FG,
+                                dispatch: this.props.dispatch
+                            })}
                         />
                     </div>
                 </div>
@@ -79,7 +112,8 @@ class Header extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        titleBg: _.filter(state.editor.elements, { id: id.TITLE_BG }),
+        titleButtonFg: selector({ id: id.TITLE_BUTTON_FG, editor: state.editor }),
+        titleBg: selector({ id: id.TITLE_BG, editor: state.editor }),
     }
 };
 

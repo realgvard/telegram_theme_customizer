@@ -54,32 +54,45 @@ class Editor extends Component {
 
     render() {
         const {
-            isOpened
-        } = this.state;
-
-        const {
             editingElement: {
-                key,
                 id,
-                color,
                 settings = []
             }
         } = this.props;
 
-        let controlOptions = '';
-        controlOptions = settings.map(({ label, type }, index) => {
+        let controlOptions = settings.map(({
+            key,
+            label,
+            type,
+            color
+        }, index) => {
+            // console.log(key, settings);
+
+            let currentEditing = <div styleName="editing-block">
+                                    <div styleName="editing-title">Editing:</div>
+                                    <div styleName="editing-element" style={{ color: pink500 }}>{key}</div>
+                                </div>;
+
             switch(type) {
+
                 case 'file' :
-                    return <UploadImage label={label} id={id} key={index} />;
+                    return <div styleName="editing-component">
+                            {currentEditing}
+                            <UploadImage label={label} id={id} key={index} />
+                        </div>;
+
                 case 'colorPicker' :
-                    return <div styleName="form-group" key={index}>
-                        <label styleName="control-label">{label}:</label>
-                        <label styleName="form-control">
-                            <ColorPicker id={id} elementKey={key} defaultColor={color} />
-                        </label>
+                    return <div styleName="editing-component">
+                        {currentEditing}
+                        <div styleName="form-group" key={index}>
+                            <label styleName="control-label">{label}:</label>
+                            <label styleName="form-control">
+                                <ColorPicker id={id} elementKey={key} defaultColor={color} />
+                            </label>
+                        </div>
                     </div>;
             }
-        })
+        });
 
         return (
             <Drawer
@@ -93,11 +106,6 @@ class Editor extends Component {
                 <div styleName="inner-container">
                     <div styleName="detail-editor">
                         <h3 styleName="title">Detail Editor</h3>
-
-                        <div styleName="editing-block">
-                            <div styleName="editing-title">Editing:</div>
-                            <div styleName="editing-element" style={{ color: pink500 }}>{key}</div>
-                        </div>
 
                         <div styleName="options-editor">
                             {controlOptions}

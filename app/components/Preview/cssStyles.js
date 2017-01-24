@@ -1,3 +1,4 @@
+import _ from 'lodash';
 
 const activeElementStyle = {
     outline: '2px solid rgba(233, 94, 94, 1)',
@@ -11,5 +12,6 @@ export const defaultElementStyle = {
 
 
 export function getActiveStyle(condition) {
+    // return _.every(condition, Boolean) ? activeElementStyle : defaultElementStyle
     return condition ? activeElementStyle : defaultElementStyle
 }

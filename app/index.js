@@ -39,7 +39,7 @@ getStoredState({}, (err, restoredState) => {
         };
 
     createPersistor(store, {
-        blacklist: []
+        blacklist: ['editor']
     });
 
     // Render the main app react component into the app div.

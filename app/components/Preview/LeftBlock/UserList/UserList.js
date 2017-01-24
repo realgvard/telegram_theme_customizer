@@ -15,6 +15,7 @@ import { injectActionsToElement } from 'components/Editor/actions';
 
 // JS
 import userDataList from './content';
+import { selector } from 'components/Editor/selector';
 
 // Config
 import * as id from 'config/idElements.config';
@@ -27,18 +28,22 @@ import styles from './User-list.css';
 class UserList extends Component {
 
     render() {
-        const dialogsBgActive = _.head(this.props.dialogsBgActive);
-        const dialogsNameFgActive = _.head(this.props.dialogsNameFgActive);
-        const dialogsTextFgActive = _.head(this.props.dialogsTextFgActive);
-        const dialogsUnreadBg = _.head(this.props.dialogsUnreadBg);
-        const dialogsUnreadBgMuted = _.head(this.props.dialogsUnreadBgMuted);
-        const dialogsNameFg = _.head(this.props.dialogsNameFg);
-        const dialogsTextFg = _.head(this.props.dialogsTextFg);
-        const dialogsDateFg = _.head(this.props.dialogsDateFg);
-        const dialogsDateFgActive = _.head(this.props.dialogsDateFgActive);
-        const windowActiveTextFg = _.head(this.props.windowActiveTextFg);
-        const dialogsTextFgServiceActive = _.head(this.props.dialogsTextFgServiceActive);
-        const historyPeerUserpicFg = _.head(this.props.historyPeerUserpicFg);
+        const {
+            dialogsBgActive,
+            dialogsNameFgActive,
+            dialogsTextFgActive,
+            dialogsUnreadBg,
+            dialogsUnreadBgMuted,
+            dialogsNameFg,
+            dialogsTextFg,
+            dialogsDateFg,
+            dialogsDateFgActive,
+            windowActiveTextFg,
+            dialogsTextFgServiceActive,
+            historyPeerUserpicFg
+        } = this.props;
+
+        console.log(dialogsBgActive)
 
 
         return (
@@ -69,8 +74,8 @@ class UserList extends Component {
                                     style={{
                                         top: 12,
                                         fontSize: 16,
-                                        color: historyPeerUserpicFg.color,
-                                        ...getActiveStyle(historyPeerUserpicFg.editing || historyPeerUserpicFg.hovered)
+                                        color: historyPeerUserpicFg.element.color,
+                                        ...getActiveStyle(historyPeerUserpicFg.state.editing || historyPeerUserpicFg.state.hovered)
                                     }}
                                     backgroundColor={avatarBackgroundColor}
                                     {...injectActionsToElement({
@@ -92,9 +97,9 @@ class UserList extends Component {
                                 >
                                 <div className={styles.receivedDate}
                                     style={{
-                                        color: itemIsActive ? dialogsDateFgActive.color : dialogsDateFg.color,
-                                        ...getActiveStyle(itemIsActive && (dialogsDateFgActive.editing || dialogsDateFgActive.hovered) ||
-                                                            !itemIsActive && (dialogsDateFg.editing || dialogsDateFg.hovered))
+                                        color: itemIsActive ? dialogsDateFgActive.element.color : dialogsDateFg.element.color,
+                                        ...getActiveStyle(itemIsActive && (dialogsDateFgActive.state.editing || dialogsDateFgActive.state.hovered) ||
+                                                            !itemIsActive && (dialogsDateFg.state.editing || dialogsDateFg.state.hovered))
                                     }}
                                      {...injectActionsToElement({
                                          id: itemIsActive ? id.DIALOGS_DATE_FG_ACTIVE : id.DIALOGS_DATE_FG,
@@ -113,11 +118,11 @@ class UserList extends Component {
                                         margin: 0,
                                         top: 20,
                                         right: 10,
-                                        ...getActiveStyle(itemIsUnreaded && (dialogsUnreadBg.editing || dialogsUnreadBg.hovered) ||
-                                            !itemIsUnreaded && (dialogsUnreadBgMuted.editing || dialogsUnreadBgMuted.hovered))
+                                        ...getActiveStyle(itemIsUnreaded && (dialogsUnreadBg.element.editing || dialogsUnreadBg.element.hovered) ||
+                                            !itemIsUnreaded && (dialogsUnreadBgMuted.state.editing || dialogsUnreadBgMuted.state.hovered))
                                     }}
                                     badgeStyle={{
-                                        backgroundColor: itemIsUnreaded ? dialogsUnreadBg.color : dialogsUnreadBgMuted.color,
+                                        backgroundColor: itemIsUnreaded ? dialogsUnreadBg.element.color : dialogsUnreadBgMuted.element.color,
                                         width: 20,
                                         height: 20,
                                         fontSize: 10
@@ -130,11 +135,11 @@ class UserList extends Component {
                             </div>}
                             style={{
                                 height: 62,
-                                ...getActiveStyle(itemIsActive && (dialogsBgActive.editing || dialogsBgActive.hovered))
+                                ...getActiveStyle(itemIsActive && (dialogsBgActive.state.editing || dialogsBgActive.state.hovered))
                             }}
                             innerDivStyle={{
                                 padding: '13px 36px 13px 72px',
-                                background: itemIsActive ? dialogsBgActive.color : '',
+                                background: itemIsActive ? dialogsBgActive.element.color : '',
                                 position: 'inherit'
                             }}
                             primaryText={<div
@@ -143,13 +148,13 @@ class UserList extends Component {
                                     dispatch: this.props.dispatch
                                 })}
                                 style={{
-                                    color: itemIsActive ? dialogsNameFgActive.color : dialogsNameFg.color,
+                                    color: itemIsActive ? dialogsNameFgActive.element.color : dialogsNameFg.element.color,
                                     fontSize: 12,
                                     letterSpacing: 0.5,
                                     fontWeight: 'bold',
                                     display: 'inline-block',
-                                    ...getActiveStyle(itemIsActive && (dialogsNameFgActive.editing || dialogsNameFgActive.hovered) ||
-                                                        !itemIsActive && (dialogsNameFg.editing || dialogsNameFg.hovered))
+                                    ...getActiveStyle(itemIsActive && (dialogsNameFgActive.state.editing || dialogsNameFgActive.state.hovered) ||
+                                                        !itemIsActive && (dialogsNameFg.state.editing || dialogsNameFg.state.hovered))
                                 }}
                             >{primaryText}</div>}
                             secondaryText={<div
@@ -161,9 +166,9 @@ class UserList extends Component {
                                 {textService ? <span
                                     className={styles.textService}
                                     style={{
-                                        color: itemIsActive ? dialogsTextFgServiceActive.color : windowActiveTextFg.color,
-                                        ...getActiveStyle(itemIsActive && (dialogsTextFgServiceActive.editing || dialogsTextFgServiceActive.hovered) ||
-                                                            !itemIsActive && (windowActiveTextFg.editing || windowActiveTextFg.hovered))
+                                        color: itemIsActive ? dialogsTextFgServiceActive.element.color : windowActiveTextFg.element.color,
+                                        ...getActiveStyle(itemIsActive && (dialogsTextFgServiceActive.state.editing || dialogsTextFgServiceActive.state.hovered) ||
+                                                            !itemIsActive && (windowActiveTextFg.state.editing || windowActiveTextFg.state.hovered))
                                     }}
                                     {...injectActionsToElement({
                                         id: itemIsActive ? id.DIALOGS_TEXT_FG_SERVICE_ACTIVE : id.WINDOW_ACTIVE_TEXT_FG,
@@ -173,9 +178,9 @@ class UserList extends Component {
                                 <span
                                     className={styles.secondaryText}
                                     style={{
-                                        color: itemIsActive ? dialogsTextFgActive.color : dialogsTextFg.color,
-                                        ...getActiveStyle(itemIsActive && (dialogsTextFgActive.editing || dialogsTextFgActive.hovered) ||
-                                                            !itemIsActive && (dialogsTextFg.editing || dialogsTextFg.hovered))
+                                        color: itemIsActive ? dialogsTextFgActive.element.color : dialogsTextFg.element.color,
+                                        ...getActiveStyle(itemIsActive && (dialogsTextFgActive.state.editing || dialogsTextFgActive.state.hovered) ||
+                                                            !itemIsActive && (dialogsTextFg.state.editing || dialogsTextFg.state.hovered))
                                     }}
                                     {...injectActionsToElement({
                                         id: itemIsActive ? id.DIALOGS_TEXT_FG_ACTIVE : id.DIALOGS_TEXT_FG,
@@ -199,18 +204,18 @@ class UserList extends Component {
 function mapStateToProps(state, ownProps) {
 
     return {
-        historyPeerUserpicFg: _.filter(state.editor.elements, { id: id.HISTORY_PEER_USER_PIC_FG }),
-        dialogsTextFgServiceActive: _.filter(state.editor.elements, { id: id.DIALOGS_TEXT_FG_SERVICE_ACTIVE }),
-        windowActiveTextFg: _.filter(state.editor.elements, { id: id.WINDOW_ACTIVE_TEXT_FG }),
-        dialogsDateFgActive: _.filter(state.editor.elements, { id: id.DIALOGS_DATE_FG_ACTIVE }),
-        dialogsDateFg: _.filter(state.editor.elements, { id: id.DIALOGS_DATE_FG }),
-        dialogsTextFg: _.filter(state.editor.elements, { id: id.DIALOGS_TEXT_FG }),
-        dialogsNameFg: _.filter(state.editor.elements, { id: id.DIALOGS_NAME_FG }),
-        dialogsUnreadBgMuted: _.filter(state.editor.elements, { id: id.DIALOGS_UNREAD_BG_MUTED }),
-        dialogsUnreadBg: _.filter(state.editor.elements, { id: id.DIALOGS_UNREAD_BG }),
-        dialogsTextFgActive: _.filter(state.editor.elements, { id: id.DIALOGS_TEXT_FG_ACTIVE }),
-        dialogsNameFgActive: _.filter(state.editor.elements, { id: id.DIALOGS_NAME_FG_ACTIVE }),
-        dialogsBgActive: _.filter(state.editor.elements, { id: id.DIALOGS_BG_ACTIVE }),
+        historyPeerUserpicFg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, editor: state.editor }),
+        dialogsTextFgServiceActive: selector({ id: id.DIALOGS_TEXT_FG_SERVICE_ACTIVE, editor: state.editor }),
+        windowActiveTextFg: selector({ id: id.WINDOW_ACTIVE_TEXT_FG, editor: state.editor }),
+        dialogsDateFgActive: selector({ id: id.DIALOGS_DATE_FG_ACTIVE, editor: state.editor }),
+        dialogsDateFg: selector({ id: id.DIALOGS_DATE_FG, editor: state.editor }),
+        dialogsTextFg: selector({ id: id.DIALOGS_TEXT_FG, editor: state.editor }),
+        dialogsNameFg: selector({ id: id.DIALOGS_NAME_FG, editor: state.editor }),
+        dialogsUnreadBgMuted: selector({ id: id.DIALOGS_UNREAD_BG_MUTED, editor: state.editor }),
+        dialogsUnreadBg: selector({ id: id.DIALOGS_UNREAD_BG, editor: state.editor }),
+        dialogsTextFgActive: selector({ id: id.DIALOGS_TEXT_FG_ACTIVE, editor: state.editor }),
+        dialogsNameFgActive: selector({ id: id.DIALOGS_NAME_FG_ACTIVE, editor: state.editor }),
+        dialogsBgActive: selector({ id: id.DIALOGS_BG_ACTIVE, editor: state.editor }),
         hoveredElementCount: state.editor.hoveredElementCount
     }
 };

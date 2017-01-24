@@ -12,6 +12,9 @@ import UserList from 'components/Preview/LeftBlock/UserList';
 // Actions
 import { injectActionsToElement } from 'components/Editor/actions';
 
+// JS
+import { selector } from 'components/Editor/selector';
+
 // Config
 import * as id from 'config/idElements.config';
 
@@ -48,19 +51,19 @@ class LeftBlock extends Component {
         } = this.state;
 
         const {
-            hoveredElementCount
+            hoveredElementCount,
+            dialogsBg,
+            menuIconFg,
+            filterInputInactiveBg
         }  = this.props;
 
-        const dialogsBg = _.head(this.props.dialogsBg);
-        const menuIconFg = _.head(this.props.menuIconFg);
-        const filterInputInactiveBg = _.head(this.props.filterInputInactiveBg);
 
         return (
             <div
                 styleName='left-block'
                 style={{
-                    background: dialogsBg.color,
-                    ...getActiveStyle(dialogsBg.hovered || dialogsBg.editing)
+                    background: dialogsBg.element.color,
+                    ...getActiveStyle(dialogsBg.state.hovered || dialogsBg.state.editing)
                 }}
                 {...injectActionsToElement({
                     id: id.DIALOGS_BG,
@@ -83,8 +86,8 @@ class LeftBlock extends Component {
                                 marginTop: -4
                             }}
                             iconStyle={{
-                                fill: menuIconFg.color,
-                                ...getActiveStyle(menuIconFg.editing || menuIconFg.hovered)
+                                fill: menuIconFg.element.color,
+                                ...getActiveStyle(menuIconFg.state.editing || menuIconFg.state.hovered)
                             }}
                             {...injectActionsToElement({
                                 id: id.MENU_ICON_FG,
@@ -100,8 +103,8 @@ class LeftBlock extends Component {
                            placeholder="Search"
                            style={{
                                borderColor: searchIsActive ? '#43A8E6' : '',
-                               background: searchIsActive ? '#fff' : filterInputInactiveBg.color,
-                               ...getActiveStyle(filterInputInactiveBg.editing || filterInputInactiveBg.hovered)
+                               background: searchIsActive ? '#fff' : filterInputInactiveBg.element.color,
+                               ...getActiveStyle(filterInputInactiveBg.state.editing || filterInputInactiveBg.state.hovered)
                            }}
                            onFocus={::this._onFocusSearch}
                            onBlur={::this._onBlurSearch}
@@ -120,9 +123,9 @@ class LeftBlock extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        filterInputInactiveBg: _.filter(state.editor.elements, { id: id.FILTER_INPUT_INACTIVE_BG }),
-        menuIconFg: _.filter(state.editor.elements, { id: id.MENU_ICON_FG }),
-        dialogsBg: _.filter(state.editor.elements, { id: id.DIALOGS_BG }),
+        filterInputInactiveBg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, editor: state.editor }),
+        menuIconFg: selector({ id: id.MENU_ICON_FG, editor: state.editor }),
+        dialogsBg: selector({ id: id.DIALOGS_BG, editor: state.editor }),
         hoveredElementCount: state.editor.hoveredElementCount
     }
 };

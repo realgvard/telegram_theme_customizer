@@ -5,12 +5,13 @@
 
 .buttons-container {
     float: right;
-    padding-right: 4px;
 }
 
 .button {
     float: left;
-    margin-left: 8px;
+    text-align: center;
+    width: 27px;
+    height: 27px;
 }
 
 .icon-minimize {

@@ -16,17 +16,28 @@ import styles from './FileNameField.css';
 
 class FileNameField extends Component {
 
-    _onChange(e) {
-        const value = e.target.value;
+    _onChange(e, newValue) {
+        this.props.dispatch(changeFileName(newValue));
+    }
 
-        this.props.dispatch(changeFileName(value));
+    _reset(value) {
+        this.refs.FileName.input.value = value;
+    }
+
+    componentWillReceiveProps(nextProps) {
+
+        if(nextProps.fileName !== this.refs.FileName.input.value) {
+
+            this._reset(nextProps.fileName);
+        }
     }
 
     render() {
         const {
-            disabledButton,
-            fileName
+            fileName,
+            disabled
         } = this.props;
+
 
         return (
             <div styleName='container'>
@@ -34,9 +45,10 @@ class FileNameField extends Component {
                     Name of file
                 </div>
                 <TextField
+                    ref="FileName"
                     underlineShow={false}
-                    disabled={disabledButton}
                     defaultValue={fileName}
+                    disabled={disabled}
                     onChange={::this._onChange}
                     style={{
                         width: '100%',
@@ -57,7 +69,7 @@ class FileNameField extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        disabledButton: Object.keys(state.editor.data).length > 0 || state.editor.backgroundData ? false : true,
+        disabled: Object.keys(state.editor.data).length > 0 || state.editor.backgroundData ? false : true,
         fileName: state.editor.fileName
     }
 };

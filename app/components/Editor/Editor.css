@@ -1,7 +1,7 @@
 
 
 .inner-container {
-    padding: 52px 0 40px;
+    padding: 24px 0 40px;
 }
 
 .title {
@@ -24,6 +24,15 @@
 .download-button {
     text-align: center;
     margin: 40px 0 0;
+}
+
+.editing-component {
+
+}
+
+.editing-component + .editing-component {
+    margin-top: 20px;
+    border-top: 1px solid rgb(229, 229, 229);
 }
 
 .editing-block {
@@ -49,16 +58,17 @@
 }
 
 .panel-controls {
-    margin-top: 30px;
+    padding-top: 20px;
+    margin-top: 40px;
+    border-top: 2px dashed rgb(229, 229, 229);
 }
 
 .control-element + .control-element {
     margin-top: 10px;
 }
 
-
 .form-group {
-
+    margin-top: 20px;
 }
 
 .form-group:after {

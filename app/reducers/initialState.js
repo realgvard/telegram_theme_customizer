@@ -13,8 +13,6 @@ export default {
 
         fileName: 'theme',
 
-        activeElement: {},
-
         elements: _.cloneDeep(dataElements),
 
         data: {}
