@@ -19,6 +19,18 @@ import styles from './Chat.css';
 
 class Chat extends Component {
 
+    _isBackgroundType() {
+        return this.props.backgroundType === 'background' ? true : false;
+    }
+
+    // componentWillReceiveProps(nextProps) {
+    //
+    //     if(nextProps.backgroundChat.backgroundBase64 !== this.props.backgroundChat.backgroundBase64) {
+    //
+    //
+    //     }
+    // }
+
     render() {
         const {
             backgroundChat: {
@@ -28,12 +40,15 @@ class Chat extends Component {
             }
         } = this.props;
 
+        const backgroundParams = this._isBackgroundType() ? 'no-repeat' : 'repeat';
+
         return (
             <div
                 styleName='container'
                 style={{
                     ...getActiveStyle(hovered || editing),
-                    background: `url(${backgroundBase64 ? backgroundBase64 : defaultBackgroundImage}) no-repeat`,
+                    background: `url(${backgroundBase64 ? backgroundBase64 : defaultBackgroundImage}) ${backgroundParams}`,
+                    backgroundSize: this._isBackgroundType() ? 'cover' : 'initial'
                 }}
                 {...injectActionsToElement({
                     id: id.BACKGROUND,
@@ -48,14 +63,13 @@ class Chat extends Component {
 
 const mapStateToProps = (state, ownProps) => {
 
-    const elemnt = _.filter(state.editor.elements, { id: id.BACKGROUND })[0];
-
     return {
         backgroundChat: {
             backgroundBase64: state.editor.backgroundData,
             hovered: _.find(state.editor.elements, { id: id.BACKGROUND }).hovered,
             editing: _.find(state.editor.elements, { id: id.BACKGROUND }).editing
-        }
+        },
+        backgroundType: state.editor.backgroundType,
     }
 };
 

@@ -67,6 +67,13 @@ export function changeFileName(fileName) {
     }
 }
 
+export function changeBackgroundType(type) {
+    return {
+        type: action.CHANGE_BACKGROUND_TYPE,
+        backgroundType: type
+    }
+}
+
 export function resetEditor() {
     return {
         type: action.RESET_EDITOR

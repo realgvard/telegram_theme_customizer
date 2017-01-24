@@ -26,6 +26,12 @@ export default [
                 key: 'background',
                 type: 'file',
                 label: 'Chose background image'
+            },
+            {
+                id: 'BACKGROUNDSDAS',
+                key: 'background-blab',
+                type: 'colorPicker',
+                label: 'Background-color'
             }
         ]
     },

@@ -9,6 +9,8 @@ export default {
 
         backgroundData: null,
 
+        backgroundType: 'background', // background, tile
+
         hoveredElementCount: 0,
 
         fileName: 'theme',

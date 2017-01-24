@@ -51,7 +51,6 @@ class LeftBlock extends Component {
         } = this.state;
 
         const {
-            hoveredElementCount,
             dialogsBg,
             menuIconFg,
             filterInputInactiveBg
@@ -67,7 +66,6 @@ class LeftBlock extends Component {
                 }}
                 {...injectActionsToElement({
                     id: id.DIALOGS_BG,
-                    editCondition: hoveredElementCount === 1,
                     dispatch: this.props.dispatch
                 })}
             >
@@ -125,8 +123,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         filterInputInactiveBg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, editor: state.editor }),
         menuIconFg: selector({ id: id.MENU_ICON_FG, editor: state.editor }),
-        dialogsBg: selector({ id: id.DIALOGS_BG, editor: state.editor }),
-        hoveredElementCount: state.editor.hoveredElementCount
+        dialogsBg: selector({ id: id.DIALOGS_BG, editor: state.editor })
     }
 };
 

@@ -11,9 +11,7 @@ import FileNameField from 'components/FileNameField';
 import ResetButton from 'components/ResetButton';
 import SaveButton from 'components/SaveButton';
 import UploadImage from 'components/UploadImage';
-
-// JS
-// import optionData from 'config/optionDispatcher.config';
+import SwitchTypeOfImage from 'components/SwitchTypeOfImage';
 
 // Actions
 import {
@@ -78,7 +76,14 @@ class Editor extends Component {
                 case 'file' :
                     return <div styleName="editing-component">
                             {currentEditing}
-                            <UploadImage label={label} id={id} key={index} />
+
+                            <div styleName="image-input">
+                                <UploadImage label={label} id={id} key={index} />
+                            </div>
+
+                           <div styleName="switch-type-of-image">
+                               <SwitchTypeOfImage />
+                           </div>
                         </div>;
 
                 case 'colorPicker' :
@@ -143,9 +148,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         elements: state.editor.elements,
         editingElement: {
-            key: element.key,
             id: element.id,
-            color: element.color,
             settings: element.settings
         }
     }

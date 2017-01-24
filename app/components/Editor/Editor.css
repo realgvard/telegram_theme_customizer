@@ -5,17 +5,17 @@
 }
 
 .title {
-    margin-top: 0;
+    margin: 0;
+    font-size: 18px;
 }
 
 .detail-editor {
     padding: 0 20px;
 }
 
-/*.list-options > button + button {*/
-    /*margin-top: 10px !important;*/
-/*}*/
-
+.switch-type-of-image {
+    margin: 20px 0 0;
+}
 
 .active {
     color: red;
@@ -32,6 +32,7 @@
 
 .editing-component + .editing-component {
     margin-top: 20px;
+    padding-top: 20px;
     border-top: 1px solid rgb(229, 229, 229);
 }
 
@@ -39,7 +40,7 @@
     background: rgb(229, 229, 229);
     font-size: 14px;
     line-height: 1.55;
-    padding: 9px 20px;
+    padding: 8px 20px;
 }
 
 .editing-title {
@@ -99,4 +100,8 @@
     text-align: center;
     color: #999;
     font-size: 10px;
+}
+
+.image-input {
+    margin-top: 20px;
 }

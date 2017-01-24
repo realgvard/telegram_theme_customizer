@@ -119,12 +119,22 @@ const editor = (state = initialState.editor, action) => {
                 fileName
             };
 
+        case id.CHANGE_BACKGROUND_TYPE:
+            const backgroundType = action.backgroundType.trim().length > 0 ? action.backgroundType : 'background';
+
+            return {
+                ...state,
+                backgroundType
+            };
+
         case id.RESET_EDITOR:
 
             return {
                 editingElement: {},
 
                 backgroundData: null,
+
+                backgroundType: 'background',
 
                 fileName: 'theme',
 
@@ -138,6 +148,6 @@ const editor = (state = initialState.editor, action) => {
         default:
             return state
     }
-}
+};
 
 export default editor

@@ -43,8 +43,6 @@ class UserList extends Component {
             historyPeerUserpicFg
         } = this.props;
 
-        console.log(dialogsBgActive)
-
 
         return (
             <div styleName='user-list'>

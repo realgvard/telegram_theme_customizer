@@ -17,6 +17,7 @@ class SaveButton extends Component {
     saveAsZip(data) {
         const {
             backgroundData,
+            backgroundType,
             fileName
         } = this.props;
         const detectPrefixUrl = /^\s*data:([a-z]+\/[a-z]+(;[a-z\-]+\=[a-z\-]+)?)?(;base64),\s*/;
@@ -24,7 +25,7 @@ class SaveButton extends Component {
 
         zip.file("colors.tdesktop-theme", data);
 
-        zip.file("background.jpg", backgroundData.replace(detectPrefixUrl, ''), { base64: true });
+        zip.file(`${backgroundType}.jpg`, backgroundData.replace(detectPrefixUrl, ''), { base64: true });
 
         zip.generateAsync({ type: "blob" }).then(function(content) {
             saveAs(content, `${fileName}.tdesktop-theme`);
@@ -92,6 +93,7 @@ const mapStateToProps = (state, ownProps) => {
         disabledButton: Object.keys(state.editor.data).length > 0 || state.editor.backgroundData ? false : true,
         payload: state.editor.data,
         backgroundData: state.editor.backgroundData,
+        backgroundType: state.editor.backgroundType,
         fileName: state.editor.fileName
     }
 };
