@@ -8,7 +8,8 @@ export function selector({ id, childId, editor }) {
             hovered: _.head(_.filter(editor.elements, { id })).hovered,
             editing: _.head(_.filter(editor.elements, { id })).editing
         },
-        element: _.head(_.filter(_.head(_.filter(editor.elements, { id })).settings, { id: childId ? childId : id }))
+        element: _.head(_.filter(_.head(_.filter(editor.elements, { id })).settings, { id: childId ? childId : id })),
+        id: childId ? childId : id
     }
 }
 

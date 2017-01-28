@@ -14,8 +14,13 @@ import {
 
 // Actions
 import {
+    resetEditor,
     fetchElements
 } from 'components/Editor/actions';
+import { resetMetadata } from 'containers/App/actions';
+
+// JS
+import intialState from 'reducers/initialState';
 
 // Styles
 import styles from './EditorContainer.css';
@@ -51,6 +56,18 @@ class EditorContainer extends Component {
                 stepIndex: 0,
                 isEdited: false
             });
+        }
+    }
+
+    componentWillMount() {
+        const {
+            dispatch,
+            version
+        } = this.props;
+
+        if(!localStorage.getItem('reduxPersist:metadata') || version !== intialState.metadata.version) {
+            dispatch(resetMetadata(intialState.metadata.version));
+            dispatch(resetEditor());
         }
     }
 
@@ -90,8 +107,17 @@ class EditorContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    // console.log(state.editor.elements)
+
+    // const count = _.reduce(state.editor.elements, (result, obj, key) => {
+    //     return _.isNumber(result) ? result + obj.settings.length : obj.settings.length;
+    // });
+
+    // console.log(count)
+
     return {
         isEdited: Object.keys(state.editor.data).length > 0 ? true : false,
+        version: _.get(state, 'metadata.version', false),
         // hasElements: Object.keys(state.editor.elements).length > 0 ? true : false,
     }
 };

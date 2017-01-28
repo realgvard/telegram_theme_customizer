@@ -37,7 +37,6 @@
 }
 
 .editing-block {
-    background: rgb(229, 229, 229);
     font-size: 14px;
     line-height: 1.55;
     padding: 8px 20px;
@@ -61,7 +60,7 @@
 .panel-controls {
     padding-top: 20px;
     margin-top: 40px;
-    border-top: 2px dashed rgb(229, 229, 229);
+    border-top: 2px dashed;
 }
 
 .control-element + .control-element {
@@ -104,4 +103,8 @@
 
 .image-input {
     margin-top: 20px;
+}
+
+.switch-edit-mode {
+    margin-top: 15px;
 }

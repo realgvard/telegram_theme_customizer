@@ -10,8 +10,17 @@ export const defaultElementStyle = {
     outlineOffset: -2
 };
 
+export function getActiveStyle(componentData) {
 
-export function getActiveStyle(condition) {
-    // return _.every(condition, Boolean) ? activeElementStyle : defaultElementStyle
-    return condition ? activeElementStyle : defaultElementStyle
+    if(componentData) {
+        const {
+            hovered,
+            editing
+        } = componentData.state;
+
+        return hovered || editing ? activeElementStyle : defaultElementStyle;
+    } else {
+
+        return defaultElementStyle;
+    }
 }

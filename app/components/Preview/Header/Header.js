@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import reactCSS, { hover } from 'reactcss';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -7,6 +8,7 @@ import _ from 'lodash';
 import { injectActionsToElement } from 'components/Editor/actions';
 
 // Components
+import HeaderButton from './HeaderButton';
 
 // Images
 import RemoveIcon from 'material-ui/svg-icons/content/remove';
@@ -29,80 +31,86 @@ class Header extends Component {
     render() {
         const {
             titleBg,
-            titleButtonFg
+            titleButtonBgOver,
+            titleButtonFgOver,
+            titleButtonFg,
+            titleButtonCloseFg,
+            titleButtonCloseFgOver,
+            titleButtonCloseBgOver
         } =  this.props;
-
 
         return (
             <div
                 styleName='container'
                 style={{
                     background: titleBg.element.color,
-                    ...getActiveStyle(titleBg.state.hovered || titleBg.state.editing)
+                    ...getActiveStyle(titleBg)
                 }}
                 {...injectActionsToElement({
-                    id: id.TITLE_BG,
+                    id: titleBg.id,
                     dispatch: this.props.dispatch
                 })}
             >
                 <div styleName="buttons-container">
-                    <div
-                        styleName="button"
-                        style={{
-                            ...getActiveStyle(titleButtonFg.state.hovered || titleButtonFg.state.editing)
+                    <HeaderButton
+                        component={RemoveIcon}
+                        style={getActiveStyle(titleButtonFg)}
+                        iconStyle={{
+                            paddingTop: 4,
+                            marginBottom: -14,
                         }}
-                    >
-                        <RemoveIcon
-                            color={titleButtonFg.element.color}
-                            style={{
-                                paddingTop: 4,
-                                marginBottom: -14
-                            }}
-                            {...injectActionsToElement({
-                                id: id.TITLE_BUTTON_FG,
+                        className={styles.button}
+                        backgroundColor={titleButtonBgOver.element.color}
+                        ownProps={{
+                            color: titleButtonFg.element.color,
+                            hoverColor: titleButtonFgOver.element.color,
+                            ...injectActionsToElement({
+                                id: titleButtonFg.id,
                                 dispatch: this.props.dispatch
-                            })}
-                        />
-                    </div>
-                    <div
-                        styleName="button"
-                        style={{
-                            ...getActiveStyle(titleButtonFg.state.hovered || titleButtonFg.state.editing)
+                            })
                         }}
-                    >
-                        <MinimizeIcon
-                            color={titleButtonFg.element.color}
-                            style={{
-                                width: 16,
-                                height: 16,
-                                marginTop: 2,
-                                marginBottom: -8,
-                            }}
-                            {...injectActionsToElement({
-                                id: id.TITLE_BUTTON_FG,
-                                dispatch: this.props.dispatch
-                            })}
-                        />
-                    </div>
-                    <div
-                        styleName="button"
-                        style={{
-                            ...getActiveStyle(titleButtonFg.state.hovered || titleButtonFg.state.editing)
+                    />
+
+                    <HeaderButton
+                        component={MinimizeIcon}
+                        style={getActiveStyle(titleButtonFg)}
+                        iconStyle={{
+                            width: 16,
+                            height: 16,
+                            marginTop: 2,
+                            marginBottom: -8,
                         }}
-                    >
-                        <ClearIcon
-                            color={titleButtonFg.element.color}
-                            style={{
-                                width: 20,
-                                height: 20,
-                                marginBottom: -10
-                            }}
-                            {...injectActionsToElement({
-                                id: id.TITLE_BUTTON_FG,
+                        className={styles.button}
+                        backgroundColor={titleButtonBgOver.element.color}
+                        ownProps={{
+                            color: titleButtonFg.element.color,
+                            hoverColor: titleButtonFgOver.element.color,
+                            ...injectActionsToElement({
+                                id: titleButtonFg.id,
                                 dispatch: this.props.dispatch
-                            })}
-                        />
-                    </div>
+                            })
+                        }}
+                    />
+
+                    <HeaderButton
+                        component={ClearIcon}
+                        style={getActiveStyle(titleButtonCloseFg)}
+                        iconStyle={{
+                            width: 20,
+                            height: 20,
+                            marginBottom: -10
+                        }}
+                        className={styles.button}
+                        backgroundColor={titleButtonCloseBgOver.element.color}
+                        ownProps={{
+                            color: titleButtonCloseFg.element.color,
+                            hoverColor: titleButtonCloseFgOver.element.color,
+                            ...injectActionsToElement({
+                                id: titleButtonCloseFg.id,
+                                dispatch: this.props.dispatch
+                            })
+                        }}
+                    />
                 </div>
             </div>
         );
@@ -112,6 +120,11 @@ class Header extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
+        titleButtonCloseFg: selector({ id: id.TITLE_BUTTON_CLOSE_FG, editor: state.editor }),
+        titleButtonCloseFgOver: selector({ id: id.TITLE_BUTTON_CLOSE_FG, childId: id.TITLE_BUTTON_CLOSE_FG_OVER, editor: state.editor }),
+        titleButtonCloseBgOver: selector({ id: id.TITLE_BUTTON_CLOSE_FG, childId: id.TITLE_BUTTON_CLOSE_BG_OVER, editor: state.editor }),
+        titleButtonBgOver: selector({ id: id.TITLE_BUTTON_FG, childId: id.TITLE_BUTTON_BG_OVER, editor: state.editor }),
+        titleButtonFgOver: selector({ id: id.TITLE_BUTTON_FG, childId: id.TITLE_BUTTON_FG_OVER, editor: state.editor }),
         titleButtonFg: selector({ id: id.TITLE_BUTTON_FG, editor: state.editor }),
         titleBg: selector({ id: id.TITLE_BG, editor: state.editor }),
     }

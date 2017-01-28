@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 // Components
 import { SketchPicker } from 'react-color';
@@ -21,12 +23,6 @@ class ColorPicker extends Component {
         this.state = {
             displayColorPicker: false,
             color: '#000000',
-            // color: {
-            //     r: '241',
-            //     g: '112',
-            //     b: '19',
-            //     a: '1',
-            // }
         };
     }
 
@@ -34,37 +30,40 @@ class ColorPicker extends Component {
     //     this.setState({ color: color })
     // }
 
-    handleClick = () => {
-        this.setState({ displayColorPicker: !this.state.displayColorPicker })
+    handleDocumentClick = (e) => {
+        const area = ReactDOM.findDOMNode(this.refs.SketchPicker);
+
+        if (this.state.displayColorPicker &&
+            !area.contains(e.target)) {
+
+            this.setState({ displayColorPicker: false })
+        }
     };
 
-    handleClose = () => {
-        this.setState({ displayColorPicker: false })
+    handleOpen = () => {
+        setTimeout(() => {
+            this.setState({ displayColorPicker: true })
+        }, 0);
     };
 
     handleChange = (color) => {
         const {
             dispatch,
             id,
+            childId,
             elementKey
         } = this.props;
 
-        // this._setColor(color.hex);
-
-        dispatch(changeEditorData(id, { color: color.hex, key: elementKey }));
+        dispatch(changeEditorData(id, childId, { color: color.hex, key: elementKey }));
     };
 
-    // componentWillUpdate(nextProps) {
-    //
-    //
-    //     if(this.props.defaultColor !== this.state.color) {
-    //         this._setColor(this.props.defaultColor);
-    //     }
-    // }
+    componentDidMount() {
+        window.addEventListener('click', ::this.handleDocumentClick)
+    }
 
-    // componentDidMount() {
-    //     this._setColor(this.props.defaultColor);
-    // }
+    componentWillUnmount () {
+        window.removeEventListener('click', ::this.handleDocumentClick)
+    }
 
     render() {
         const {
@@ -73,17 +72,20 @@ class ColorPicker extends Component {
 
         return (
             <div styleName="container">
-                <div styleName="swatch" onClick={ this.handleClick }>
+                <div styleName="swatch" onClick={ this.handleOpen }>
                     <div styleName="color" style={{
                         background: defaultColor
                     }} />
                 </div>
-                { this.state.displayColorPicker ? <div styleName="popover">
-                    <div styleName="cover" onClick={ this.handleClose }/>
+                { this.state.displayColorPicker ? <div
+                    styleName="popover"
+                >
                     <SketchPicker
-                        width={225}
-                        color={ defaultColor }
-                        onChange={ this.handleChange }
+                        ref="SketchPicker"
+                        width={200}
+                        color={defaultColor}
+                        disableAlpha={true}
+                        onChange={this.handleChange}
                     />
                 </div> : null }
             </div>

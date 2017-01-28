@@ -9,3 +9,4 @@ export const UNSET_HOVER_ON_ELEMENT = 'components/Editor/UNSET_HOVER_ON_ELEMENT'
 export const RESET_EDITOR = 'components/Editor/RESET_EDITOR';
 export const CHANGE_FILE_NAME = 'components/Editor/CHANGE_FILE_NAME';
 export const CHANGE_BACKGROUND_TYPE = 'components/Editor/CHANGE_BACKGROUND_TYPE';
+export const CHANGE_EDIT_MODE = 'components/Editor/CHANGE_EDIT_MODE';

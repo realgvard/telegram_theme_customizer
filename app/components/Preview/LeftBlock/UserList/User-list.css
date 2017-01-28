@@ -9,6 +9,8 @@
   position: absolute;
   top: 0;
   right: 10px;
+  width: 70px;
+  text-align: right;
 }
 
 .textService {

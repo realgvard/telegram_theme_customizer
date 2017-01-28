@@ -28,7 +28,7 @@ class ResetButton extends Component {
         return (
             <div styleName="container">
                 <RaisedButton
-                    label="Reset by default"
+                    label="Reset"
                     fullWidth={true}
                     disabled={disabledButton}
                     onClick={::this._onButtonClick}

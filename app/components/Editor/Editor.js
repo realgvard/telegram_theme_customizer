@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
-import { pink500 } from 'material-ui/styles/colors';
+import { pink500, grey100, grey300, cyan500 } from 'material-ui/styles/colors';
 
 // Components
 import Drawer from 'material-ui/Drawer';
@@ -12,6 +12,7 @@ import ResetButton from 'components/ResetButton';
 import SaveButton from 'components/SaveButton';
 import UploadImage from 'components/UploadImage';
 import SwitchTypeOfImage from 'components/SwitchTypeOfImage';
+import SwitchEditMode from 'components/SwitchEditMode';
 
 // Actions
 import {
@@ -52,24 +53,27 @@ class Editor extends Component {
 
     render() {
         const {
+            version,
             editingElement: {
-                id,
                 settings = []
             }
         } = this.props;
 
+        const parentId = this.props.editingElement.id;
+
         let controlOptions = settings.map(({
+            id,
             key,
             label,
             type,
             color
         }, index) => {
-            // console.log(key, settings);
-
-            let currentEditing = <div styleName="editing-block">
-                                    <div styleName="editing-title">Editing:</div>
-                                    <div styleName="editing-element" style={{ color: pink500 }}>{key}</div>
-                                </div>;
+            let currentEditing = <div styleName="editing-block" style={{
+                    backgroundColor: grey100
+                }}>
+                    <div styleName="editing-title">Editing:</div>
+                    <div styleName="editing-element" style={{ color: cyan500 }}>{key}</div>
+                </div>;
 
             switch(type) {
 
@@ -78,7 +82,7 @@ class Editor extends Component {
                             {currentEditing}
 
                             <div styleName="image-input">
-                                <UploadImage label={label} id={id} key={index} />
+                                <UploadImage label={label} id={parentId} childId={id} key={index} />
                             </div>
 
                            <div styleName="switch-type-of-image">
@@ -92,7 +96,7 @@ class Editor extends Component {
                         <div styleName="form-group" key={index}>
                             <label styleName="control-label">{label}:</label>
                             <label styleName="form-control">
-                                <ColorPicker id={id} elementKey={key} defaultColor={color} />
+                                <ColorPicker id={parentId} childId={id} elementKey={key} defaultColor={color} />
                             </label>
                         </div>
                     </div>;
@@ -116,7 +120,9 @@ class Editor extends Component {
                             {controlOptions}
                         </div>
 
-                        <div styleName="panel-controls">
+                        <div styleName="panel-controls" style={{
+                            borderTopColor: grey300
+                        }}>
                             <div styleName="control-element">
                                 <FileNameField />
                             </div>
@@ -128,13 +134,17 @@ class Editor extends Component {
                             <div styleName="control-element">
                                 <ResetButton />
                             </div>
+
+                            <div styleName="switch-edit-mode">
+                                <SwitchEditMode />
+                            </div>
                         </div>
                     </div>
 
 
                     <div styleName="bottom-block">
                         <div>Telegram Theme Customizer (alpha)</div>
-                        <div>Version 0.1.5</div>
+                        <div>Version {version}</div>
                     </div>
                 </div>
             </Drawer>
@@ -146,6 +156,7 @@ const mapStateToProps = (state, ownProps) => {
     const element = state.editor.editingElement;
 
     return {
+        version: state.metadata.version,
         elements: state.editor.elements,
         editingElement: {
             id: element.id,

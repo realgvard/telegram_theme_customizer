@@ -10,7 +10,12 @@ import * as id from './constans';
 
 const editor = (state = initialState.editor, action) => {
     let newElementsData = null;
-    let newHoveredElementCount = null;
+
+    // if disabled edit mode
+    if(!state.editMode && action.type !== id.CHANGE_EDIT_MODE) {
+        return state;
+    }
+
 
     switch (action.type) {
 
@@ -31,12 +36,9 @@ const editor = (state = initialState.editor, action) => {
                 }
             });
 
-            // newHoveredElementCount = _.size(_.filter(newElementsData, { hovered: true }));
-
             return {
                 ...state,
                 elements: newElementsData,
-                hoveredElementCount: newHoveredElementCount
             };
 
         case id.UNSET_HOVER_ON_ELEMENT:
@@ -49,15 +51,14 @@ const editor = (state = initialState.editor, action) => {
                 }
             });
 
-            // newHoveredElementCount = _.size(_.filter(newElementsData, { hovered: true }));
-
             return {
                 ...state,
                 elements: newElementsData,
-                hoveredElementCount: newHoveredElementCount
             };
 
         case id.CHANGE_EDITOR_DATA:
+            let copyParentItem = null;
+
             newElementsData = state.elements;
 
             newElementsData.forEach((item) => {
@@ -66,16 +67,19 @@ const editor = (state = initialState.editor, action) => {
 
                     item.settings.forEach(childItem => {
 
-                        if(childItem.id === action.id) {
+                        if(childItem.id === action.childId) {
 
                             childItem.color = action.data.color;
                         }
                     });
+
+                    copyParentItem = item;
                 }
             });
 
             return {
                 ...state,
+                editingElement: copyParentItem,
                 data: {
                     ...state.data,
                     [action.data.key]: action.data.color
@@ -102,13 +106,10 @@ const editor = (state = initialState.editor, action) => {
                 }
             });
 
-            // newHoveredElementCount = _.size(_.filter(newElementsData, { hovered: true }));
-
             return {
                 ...state,
                 editingElement: Object.assign(_.find(newElementsData, { id: action.id })),
                 elements: newElementsData,
-                hoveredElementCount: newHoveredElementCount
             };
 
         case id.CHANGE_FILE_NAME:
@@ -127,6 +128,13 @@ const editor = (state = initialState.editor, action) => {
                 backgroundType
             };
 
+        case id.CHANGE_EDIT_MODE:
+
+            return {
+                ...state,
+                editMode: action.mode
+            };
+
         case id.RESET_EDITOR:
 
             return {
@@ -138,7 +146,7 @@ const editor = (state = initialState.editor, action) => {
 
                 fileName: 'theme',
 
-                hoveredElementCount: 0,
+                editMode: true,
 
                 elements: _.cloneDeep(dataElements),
 

@@ -76,7 +76,7 @@ class SaveButton extends Component {
         return (
             <div styleName="container">
                 <RaisedButton
-                    label="Save theme!"
+                    label="Save theme (!)"
                     primary={true}
                     fullWidth={true}
                     disabled={disabledButton}
@@ -90,7 +90,8 @@ class SaveButton extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        disabledButton: Object.keys(state.editor.data).length > 0 || state.editor.backgroundData ? false : true,
+        disabledButton: Object.keys(state.editor.data).length > 0 ||
+                        state.editor.backgroundData ? false : true,
         payload: state.editor.data,
         backgroundData: state.editor.backgroundData,
         backgroundType: state.editor.backgroundType,

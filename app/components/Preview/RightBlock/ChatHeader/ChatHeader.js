@@ -29,6 +29,7 @@ class ChatHeader extends Component {
         const {
             dialogsNameFg,
             menuIconFg,
+            menuIconFgOver,
             topBarBg,
             windowActiveTextFg
         } = this.props;
@@ -50,7 +51,7 @@ class ChatHeader extends Component {
                             style={{
                                 color: dialogsNameFg.element.color,
                                 marginTop: 8,
-                                ...getActiveStyle(dialogsNameFg.state.editing || dialogsNameFg.state.hovered)
+                                ...getActiveStyle(dialogsNameFg)
                             }}
                             {...injectActionsToElement({
                                 id: id.DIALOGS_NAME_FG,
@@ -64,7 +65,7 @@ class ChatHeader extends Component {
                                 height: 10,
                                 letterSpacing: 0.5,
                                 fontWidth: 100,
-                                ...getActiveStyle(windowActiveTextFg.state.editing || windowActiveTextFg.state.hovered)
+                                ...getActiveStyle(windowActiveTextFg)
                             }}
                             {...injectActionsToElement({
                                 id: id.WINDOW_ACTIVE_TEXT_FG,
@@ -82,7 +83,7 @@ class ChatHeader extends Component {
                     background: topBarBg.element.color,
                     borderBottom: '1px solid #E7E7E7',
                     height: 52,
-                    ...getActiveStyle(topBarBg.state.editing || topBarBg.state.hovered)
+                    ...getActiveStyle(topBarBg)
                 }}
                 iconElementRight={
                     <div>
@@ -91,33 +92,39 @@ class ChatHeader extends Component {
                                 marginTop: -6
                             }}
                             iconStyle={{
-                                fill: menuIconFg.element.color,
                                 transform: 'rotate(90deg)',
-                                ...getActiveStyle(menuIconFg.state.editing || menuIconFg.state.hovered)
+                                ...getActiveStyle(menuIconFg)
                             }}
                         >
-                            <SearchIcon
-                                {...injectActionsToElement({
-                                    id: id.MENU_ICON_FG,
-                                    dispatch: this.props.dispatch
-                                })}
-                            />
+                            <div>
+                                <SearchIcon
+                                    color={menuIconFg.element.color}
+                                    hoverColor={menuIconFgOver.element.color}
+                                    {...injectActionsToElement({
+                                        id: id.MENU_ICON_FG,
+                                        dispatch: this.props.dispatch
+                                    })}
+                                />
+                            </div>
                         </IconButton>
                         <IconButton
                             style={{
                                 marginTop: -6
                             }}
                             iconStyle={{
-                                fill: menuIconFg.element.color,
-                                ...getActiveStyle(menuIconFg.state.editing || menuIconFg.state.hovered)
+                                ...getActiveStyle(menuIconFg)
                             }}
                         >
-                            <MoreVertIcon
-                                {...injectActionsToElement({
-                                    id: id.MENU_ICON_FG,
-                                    dispatch: this.props.dispatch
-                                })}
-                            />
+                            <div>
+                                <MoreVertIcon
+                                    color={menuIconFg.element.color}
+                                    hoverColor={menuIconFgOver.element.color}
+                                    {...injectActionsToElement({
+                                        id: id.MENU_ICON_FG,
+                                        dispatch: this.props.dispatch
+                                    })}
+                                />
+                            </div>
                         </IconButton>
                     </div>
                 }
@@ -136,6 +143,7 @@ const mapStateToProps = (state, ownProps) => {
         windowActiveTextFg: selector({ id: id.WINDOW_ACTIVE_TEXT_FG, editor: state.editor }),
         topBarBg: selector({ id: id.TOP_BAR_BG, editor: state.editor }),
         dialogsNameFg: selector({ id: id.DIALOGS_NAME_FG, editor: state.editor }),
+        menuIconFgOver: selector({ id: id.MENU_ICON_FG, childId: id.MENU_ICON_FG_OVER, editor: state.editor }),
         menuIconFg: selector({ id: id.MENU_ICON_FG, editor: state.editor }),
     }
 };

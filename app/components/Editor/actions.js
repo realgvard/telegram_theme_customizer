@@ -23,20 +23,6 @@ export function unsetHoverOnElement(id) {
     }
 }
 
-// export function setActiveElement(id) {
-//     return {
-//         type: action.SET_ACTIVE_ELEMENT,
-//         id
-//     }
-// }
-//
-// export function unsetActiveElement(id) {
-//     return {
-//         type: action.UNSET_ACTIVE_ELEMENT,
-//         id
-//     }
-// }
-
 export function setEditingElement(id) {
     return {
         type: action.SET_EDITING_ELEMENT,
@@ -44,10 +30,11 @@ export function setEditingElement(id) {
     }
 }
 
-export function changeEditorData(id, data) {
+export function changeEditorData(id, childId, data) {
     return {
         type: action.CHANGE_EDITOR_DATA,
         id,
+        childId,
         data
     }
 }
@@ -74,6 +61,13 @@ export function changeBackgroundType(type) {
     }
 }
 
+export function changeEditMode(mode) {
+    return {
+        type: action.CHANGE_EDIT_MODE,
+        mode
+    }
+}
+
 export function resetEditor() {
     return {
         type: action.RESET_EDITOR
@@ -85,7 +79,7 @@ export function injectActionsToElement({ id, condition = true, editCondition = t
     return {
         onClick(e) {
 
-            if(condition && editCondition) {
+            if(id && condition && editCondition) {
                 e.stopPropagation();
 
                 dispatch(setEditingElement(id));

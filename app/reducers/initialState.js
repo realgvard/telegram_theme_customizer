@@ -11,12 +11,16 @@ export default {
 
         backgroundType: 'background', // background, tile
 
-        hoveredElementCount: 0,
+        editMode: true,
 
         fileName: 'theme',
 
         elements: _.cloneDeep(dataElements),
 
         data: {}
+    },
+
+    metadata: {
+        version: '0.3.0'
     }
 }
