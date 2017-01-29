@@ -11,7 +11,7 @@ import UserList from 'components/Preview/LeftBlock/UserList';
 import TextField from 'material-ui/TextField';
 
 // Actions
-import { injectActionsToElement } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/Editor/actions';
 
 // JS
 import { selector } from 'components/Editor/selector';
@@ -81,7 +81,7 @@ class LeftBlock extends Component {
                     background: dialogsBg.element.color,
                     ...getActiveStyle(dialogsBg)
                 }}
-                {...injectActionsToElement({
+                {...injectActionsToComponent({
                     id: dialogsBg.id,
                     dispatch: this.props.dispatch
                 })}
@@ -100,7 +100,7 @@ class LeftBlock extends Component {
                             iconStyle={{
                                 ...getActiveStyle(menuIconFg)
                             }}
-                            {...injectActionsToElement({
+                            {...injectActionsToComponent({
                                 id: menuIconFg.id,
                                 dispatch: this.props.dispatch
                             })}
@@ -120,7 +120,7 @@ class LeftBlock extends Component {
                             ...getActiveStyle(filterInputInactiveBg),
                             outlineOffset: 0
                         }}
-                        {...injectActionsToElement({
+                        {...injectActionsToComponent({
                             id: filterInputInactiveBg.id,
                             dispatch: this.props.dispatch
                         })}
@@ -133,7 +133,7 @@ class LeftBlock extends Component {
                                     cursor: 'text',
                                     ...getActiveStyle(placeholderFg)
                                 }}
-                                {...injectActionsToElement({
+                                {...injectActionsToComponent({
                                     id: placeholderFg.id,
                                     dispatch: this.props.dispatch
                                 })}

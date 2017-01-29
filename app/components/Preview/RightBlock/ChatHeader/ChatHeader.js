@@ -13,7 +13,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import * as id from 'config/idElements.config';
 
 // Actions
-import { injectActionsToElement } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/Editor/actions';
 
 // JS
 import { selector } from 'components/Editor/selector';
@@ -53,7 +53,7 @@ class ChatHeader extends Component {
                                 marginTop: 8,
                                 ...getActiveStyle(dialogsNameFg)
                             }}
-                            {...injectActionsToElement({
+                            {...injectActionsToComponent({
                                 id: id.DIALOGS_NAME_FG,
                                 dispatch: this.props.dispatch
                             })}
@@ -67,7 +67,7 @@ class ChatHeader extends Component {
                                 fontWidth: 100,
                                 ...getActiveStyle(windowActiveTextFg)
                             }}
-                            {...injectActionsToElement({
+                            {...injectActionsToComponent({
                                 id: id.WINDOW_ACTIVE_TEXT_FG,
                                 dispatch: this.props.dispatch
                             })}
@@ -100,7 +100,7 @@ class ChatHeader extends Component {
                                 <SearchIcon
                                     color={menuIconFg.element.color}
                                     hoverColor={menuIconFgOver.element.color}
-                                    {...injectActionsToElement({
+                                    {...injectActionsToComponent({
                                         id: id.MENU_ICON_FG,
                                         dispatch: this.props.dispatch
                                     })}
@@ -119,7 +119,7 @@ class ChatHeader extends Component {
                                 <MoreVertIcon
                                     color={menuIconFg.element.color}
                                     hoverColor={menuIconFgOver.element.color}
-                                    {...injectActionsToElement({
+                                    {...injectActionsToComponent({
                                         id: id.MENU_ICON_FG,
                                         dispatch: this.props.dispatch
                                     })}
@@ -128,7 +128,7 @@ class ChatHeader extends Component {
                         </IconButton>
                     </div>
                 }
-                {...injectActionsToElement({
+                {...injectActionsToComponent({
                     id: id.TOP_BAR_BG,
                     dispatch: this.props.dispatch
                 })}

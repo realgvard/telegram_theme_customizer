@@ -15,7 +15,7 @@ import * as id from 'config/idElements.config';
 import { selector } from 'components/Editor/selector';
 
 // Actions
-import { injectActionsToElement } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/Editor/actions';
 
 // Styles
 import { getActiveStyle } from 'components/Preview/cssStyles.js';
@@ -39,7 +39,7 @@ class Preview extends Component {
         // style={{
         // ...getActiveStyle(windowBg)
         // }}
-        // {...injectActionsToElement({
+        // {...injectActionsToComponent({
         //     id: windowBg.id,
         //     dispatch: this.props.dispatch
         // })}

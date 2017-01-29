@@ -33,18 +33,11 @@ class EditorContainer extends Component {
 
         this.state = {
             stepIndex: 0,
-            initialized: false,
             isEdited: false
         }
     }
 
     componentWillReceiveProps(nextProps) {
-
-        if(nextProps.hasElements && !this.state.initialized) {
-            this.setState({
-                initialized: true
-            });
-        }
 
         if(nextProps.isEdited && !this.state.isEdited) {
             this.setState({
@@ -73,8 +66,7 @@ class EditorContainer extends Component {
 
     render() {
         const {
-            stepIndex,
-            initialized
+            stepIndex
         } = this.state;
 
 
@@ -117,8 +109,7 @@ const mapStateToProps = (state, ownProps) => {
 
     return {
         isEdited: Object.keys(state.editor.data).length > 0 ? true : false,
-        version: _.get(state, 'metadata.version', false),
-        // hasElements: Object.keys(state.editor.elements).length > 0 ? true : false,
+        version: _.get(state, 'metadata.version', false)
     }
 };
 

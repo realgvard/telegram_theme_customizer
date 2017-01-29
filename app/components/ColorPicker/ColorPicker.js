@@ -26,14 +26,11 @@ class ColorPicker extends Component {
         };
     }
 
-    // _setColor(color) {
-    //     this.setState({ color: color })
-    // }
-
     handleDocumentClick = (e) => {
         const area = ReactDOM.findDOMNode(this.refs.SketchPicker);
 
-        if (this.state.displayColorPicker &&
+        if (area &&
+            this.state.displayColorPicker &&
             !area.contains(e.target)) {
 
             this.setState({ displayColorPicker: false })

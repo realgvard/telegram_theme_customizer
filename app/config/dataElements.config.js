@@ -109,6 +109,25 @@ export default [
                 color: '#ffffff',
                 type: 'colorPicker',
                 label: 'Text-color'
+            },
+            {
+                id: id.DIALOGS_UNREAD_BG_MUTED_OVER,
+                key: 'dialogsUnreadBgMutedOver',
+                color: '#bbbbbb',
+                type: 'colorPicker',
+                label: 'Background-hover-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_UNREAD_BG,
+        settings: [
+            {
+                id: id.DIALOGS_UNREAD_BG_MUTED_OVER,
+                key: 'dialogsUnreadBgMutedOver',
+                color: '#bbbbbb',
+                type: 'colorPicker',
+                label: 'Background-hover-color'
             }
         ]
     },
@@ -243,7 +262,63 @@ export default [
                 color: '#ffffff',
                 type: 'colorPicker',
                 label: 'Text-color'
-            }
+            },
+            {
+                id: id.HISTORY_PEER_1_USER_PIC_BG,
+                key: 'historyPeer1UserpicBg',
+                color: '#e17076',
+                type: 'colorPicker',
+                label: 'Background-color (1)'
+            },
+            {
+                id: id.HISTORY_PEER_2_USER_PIC_BG,
+                key: 'historyPeer2UserpicBg',
+                color: '#7bc862',
+                type: 'colorPicker',
+                label: 'Background-color (2)'
+            },
+            {
+                id: id.HISTORY_PEER_3_USER_PIC_BG,
+                key: 'historyPeer3UserpicBg',
+                color: '#e5ca77',
+                type: 'colorPicker',
+                label: 'Background-color (3)'
+            },
+            {
+                id: id.HISTORY_PEER_4_USER_PIC_BG,
+                key: 'historyPeer4UserpicBg',
+                color: '#65aadd',
+                type: 'colorPicker',
+                label: 'Background-color (4)'
+            },
+            {
+                id: id.HISTORY_PEER_5_USER_PIC_BG,
+                key: 'historyPeer5UserpicBg',
+                color: '#a695e7',
+                type: 'colorPicker',
+                label: 'Background-color (5)'
+            },
+            {
+                id: id.HISTORY_PEER_6_USER_PIC_BG,
+                key: 'historyPeer6UserpicBg',
+                color: '#ee7aae',
+                type: 'colorPicker',
+                label: 'Background-color (6)'
+            },
+            {
+                id: id.HISTORY_PEER_7_USER_PIC_BG,
+                key: 'historyPeer7UserpicBg',
+                color: '#6ec9cb',
+                type: 'colorPicker',
+                label: 'Background-color (7)'
+            },
+            {
+                id: id.HISTORY_PEER_8_USER_PIC_BG,
+                key: 'historyPeer8UserpicBg',
+                color: '#faa774',
+                type: 'colorPicker',
+                label: 'Background-color (8)'
+            },
         ]
     },
     {
@@ -354,6 +429,18 @@ export default [
         ]
     },
     {
+        id: id.DIALOGS_CHAT_ICON_FG_OVER,
+        settings: [
+            {
+                id: id.DIALOGS_CHAT_ICON_FG_OVER,
+                key: 'dialogsChatIconFgOver',
+                color: '#222222',
+                type: 'colorPicker',
+                label: 'Icon-color'
+            }
+        ]
+    },
+    {
         id: id.DIALOGS_CHAT_ICON_FG_ACTIVE,
         settings: [
             {
@@ -401,5 +488,169 @@ export default [
             }
         ]
     },
-
+    {
+        id: id.DIALOGS_UNREAD_BG_MUTED_ACTIVE,
+        settings: [
+            {
+                id: id.DIALOGS_UNREAD_BG_MUTED_ACTIVE,
+                key: 'dialogsUnreadBgMutedActive',
+                color: '#c6e1f7',
+                type: 'colorPicker',
+                label: 'Icon-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_NAME_FG_OVER,
+        settings: [
+            {
+                id: id.DIALOGS_NAME_FG_OVER,
+                key: 'dialogsNameFgOver',
+                color: '#222222',
+                type: 'colorPicker',
+                label: 'Text-hover-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_TEXT_FG_OVER,
+        settings: [
+            {
+                id: id.DIALOGS_TEXT_FG_OVER,
+                key: 'dialogsTextFgOver',
+                color: '#919191',
+                type: 'colorPicker',
+                label: 'Text-hover-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_TEXT_FG_SERVICE_OVER,
+        settings: [
+            {
+                id: id.DIALOGS_TEXT_FG_SERVICE_OVER,
+                key: 'dialogsTextFgServiceOver',
+                color: '#168acd',
+                type: 'colorPicker',
+                label: 'Text-hover-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DATE_FG_OVER,
+        settings: [
+            {
+                id: id.DIALOGS_DATE_FG_OVER,
+                key: 'dialogsDateFgOver',
+                color: '#999999',
+                type: 'colorPicker',
+                label: 'Text-hover-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_SENT_ICON_FG_OVER,
+        settings: [
+            {
+                id: id.DIALOGS_SENT_ICON_FG_OVER,
+                key: 'dialogsSentIconFgOver',
+                color: '#5dc452',
+                type: 'colorPicker',
+                label: 'Text-hover-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_VERIFIED_ICON_BG,
+        settings: [
+            {
+                id: id.DIALOGS_VERIFIED_ICON_BG,
+                key: 'dialogsVerifiedIconBg',
+                color: '#40a7e3',
+                type: 'colorPicker',
+                label: 'Icon-background-color'
+            },
+            {
+                id: id.DIALOGS_VERIFIED_ICON_FG,
+                key: 'dialogsVerifiedIconFg',
+                color: '#ffffff',
+                type: 'colorPicker',
+                label: 'Icon-background-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_VERIFIED_ICON_BG_OVER,
+        settings: [
+            {
+                id: id.DIALOGS_VERIFIED_ICON_BG_OVER,
+                key: 'dialogsVerifiedIconBgOver',
+                color: '#40a7e3',
+                type: 'colorPicker',
+                label: 'Icon-hover-background-color'
+            },
+            {
+                id: id.DIALOGS_VERIFIED_ICON_FG_OVER,
+                key: 'dialogsVerifiedIconFgOver',
+                color: '#ffffff',
+                type: 'colorPicker',
+                label: 'Icon-hover-background-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_VERIFIED_ICON_BG_ACTIVE,
+        settings: [
+            {
+                id: id.DIALOGS_VERIFIED_ICON_BG_ACTIVE,
+                key: 'dialogsVerifiedIconBgActive',
+                color: '#ffffff',
+                type: 'colorPicker',
+                label: 'Icon-active-background-color'
+            },
+            {
+                id: id.DIALOGS_VERIFIED_ICON_FG_ACTIVE,
+                key: 'dialogsVerifiedIconFgActive',
+                color: '#419fd9',
+                type: 'colorPicker',
+                label: 'Icon-active-background-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DRAFT_FG,
+        settings: [
+            {
+                id: id.DIALOGS_DRAFT_FG,
+                key: 'dialogsDraftFg',
+                color: '#dd4b39',
+                type: 'colorPicker',
+                label: 'Text-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DRAFT_FG_OVER,
+        settings: [
+            {
+                id: id.DIALOGS_DRAFT_FG_OVER,
+                key: 'dialogsDraftFgOver',
+                color: '#dd4b39',
+                type: 'colorPicker',
+                label: 'Text-hover-color'
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DRAFT_FG_ACTIVE,
+        settings: [
+            {
+                id: id.DIALOGS_DRAFT_FG_ACTIVE,
+                key: 'dialogsDraftFgActive',
+                color: '#c6e1f7',
+                type: 'colorPicker',
+                label: 'Text-active-color'
+            }
+        ]
+    },
 ]

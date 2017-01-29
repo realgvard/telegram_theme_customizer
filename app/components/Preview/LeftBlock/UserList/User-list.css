@@ -20,3 +20,37 @@
 .secondaryText {
 
 }
+
+.draftText {
+  margin-right: 2px;
+}
+
+.iconRightBottom {
+  position: absolute;
+  top: 22px;
+  right: 10px;
+}
+
+.pinned-icon {
+
+}
+
+.icon-right {
+
+}
+
+.verifiedIcon {
+  position: relative;
+  margin-left: 3px;
+  bottom: -3px;
+}
+
+.checkIcon {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  border-radius: 50px;
+  width: 9px;
+  height: 9px;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+}

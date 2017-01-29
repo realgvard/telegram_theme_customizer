@@ -19,7 +19,7 @@ import * as id from 'config/idElements.config';
 import { selector } from 'components/Editor/selector';
 
 // Actions
-import { injectActionsToElement } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/Editor/actions';
 
 // Styles
 import { getActiveStyle } from 'components/Preview/cssStyles.js';
@@ -86,7 +86,7 @@ class MessageDispatcher extends Component {
                                 cursor: 'text',
                                 ...getActiveStyle(placeholderFg)
                             }}
-                            {...injectActionsToElement({
+                            {...injectActionsToComponent({
                                 id: placeholderFg.id,
                                 dispatch: this.props.dispatch
                             })}
@@ -144,7 +144,7 @@ class MessageDispatcher extends Component {
                             <AttachFileIcon
                                 color={menuIconFg.element.color}
                                 hoverColor={menuIconFgOver.element.color}
-                                {...injectActionsToElement({
+                                {...injectActionsToComponent({
                                     id: id.MENU_ICON_FG,
                                     dispatch: this.props.dispatch
                                 })}
@@ -170,7 +170,7 @@ class MessageDispatcher extends Component {
                                 <InsertEmoticonIcon
                                     color={menuIconFg.element.color}
                                     hoverColor={menuIconFgOver.element.color}
-                                    {...injectActionsToElement({
+                                    {...injectActionsToComponent({
                                         id: id.MENU_ICON_FG,
                                         dispatch: this.props.dispatch
                                     })}
@@ -193,7 +193,7 @@ class MessageDispatcher extends Component {
                                 <MicIcon
                                     color={menuIconFg.element.color}
                                     hoverColor={menuIconFgOver.element.color}
-                                    {...injectActionsToElement({
+                                    {...injectActionsToComponent({
                                         id: id.MENU_ICON_FG,
                                         dispatch: this.props.dispatch
                                     })}
@@ -202,7 +202,7 @@ class MessageDispatcher extends Component {
                         </IconButton>
                     </div>
                 }
-                {...injectActionsToElement({
+                {...injectActionsToComponent({
                     id: id.HISTORY_COMPOSE_AREA_BG,
                     dispatch: this.props.dispatch
                 })}

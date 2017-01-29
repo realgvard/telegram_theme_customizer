@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 // Actions
-import { injectActionsToElement } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/Editor/actions';
 
 // Components
 import HeaderButton from './HeaderButton';
@@ -46,7 +46,7 @@ class Header extends Component {
                     background: titleBg.element.color,
                     ...getActiveStyle(titleBg)
                 }}
-                {...injectActionsToElement({
+                {...injectActionsToComponent({
                     id: titleBg.id,
                     dispatch: this.props.dispatch
                 })}
@@ -64,7 +64,7 @@ class Header extends Component {
                         ownProps={{
                             color: titleButtonFg.element.color,
                             hoverColor: titleButtonFgOver.element.color,
-                            ...injectActionsToElement({
+                            ...injectActionsToComponent({
                                 id: titleButtonFg.id,
                                 dispatch: this.props.dispatch
                             })
@@ -85,7 +85,7 @@ class Header extends Component {
                         ownProps={{
                             color: titleButtonFg.element.color,
                             hoverColor: titleButtonFgOver.element.color,
-                            ...injectActionsToElement({
+                            ...injectActionsToComponent({
                                 id: titleButtonFg.id,
                                 dispatch: this.props.dispatch
                             })
@@ -105,7 +105,7 @@ class Header extends Component {
                         ownProps={{
                             color: titleButtonCloseFg.element.color,
                             hoverColor: titleButtonCloseFgOver.element.color,
-                            ...injectActionsToElement({
+                            ...injectActionsToComponent({
                                 id: titleButtonCloseFg.id,
                                 dispatch: this.props.dispatch
                             })

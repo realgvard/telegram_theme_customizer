@@ -74,28 +74,30 @@ export function resetEditor() {
     }
 }
 
-export function injectActionsToElement({ id, condition = true, editCondition = true, dispatch }) {
+/**
+ * Ijection event handlers for components
+ * @param id <String>
+ * @param dispatch <Function>
+ * @returns {{onClick: (function(*)), onMouseEnter: (function()), onMouseLeave: (function())}}
+ */
+export function injectActionsToComponent({ id, dispatch }) {
 
     return {
         onClick(e) {
 
-            if(id && condition && editCondition) {
+            if(id) {
                 e.stopPropagation();
 
                 dispatch(setEditingElement(id));
             }
         },
+
         onMouseEnter() {
-
-            if(condition) {
-                dispatch(setHoverOnElement(id));
-            }
+            dispatch(setHoverOnElement(id));
         },
-        onMouseLeave() {
 
-            if(condition) {
-                dispatch(unsetHoverOnElement(id));
-            }
+        onMouseLeave() {
+            dispatch(unsetHoverOnElement(id));
         }
     }
 }

@@ -14,12 +14,6 @@ import UploadImage from 'components/UploadImage';
 import SwitchTypeOfImage from 'components/SwitchTypeOfImage';
 import SwitchEditMode from 'components/SwitchEditMode';
 
-// Actions
-import {
-    setActiveElement,
-    unsetActiveElement
-} from './actions';
-
 // Styles
 import styles from './Editor.css';
 
@@ -105,7 +99,7 @@ class Editor extends Component {
 
         return (
             <Drawer
-                width={300}
+                width={320}
                 open={true}
                 zDepth={1}
                 containerStyle={{

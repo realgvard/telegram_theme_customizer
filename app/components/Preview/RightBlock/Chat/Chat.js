@@ -10,7 +10,7 @@ import defaultBackgroundImage from './images/background.png';
 import * as id from 'config/idElements.config';
 
 // Actions
-import { injectActionsToElement } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/Editor/actions';
 
 // JS
 import { selector } from 'components/Editor/selector';
@@ -50,7 +50,7 @@ class Chat extends Component {
                     ...getActiveStyle(background),
                     background: `url(${backgroundBase64 ? backgroundBase64 : defaultBackgroundImage}) ${backgroundParams}`,
                 }}
-                {...injectActionsToElement({
+                {...injectActionsToComponent({
                     id: id.BACKGROUND,
                     dispatch: this.props.dispatch
                 })}
