@@ -47,11 +47,14 @@ export default [
         itemIsUnreaded: false
     },
     {
-        primaryText: 'Mike Brown',
-        avatarText: 'MB',
+        primaryText: 'English Radio',
+        avatarText: 'ER',
         secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, incidunt!',
+        textService: 'Photo,',
         colorKey: 'historyPeer5UserpicBg',
-        receivedDate: '8.01.17',
+        receivedDate: 'Sat',
+        isChannel: true,
+        verified: true,
         itemIsUnreaded: false
     },
     {
@@ -74,37 +77,9 @@ export default [
     {
         primaryText: 'Natalia Plyonkina',
         avatarText: 'NP',
-        secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, incidunt!',
-        textService: 'Vlad:',
+        textService: 'ApplePieRecipe.pdf',
         colorKey: 'historyPeer8UserpicBg',
         receivedDate: 'Sat',
         isGroup: true
-    },
-    {
-        primaryText: 'Tony Stark',
-        avatarText: 'TS',
-        secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, incidunt!',
-        colorKey: 'historyPeer1UserpicBg',
-        receivedDate: '00:08',
-        itemIsUnreaded: false
-    },
-    {
-        primaryText: 'English Radio',
-        avatarText: 'ER',
-        secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, incidunt!',
-        textService: 'Photo,',
-        colorKey: 'historyPeer2UserpicBg',
-        receivedDate: 'Sat',
-        isChannel: true,
-        verified: true,
-        itemIsUnreaded: false
-    },
-    {
-        primaryText: 'Elon Musk',
-        avatarText: 'EM',
-        textService: 'ApplePieRecipe.pdf',
-        colorKey: 'historyPeer3UserpicBg',
-        receivedDate: 'Fri',
-        itemIsUnreaded: false
-    },
+    }
 ];

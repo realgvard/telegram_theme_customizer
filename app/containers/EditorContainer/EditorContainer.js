@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 // Components
 import Preview from 'components/Preview';
-import Editor from 'components/Editor';
+import SidebarEditor from 'components/SidebarEditor';
+import TopToolbarEditor from 'components/TopToolbarEditor';
 import ArrowForwardIcon from 'material-ui/svg-icons/navigation/arrow-forward';
 import {
     Step,
@@ -16,7 +17,7 @@ import {
 import {
     resetEditor,
     fetchElements
-} from 'components/Editor/actions';
+} from 'components/SidebarEditor/actions';
 import { resetMetadata } from 'containers/App/actions';
 
 // JS
@@ -26,6 +27,7 @@ import intialState from 'reducers/initialState';
 import styles from './EditorContainer.css';
 
 
+@CSSModules(styles)
 class EditorContainer extends Component {
 
     constructor(props) {
@@ -72,24 +74,26 @@ class EditorContainer extends Component {
 
         return (
             <div styleName="wrapper">
+                <TopToolbarEditor />
+
                 <div styleName="container">
-                    <div styleName="stepper">
-                        <Stepper activeStep={stepIndex} connector={<ArrowForwardIcon />}>
-                            <Step>
-                                <StepLabel>Customize theme</StepLabel>
-                            </Step>
-                            <Step>
-                                <StepLabel>Save file of config and apply it in a Telegram</StepLabel>
-                            </Step>
-                        </Stepper>
-                    </div>
+                    {/*<div styleName="stepper">*/}
+                        {/*<Stepper activeStep={stepIndex} connector={<ArrowForwardIcon />}>*/}
+                            {/*<Step>*/}
+                                {/*<StepLabel>Customize theme</StepLabel>*/}
+                            {/*</Step>*/}
+                            {/*<Step>*/}
+                                {/*<StepLabel>Save file of config and apply it in a Telegram</StepLabel>*/}
+                            {/*</Step>*/}
+                        {/*</Stepper>*/}
+                    {/*</div>*/}
 
                     <div styleName="description">
                         <strong>Telegram Theme Customizer (alpha)</strong> — editor for modification themes in telegram.
                         Just hover mouse on some of element below, and follow the next setting in the left bar.
                     </div>
 
-                    <Editor />
+                    <SidebarEditor />
 
                     <Preview />
                 </div>
@@ -104,7 +108,7 @@ const mapStateToProps = (state, ownProps) => {
     // const count = _.reduce(state.editor.elements, (result, obj, key) => {
     //     return _.isNumber(result) ? result + obj.settings.length : obj.settings.length;
     // });
-
+    //
     // console.log(count)
 
     return {
@@ -113,4 +117,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-export default connect(mapStateToProps)(CSSModules(EditorContainer, styles));
+export default connect(mapStateToProps)(EditorContainer);

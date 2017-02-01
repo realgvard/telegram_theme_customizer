@@ -13,10 +13,10 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import * as id from 'config/idElements.config';
 
 // Actions
-import { injectActionsToComponent } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // JS
-import { selector } from 'components/Editor/selector';
+import { selector } from 'components/SidebarEditor/selector';
 
 // Styles
 import { getActiveStyle } from 'components/Preview/cssStyles.js';

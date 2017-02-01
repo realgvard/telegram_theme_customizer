@@ -2,23 +2,24 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
-import { pink500, grey100, grey300, cyan500 } from 'material-ui/styles/colors';
+import muiThemeable from 'material-ui/styles/muiThemeable';
+import {
+    grey100,
+} from 'material-ui/styles/colors';
 
 // Components
 import Drawer from 'material-ui/Drawer';
 import ColorPicker from 'components/ColorPicker';
-import FileNameField from 'components/FileNameField';
-import ResetButton from 'components/ResetButton';
-import SaveButton from 'components/SaveButton';
 import UploadImage from 'components/UploadImage';
 import SwitchTypeOfImage from 'components/SwitchTypeOfImage';
-import SwitchEditMode from 'components/SwitchEditMode';
 
 // Styles
-import styles from './Editor.css';
+import styles from './SidebarEditor.css';
 
 
-class Editor extends Component {
+@muiThemeable()
+@CSSModules(styles)
+class SidebarEditor extends Component {
 
     constructor(props) {
         super(props);
@@ -50,6 +51,9 @@ class Editor extends Component {
             version,
             editingElement: {
                 settings = []
+            },
+            muiTheme: {
+                palette
             }
         } = this.props;
 
@@ -66,7 +70,7 @@ class Editor extends Component {
                     backgroundColor: grey100
                 }}>
                     <div styleName="editing-title">Editing:</div>
-                    <div styleName="editing-element" style={{ color: cyan500 }}>{key}</div>
+                    <div styleName="editing-element" style={{ color: palette.accent2Color }}>{key}</div>
                 </div>;
 
             switch(type) {
@@ -97,6 +101,7 @@ class Editor extends Component {
             }
         });
 
+
         return (
             <Drawer
                 width={320}
@@ -107,31 +112,18 @@ class Editor extends Component {
                 }}
             >
                 <div styleName="inner-container">
-                    <div styleName="detail-editor">
+                    <div
+                        styleName="title-block"
+                        style={{
+                            borderColor: grey100
+                        }}
+                    >
                         <h3 styleName="title">Detail Editor</h3>
+                    </div>
 
-                        <div styleName="options-editor">
+                    <div styleName="options-block">
+                        <div styleName="control-options-block">
                             {controlOptions}
-                        </div>
-
-                        <div styleName="panel-controls" style={{
-                            borderTopColor: grey300
-                        }}>
-                            <div styleName="control-element">
-                                <FileNameField />
-                            </div>
-
-                            <div styleName="control-element">
-                                <SaveButton />
-                            </div>
-
-                            <div styleName="control-element">
-                                <ResetButton />
-                            </div>
-
-                            <div styleName="switch-edit-mode">
-                                <SwitchEditMode />
-                            </div>
                         </div>
                     </div>
 
@@ -159,4 +151,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-export default connect(mapStateToProps)(CSSModules(Editor, styles));
+export default connect(mapStateToProps)(SidebarEditor);

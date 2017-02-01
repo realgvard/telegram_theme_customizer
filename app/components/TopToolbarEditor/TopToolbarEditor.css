@@ -1,0 +1,17 @@
+
+
+.control-block {
+    margin-left: 24px;
+}
+
+.switch-mode-block {
+    width: 120px;
+}
+
+.dialog-field {
+    max-width: 50%;
+}
+
+.settingsIco {
+    cursor: pointer;
+}

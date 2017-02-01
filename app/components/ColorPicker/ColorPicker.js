@@ -9,7 +9,7 @@ import { SketchPicker } from 'react-color';
 
 import {
     changeEditorData
-} from 'components/Editor/actions';
+} from 'components/SidebarEditor/actions';
 
 // Styles
 import styles from './ColorPicker.css';

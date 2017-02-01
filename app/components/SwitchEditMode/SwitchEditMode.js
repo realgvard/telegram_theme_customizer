@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Toggle from 'material-ui/Toggle';
 
 // Actions
-import { changeEditMode } from 'components/Editor/actions';
+import { changeEditMode } from 'components/SidebarEditor/actions';
 
 // Styles
 import styles from './SwitchEditMode.css';
@@ -26,6 +26,9 @@ class SwitchEditMode extends Component {
             <Toggle
                 label="Edit mode"
                 defaultToggled={toggled}
+                labelStyle={{
+                    color: '#fff'
+                }}
                 labelPosition="right"
                 onToggle={::this._onToggle}
             />

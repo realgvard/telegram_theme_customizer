@@ -1,7 +1,5 @@
 
 
-
 .container {
-    height: calc(740px - 46px - 52px);
-    /*background-size: cover !important;*/
+    height: calc(554px - 46px - 52px);
 }

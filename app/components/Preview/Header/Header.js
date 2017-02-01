@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 // Actions
-import { injectActionsToComponent } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // Components
 import HeaderButton from './HeaderButton';
@@ -16,7 +16,7 @@ import ClearIcon from 'material-ui/svg-icons/content/clear';
 import MinimizeIcon from 'material-ui/svg-icons/toggle/check-box-outline-blank';
 
 // JS
-import { selector } from 'components/Editor/selector';
+import { selector } from 'components/SidebarEditor/selector';
 
 // Config
 import * as id from 'config/idElements.config';

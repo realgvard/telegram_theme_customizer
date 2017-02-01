@@ -11,7 +11,7 @@ import ListItem from 'material-ui/List/ListItem';
 import Badge from 'material-ui/Badge';
 
 // Actions
-import { injectActionsToComponent } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // Images
 import GroupIcon from 'material-ui/svg-icons/social/group';
@@ -23,7 +23,7 @@ import DoneIcon from 'material-ui/svg-icons/action/done';
 
 // JS
 import userDataList from './content';
-import { selector } from 'components/Editor/selector';
+import { selector } from 'components/SidebarEditor/selector';
 
 // Config
 import * as id from 'config/idElements.config';
@@ -275,6 +275,10 @@ class UserList extends Component {
                                 height: 62,
                                 ...getActiveStyle(itemIsActive ? dialogsBgActive : null || hovered ? dialogsBgOver : null)
                             }}
+                            {...injectActionsToComponent({
+                                id: itemIsActive ? dialogsBgActive.id : false || hovered ? dialogsBgOver.id : false,
+                                dispatch: this.props.dispatch
+                            })}
                             innerDivStyle={{
                                 padding: '13px 36px 13px 72px',
                                 background: itemIsActive ? dialogsBgActive.element.color : hovered ? dialogsBgOver.element.color : '',
@@ -445,10 +449,6 @@ class UserList extends Component {
                                     })}
                                 >{secondaryText}</span>
                             </div>}
-                            {...injectActionsToComponent({
-                                id: itemIsActive ? id.DIALOGS_BG_ACTIVE : false || hovered ? id.DIALOGS_BG_OVER : false,
-                                dispatch: this.props.dispatch
-                            })}
                         />
                     })}
                 </List>

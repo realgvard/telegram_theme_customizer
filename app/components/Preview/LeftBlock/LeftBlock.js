@@ -11,10 +11,10 @@ import UserList from 'components/Preview/LeftBlock/UserList';
 import TextField from 'material-ui/TextField';
 
 // Actions
-import { injectActionsToComponent } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // JS
-import { selector } from 'components/Editor/selector';
+import { selector } from 'components/SidebarEditor/selector';
 
 // Config
 import * as id from 'config/idElements.config';

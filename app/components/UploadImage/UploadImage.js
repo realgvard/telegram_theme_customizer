@@ -12,7 +12,7 @@ import ImageIcon from 'material-ui/svg-icons/image/image';
 import {
     changeEditorImageData,
     setEditingElement,
-} from 'components/Editor/actions';
+} from 'components/SidebarEditor/actions';
 
 // Styles
 import styles from './UploadImage.css';

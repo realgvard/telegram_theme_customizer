@@ -1,7 +1,11 @@
 
 
 .inner-container {
-    padding: 24px 0 40px;
+}
+
+.title-block {
+    padding: 20px 20px 19px;
+    border-bottom: 1px solid;
 }
 
 .title {
@@ -9,22 +13,27 @@
     font-size: 18px;
 }
 
-.detail-editor {
-    padding: 0 20px;
+.options-block {
+    margin-top: 40px;
     height: 100%;
+}
+
+.control-options-block {
+    padding: 0 20px;
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+}
+
+.control-label {
+    line-height: 20px;
+    padding-top: 8px;
+    font-size: 13px;
+    float: left;
+    width: 55%;
 }
 
 .switch-type-of-image {
     margin: 20px 0 0;
-}
-
-.active {
-    color: red;
-}
-
-.download-button {
-    text-align: center;
-    margin: 40px 0 0;
 }
 
 .editing-component {
@@ -40,12 +49,11 @@
 .editing-block {
     font-size: 14px;
     line-height: 1.55;
-    padding: 8px 20px;
+    padding: 6px 20px;
 }
 
 .editing-title {
     display: inline-block;
-    /*text-transform: uppercase;*/
 }
 
 .editing-element {
@@ -54,21 +62,7 @@
     margin-left: 9px;
 }
 
-.options-editor {
-    margin-top: 40px;
-    max-height: calc(100vh - 420px);
-    overflow-y: auto;
-}
 
-.panel-controls {
-    padding-top: 20px;
-    margin-top: 40px;
-    border-top: 2px dashed;
-}
-
-.control-element + .control-element {
-    margin-top: 10px;
-}
 
 .form-group {
     margin-top: 20px;
@@ -78,14 +72,6 @@
     content: '';
     clear: both;
     display: block;
-}
-
-.control-label {
-    line-height: 20px;
-    padding-top: 8px;
-    font-size: 13px;
-    float: left;
-    width: 55%;
 }
 
 .form-control {
@@ -106,8 +92,4 @@
 
 .image-input {
     margin-top: 20px;
-}
-
-.switch-edit-mode {
-    margin-top: 15px;
 }

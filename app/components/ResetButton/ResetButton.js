@@ -8,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 // Actions
 import {
     resetEditor
-} from 'components/Editor/actions';
+} from 'components/SidebarEditor/actions';
 
 // Styles
 import styles from './ResetButton.css';
@@ -26,14 +26,11 @@ class ResetButton extends Component {
         } = this.props;
 
         return (
-            <div styleName="container">
-                <RaisedButton
-                    label="Reset"
-                    fullWidth={true}
-                    disabled={disabledButton}
-                    onClick={::this._onButtonClick}
-                />
-            </div>
+            <RaisedButton
+                label="Reset"
+                disabled={disabledButton}
+                onClick={::this._onButtonClick}
+            />
         );
     }
 }

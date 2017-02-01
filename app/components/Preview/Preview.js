@@ -12,10 +12,10 @@ import RightBlock from 'components/Preview/RightBlock';
 import * as id from 'config/idElements.config';
 
 // JS
-import { selector } from 'components/Editor/selector';
+import { selector } from 'components/SidebarEditor/selector';
 
 // Actions
-import { injectActionsToComponent } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // Styles
 import { getActiveStyle } from 'components/Preview/cssStyles.js';
@@ -48,9 +48,9 @@ class Preview extends Component {
             <Paper
                 zDepth={3}
                 rounded={true}
-
+                className={styles.container}
             >
-                <div styleName='container'>
+                <div>
                     <Header />
 
                     <LeftBlock />

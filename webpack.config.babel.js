@@ -16,10 +16,9 @@ const dirs = {
 
 
 const config = {
+
     // Entry points to the project
     entry: [
-        'webpack/hot/dev-server',
-        'webpack/hot/only-dev-server',
         './app/index.js',
     ],
 
@@ -45,8 +44,6 @@ const config = {
     devtool: IS_PROD ? 'cheap-source-map': 'eval',
 
     plugins: [
-        // Enables Hot Modules Replacement
-        new webpack.HotModuleReplacementPlugin(),
 
         // Allows error warnings but does not stop compiling.
         new webpack.NoErrorsPlugin(),
@@ -84,10 +81,12 @@ const config = {
                 loaders: ['react-hot', 'babel-loader'], // react-hot is like browser sync and babel loads jsx and es6-7
                 exclude: [dirs.node_modules],
             },
+
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
             },
+
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
@@ -112,10 +111,12 @@ if (IS_PROD) {
 }
 
 if (IS_DEV) {
-    // config.plugins.push(
-    //     // Enables Hot Modules Replacement
-    //     new webpack.HotModuleReplacementPlugin()
-    // );
+    config.plugins.push(
+        // Enables Hot Modules Replacement
+        new webpack.HotModuleReplacementPlugin()
+    );
+
+    config.entry.unshift('webpack/hot/dev-server', 'webpack/hot/only-dev-server');
 
 }
 

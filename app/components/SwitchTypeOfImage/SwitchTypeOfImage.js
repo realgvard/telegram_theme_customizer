@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 
 // Actions
-import { changeBackgroundType } from 'components/Editor/actions';
+import { changeBackgroundType } from 'components/SidebarEditor/actions';
 
 // Styles
 import styles from './SwitchTypeOfImage.css';

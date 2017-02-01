@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 // Actions
-import { changeFileName } from 'components/Editor/actions';
+import { changeFileName } from 'components/SidebarEditor/actions';
 
 // Components
 import TextField from 'material-ui/TextField';

@@ -4,22 +4,23 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 // Images
-import defaultBackgroundImage from './images/background.png';
+import defaultBackgroundImage from './background.png';
 
 // Config
 import * as id from 'config/idElements.config';
 
 // Actions
-import { injectActionsToComponent } from 'components/Editor/actions';
+import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // JS
-import { selector } from 'components/Editor/selector';
+import { selector } from 'components/SidebarEditor/selector';
 
 // Styles
 import { getActiveStyle } from 'components/Preview/cssStyles.js';
 import styles from './Chat.css';
 
 
+@CSSModules(styles)
 class Chat extends Component {
 
     _isBackgroundType() {
@@ -70,4 +71,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-export default connect(mapStateToProps)(CSSModules(Chat, styles));
+export default connect(mapStateToProps)(Chat);

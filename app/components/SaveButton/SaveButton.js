@@ -74,15 +74,12 @@ class SaveButton extends Component {
         } = this.props;
 
         return (
-            <div styleName="container">
-                <RaisedButton
-                    label="Save theme (!)"
-                    primary={true}
-                    fullWidth={true}
-                    disabled={disabledButton}
-                    onClick={::this._onButtonClick}
-                />
-            </div>
+            <RaisedButton
+                label="Save theme (!)"
+                secondary={true}
+                disabled={disabledButton}
+                onClick={::this._onButtonClick}
+            />
         );
     }
 }

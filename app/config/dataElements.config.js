@@ -46,7 +46,7 @@ export default [
                 id: id.BACKGROUND,
                 key: 'background',
                 type: 'file',
-                label: 'Chose background image'
+                label: 'Chose background images'
             }
         ]
     },
@@ -110,18 +110,6 @@ export default [
                 type: 'colorPicker',
                 label: 'Text-color'
             },
-            {
-                id: id.DIALOGS_UNREAD_BG_MUTED_OVER,
-                key: 'dialogsUnreadBgMutedOver',
-                color: '#bbbbbb',
-                type: 'colorPicker',
-                label: 'Background-hover-color'
-            }
-        ]
-    },
-    {
-        id: id.DIALOGS_UNREAD_BG,
-        settings: [
             {
                 id: id.DIALOGS_UNREAD_BG_MUTED_OVER,
                 key: 'dialogsUnreadBgMutedOver',
