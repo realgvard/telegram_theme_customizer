@@ -74,6 +74,12 @@ export function resetEditor() {
     }
 }
 
+export function prepareDataForSave() {
+    return {
+        type: action.PREPARE_DATA_FOR_SAVE
+    }
+}
+
 /**
  * Ijection event handlers for components
  * @param id <String>

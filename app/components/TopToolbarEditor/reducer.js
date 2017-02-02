@@ -11,12 +11,6 @@ import * as id from './constans';
 const editor = (state = initialState.editor, action) => {
     let newElementsData = null;
 
-    // if disabled edit mode
-    if(!state.editMode && action.type !== id.CHANGE_EDIT_MODE) {
-        return state;
-    }
-
-
     switch (action.type) {
 
         case id.CHANGE_FILE_NAME:

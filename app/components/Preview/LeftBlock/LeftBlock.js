@@ -64,6 +64,8 @@ class LeftBlock extends Component {
         } = this.state;
 
         const {
+            windowFg,
+            windowBg,
             filterInputBorderFg,
             placeholderFgActive,
             placeholderFg,
@@ -148,10 +150,11 @@ class LeftBlock extends Component {
                                 width: 'calc(100% - 4px)',
                                 transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1)',
                                 borderColor: searchIsActive ? filterInputBorderFg.element.color : '',
-                                background: searchIsActive ? '#fff' : filterInputInactiveBg.element.color
+                                background: searchIsActive ? windowBg.element.color : filterInputInactiveBg.element.color
                             }}
                             inputStyle={{
-                                paddingLeft: 14
+                                paddingLeft: 14,
+                                color: windowFg.element.color
                             }}
                             onFocus={::this._onFocusSearch}
                             onBlur={::this._onBlurSearch}
@@ -176,6 +179,8 @@ class LeftBlock extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
+        windowFg: selector({ id: id.PLACEHOLDER_FG, childId: id.WINDOW_FG, editor: state.editor }),
+        windowBg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, childId: id.WINDOW_BG, editor: state.editor }),
         filterInputBorderFg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, childId: id.FILTER_INPUT_BORDER_FG, editor: state.editor }),
         placeholderFgActive: selector({ id: id.PLACEHOLDER_FG, childId: id.PLACEHOLDER_FG_ACTIVE, editor: state.editor }),
         placeholderFg: selector({ id: id.PLACEHOLDER_FG, editor: state.editor }),

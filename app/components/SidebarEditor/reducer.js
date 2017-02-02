@@ -12,7 +12,11 @@ const editor = (state = initialState.editor, action) => {
     let newElementsData = null;
 
     // if disabled edit mode
-    if(!state.editMode && action.type !== id.CHANGE_EDIT_MODE) {
+    if(!state.editMode &&
+        (action.type === id.SET_HOVER_ON_ELEMENT ||
+        action.type === id.UNSET_HOVER_ON_ELEMENT ||
+        action.type === id.SET_EDITING_ELEMENT)) {
+
         return state;
     }
 
@@ -45,7 +49,7 @@ const editor = (state = initialState.editor, action) => {
 
             newElementsData = state.elements;
 
-            newElementsData.forEach((item) => {
+            newElementsData.forEach(item => {
                 if(item.id === action.id) {
                     item.hovered = false;
                 }
@@ -61,7 +65,7 @@ const editor = (state = initialState.editor, action) => {
 
             newElementsData = state.elements;
 
-            newElementsData.forEach((item) => {
+            newElementsData.forEach(item => {
 
                 if(item.id === action.id) {
 
@@ -98,7 +102,7 @@ const editor = (state = initialState.editor, action) => {
 
             newElementsData = state.elements;
 
-            newElementsData.forEach((item) => {
+            newElementsData.forEach(item => {
                 if(item.id === action.id) {
                     item.editing = true;
                 } else {
@@ -134,6 +138,26 @@ const editor = (state = initialState.editor, action) => {
                 ...state,
                 editMode: action.mode
             };
+
+        case id.PREPARE_DATA_FOR_SAVE:
+
+            let newData = {};
+
+            state.elements.forEach(item => {
+
+                item.settings.forEach(childItem => {
+
+                    if(!_.has(state.data, childItem.key) && !childItem.protected) {
+                        newData[childItem.key] = childItem.color;
+                    }
+                });
+            });
+
+            return {
+                ...state,
+                data: {...state.data, ...newData}
+            };
+
 
         case id.RESET_EDITOR:
 

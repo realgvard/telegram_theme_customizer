@@ -43,6 +43,7 @@ class SidebarEditor extends Component {
     }
 
     componentDidMount() {
+        this.forceUpdate();
         // this.props.dispatch(initializeData(optionData));
     }
 
@@ -66,9 +67,12 @@ class SidebarEditor extends Component {
             type,
             color
         }, index) => {
-            let currentEditing = <div styleName="editing-block" style={{
-                    backgroundColor: grey100
-                }}>
+            let currentEditing = <div
+                    styleName="editing-block"
+                    style={{
+                        backgroundColor: grey100
+                    }}
+                >
                     <div styleName="editing-title">Editing:</div>
                     <div styleName="editing-element" style={{ color: palette.accent2Color }}>{key}</div>
                 </div>;
@@ -91,10 +95,18 @@ class SidebarEditor extends Component {
                 case 'colorPicker' :
                     return <div styleName="editing-component">
                         {currentEditing}
+
                         <div styleName="form-group" key={index}>
                             <label styleName="control-label">{label}:</label>
                             <label styleName="form-control">
-                                <ColorPicker id={parentId} childId={id} elementKey={key} defaultColor={color} />
+                                {this.refs.optionsContainer ?
+                                    <ColorPicker
+                                        id={parentId}
+                                        childId={id}
+                                        elementKey={key}
+                                        defaultColor={color}
+                                        parentContainer={this.refs.optionsContainer}
+                                    /> : null}
                             </label>
                         </div>
                     </div>;
@@ -122,7 +134,10 @@ class SidebarEditor extends Component {
                     </div>
 
                     <div styleName="options-block">
-                        <div styleName="control-options-block">
+                        <div
+                            ref="optionsContainer"
+                            styleName="control-options-block"
+                        >
                             {controlOptions}
                         </div>
                     </div>

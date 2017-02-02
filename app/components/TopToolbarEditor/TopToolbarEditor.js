@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 import {
     lightBlue800,
     greenA700,
@@ -25,6 +26,7 @@ import Dialog from 'material-ui/Dialog';
 import styles from './TopToolbarEditor.css';
 
 
+@muiThemeable()
 @CSSModules(styles, { allowMultiple: true })
 class TopToolbarEditor extends Component {
 
@@ -58,6 +60,12 @@ class TopToolbarEditor extends Component {
         ];
 
         const {
+            muiTheme: {
+                palette
+            }
+        } = this.props;
+
+        const {
             dialogIsOpen
         } = this.state;
 
@@ -65,8 +73,9 @@ class TopToolbarEditor extends Component {
             <div>
                 <Toolbar
                     style={{
-                        background: lightBlue800,
-                        color: '#fff'
+                        background: palette.accent2Color,
+                        color: '#fff',
+                        padding: '0 20px'
                     }}
                 >
                     <ToolbarGroup firstChild={true} />
@@ -97,7 +106,7 @@ class TopToolbarEditor extends Component {
                             <ResetButton />
                         </div>
 
-                        <div styleName="control-block switch-mode-block">
+                        <div styleName="control-block">
                             <SwitchEditMode />
                         </div>
 
@@ -109,6 +118,9 @@ class TopToolbarEditor extends Component {
                     title="Settings of theme"
                     actions={actions}
                     modal={false}
+                    contentStyle={{
+                        width: 500
+                    }}
                     open={dialogIsOpen}
                     onRequestClose={this.handleClose}
                 >

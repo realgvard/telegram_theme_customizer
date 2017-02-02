@@ -88,11 +88,16 @@ const config = {
             },
 
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
+                test: /\.(jpe?g|png|gif)$/i,
                 loaders: [
                     'file?hash=sha512&digest=hex&name=[hash].[ext]',
                     'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
                 ]
+            },
+
+            {
+                test: /\.svg$/,
+                loader: 'babel!svg-react'
             }
         ],
     },

@@ -16,10 +16,10 @@ import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 // Images
 import GroupIcon from 'material-ui/svg-icons/social/group';
 import DoneAllIcon from 'material-ui/svg-icons/action/done-all';
-import PinnedIcon from 'material-ui/svg-icons/content/create';
 import VolumeMuteIcon from 'material-ui/svg-icons/av/volume-mute';
 import BrightnessLowIcon from 'material-ui/svg-icons/device/brightness-low';
 import DoneIcon from 'material-ui/svg-icons/action/done';
+import PinnedIcon from './images/pinned.svg';
 
 // JS
 import userDataList from './content';
@@ -230,18 +230,18 @@ class UserList extends Component {
                                     badgeContent={badgeContent}
                                     secondary={true}
                                     style={{
-                                        width: 20,
-                                        height: 20,
+                                        width: 18,
+                                        height: 18,
                                         padding: 0,
                                         margin: 0,
-                                        top: 20,
+                                        top: 22,
                                         right: 10,
                                         ...getActiveStyle(dialogsUnreadBg)
                                     }}
                                     badgeStyle={{
                                         backgroundColor: itemIsUnreaded ? dialogsUnreadBg.element.color : dialogsUnreadBgMuted.element.color,
-                                        width: 20,
-                                        height: 20,
+                                        width: 18,
+                                        height: 18,
                                         fontSize: 10,
                                         color: dialogsUnreadFg.element.color
                                     }}
@@ -258,9 +258,9 @@ class UserList extends Component {
                                         <PinnedIcon
                                             styleName="pinned-icon"
                                             style={{
-                                                width: 16,
-                                                height: 16,
-                                                color: itemIsActive ? dialogsUnreadBgMutedActive.element.color : dialogsUnreadBgMuted.element.color,
+                                                width: 10,
+                                                height: 10,
+                                                fill: itemIsActive ? dialogsUnreadBgMutedActive.element.color : dialogsUnreadBgMuted.element.color,
                                                 ...getActiveStyle(itemIsActive ? dialogsUnreadBgMutedActive : dialogsUnreadBg)
                                             }}
                                             {...injectActionsToComponent({

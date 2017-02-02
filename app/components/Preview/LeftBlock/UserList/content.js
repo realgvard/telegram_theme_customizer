@@ -25,7 +25,7 @@ export default [
         primaryText: 'John Doe',
         avatarText: 'JD',
         isGroup: true,
-        secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, incidunt!',
+        secondaryText: 'This is amazing!',
         colorKey: 'historyPeer3UserpicBg',
         badgeContent: 2,
         receivedDate: '21:03',
@@ -49,7 +49,7 @@ export default [
     {
         primaryText: 'English Radio',
         avatarText: 'ER',
-        secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, incidunt!',
+        secondaryText: 'Hey hey, i found 8 new interesting words, topic is flowers',
         textService: 'Photo,',
         colorKey: 'historyPeer5UserpicBg',
         receivedDate: 'Sat',
@@ -60,7 +60,7 @@ export default [
     {
         primaryText: 'Elizabeth Polischuk',
         avatarText: 'EP',
-        secondaryText: 'I love you...',
+        secondaryText: 'I love you',
         isDraft: true,
         colorKey: 'historyPeer6UserpicBg',
         receivedDate: '18:40',

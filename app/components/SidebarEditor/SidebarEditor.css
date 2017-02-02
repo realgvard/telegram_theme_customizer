@@ -4,7 +4,7 @@
 }
 
 .title-block {
-    padding: 20px 20px 19px;
+    padding: 19px 20px;
     border-bottom: 1px solid;
 }
 
@@ -20,7 +20,7 @@
 
 .control-options-block {
     padding: 0 20px;
-    max-height: calc(100vh - 160px);
+    height: calc(100vh - 160px);
     overflow-y: auto;
 }
 
@@ -49,7 +49,7 @@
 .editing-block {
     font-size: 14px;
     line-height: 1.55;
-    padding: 6px 20px;
+    padding: 6px 15px;
 }
 
 .editing-title {

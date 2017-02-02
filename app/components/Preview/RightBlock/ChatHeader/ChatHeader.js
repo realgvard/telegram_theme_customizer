@@ -83,6 +83,7 @@ class ChatHeader extends Component {
                     background: topBarBg.element.color,
                     borderBottom: '1px solid #E7E7E7',
                     height: 52,
+                    lineHeight: '16px',
                     ...getActiveStyle(topBarBg)
                 }}
                 iconElementRight={

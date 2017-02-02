@@ -8,10 +8,16 @@ import { saveAs } from 'filesaver.js';
 // Components
 import RaisedButton from 'material-ui/RaisedButton';
 
+// Actions
+import {
+    prepareDataForSave
+} from 'components/SidebarEditor/actions';
+
 // Styles
 import styles from './SaveButton.css';
 
 
+@CSSModules(styles)
 class SaveButton extends Component {
 
     saveAsZip(data) {
@@ -65,7 +71,11 @@ class SaveButton extends Component {
     }
 
     _onButtonClick() {
-        this.saveFile();
+        this.props.dispatch(prepareDataForSave());
+
+        setTimeout(() => { // temporary delay...
+            this.saveFile();
+        }, 0);
     }
 
     render() {
@@ -96,4 +106,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-export default connect(mapStateToProps)(CSSModules(SaveButton, styles));
+export default connect(mapStateToProps)(SaveButton);

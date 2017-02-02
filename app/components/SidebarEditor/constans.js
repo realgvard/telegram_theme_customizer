@@ -1,7 +1,7 @@
-export const SET_EDITOR_ELEMENTS = 'components/SidebarEditor/SET_EDITOR_ELEMENTS';
+// export const SET_EDITOR_ELEMENTS = 'components/SidebarEditor/SET_EDITOR_ELEMENTS';
 export const CHANGE_EDITOR_DATA = 'components/SidebarEditor/CHANGE_EDITOR_DATA';
-export const SET_ACTIVE_ELEMENT = 'components/SidebarEditor/SET_ACTIVE_ELEMENT';
-export const UNSET_ACTIVE_ELEMENT = 'components/SidebarEditor/UNSET_ACTIVE_ELEMENT';
+// export const SET_ACTIVE_ELEMENT = 'components/SidebarEditor/SET_ACTIVE_ELEMENT';
+// export const UNSET_ACTIVE_ELEMENT = 'components/SidebarEditor/UNSET_ACTIVE_ELEMENT';
 export const SET_EDITING_ELEMENT = 'components/SidebarEditor/SET_EDITING_ELEMENT';
 export const CHANGE_EDITOR_IMAGE_DATA = 'components/SidebarEditor/CHANGE_EDITOR_IMAGE_DATA';
 export const SET_HOVER_ON_ELEMENT = 'components/SidebarEditor/SET_HOVER_ON_ELEMENT';
@@ -10,3 +10,4 @@ export const RESET_EDITOR = 'components/SidebarEditor/RESET_EDITOR';
 export const CHANGE_FILE_NAME = 'components/SidebarEditor/CHANGE_FILE_NAME';
 export const CHANGE_BACKGROUND_TYPE = 'components/SidebarEditor/CHANGE_BACKGROUND_TYPE';
 export const CHANGE_EDIT_MODE = 'components/SidebarEditor/CHANGE_EDIT_MODE';
+export const PREPARE_DATA_FOR_SAVE = 'components/SidebarEditor/PREPARE_DATA_FOR_SAVE';

@@ -32,9 +32,9 @@ class Preview extends Component {
     }
 
     render() {
-        const {
-            windowBg
-        } = this.props;
+        // const {
+        //     windowBg
+        // } = this.props;
 
         // style={{
         // ...getActiveStyle(windowBg)
@@ -64,7 +64,7 @@ class Preview extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        windowBg: selector({ id: id.WINDOW_BG, editor: state.editor }),
+        // windowBg: selector({ id: id.WINDOW_BG, editor: state.editor }),
     }
 };
 

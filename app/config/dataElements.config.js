@@ -2,18 +2,18 @@ import * as id from 'config/idElements.config';
 
 
 export default [
-    {
-        id: id.WINDOW_BG,
-        settings: [
-            {
-                id: id.WINDOW_BG,
-                key: 'windowBg',
-                type: 'colorPicker',
-                label: 'Background-color',
-                color: '#ffffff',
-            }
-        ]
-    },
+    // {
+    //     id: id.WINDOW_BG,
+    //     settings: [
+    //         {
+    //             id: id.WINDOW_BG,
+    //             key: 'windowBg',
+    //             type: 'colorPicker',
+    //             label: 'Background-color',
+    //             color: '#ffffff',
+    //         }
+    //     ]
+    // },
     {
         id: id.WINDOW_BG_OVER,
         settings: [
@@ -23,7 +23,6 @@ export default [
                 type: 'colorPicker',
                 label: 'Background-color',
                 color: '#f1f1f1',
-                global: []
             }
         ]
     },
@@ -45,6 +44,7 @@ export default [
             {
                 id: id.BACKGROUND,
                 key: 'background',
+                protected: true,
                 type: 'file',
                 label: 'Chose background images'
             }
@@ -178,6 +178,13 @@ export default [
                 color: '#54c3f3',
                 type: 'colorPicker',
                 label: 'Border-focus-color'
+            },
+            {
+                id: id.WINDOW_BG,
+                key: 'windowBg',
+                type: 'colorPicker',
+                label: 'Background-color',
+                color: '#ffffff',
             }
         ]
     },
@@ -401,6 +408,20 @@ export default [
                 color: '#aaaaaa',
                 type: 'colorPicker',
                 label: 'Focus-color'
+            },
+            {
+                id: id.WINDOW_FG,
+                key: 'windowFg',
+                color: '#000000',
+                type: 'colorPicker',
+                label: '"Search" color'
+            },
+            {
+                id: id.HISTORY_COMPOSE_AREA_FG,
+                key: 'historyComposeAreaFg',
+                color: '#000000',
+                type: 'colorPicker',
+                label: '"Write a message" color'
             }
         ]
     },

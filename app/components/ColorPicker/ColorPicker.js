@@ -20,30 +20,58 @@ class ColorPicker extends Component {
     constructor(props) {
         super(props);
 
+        this.HEIGHT_COLOR_PICKER = 290;
+
         this.state = {
             displayColorPicker: false,
             color: '#000000',
+            left: 0,
+            top: 0
         };
     }
 
-    handleDocumentClick = (e) => {
+    _closePicker() {
+        this.setState({ displayColorPicker: false })
+    }
+
+    _handleDocumentClick(e) {
         const area = ReactDOM.findDOMNode(this.refs.SketchPicker);
 
         if (area &&
             this.state.displayColorPicker &&
             !area.contains(e.target)) {
 
-            this.setState({ displayColorPicker: false })
+            this._closePicker();
         }
-    };
+    }
 
-    handleOpen = () => {
+    _handleOpen() {
+        const {
+            top,
+            left,
+            width,
+            height
+        } = this.refs.swatch.getBoundingClientRect();
+
+        let positionY = top + height;
+
+        if((positionY + this.HEIGHT_COLOR_PICKER) > window.innerHeight) {
+            // console.log('fuck', positionY + this.HEIGHT_COLOR_PICKER - window.innerHeight)
+            positionY = positionY - (positionY + this.HEIGHT_COLOR_PICKER - window.innerHeight);
+        }
+
         setTimeout(() => {
-            this.setState({ displayColorPicker: true })
-        }, 0);
-    };
 
-    handleChange = (color) => {
+
+            this.setState({
+                displayColorPicker: true,
+                left: left + width,
+                top: positionY
+            });
+        }, 0);
+    }
+
+    _handleChange(color) {
         const {
             dispatch,
             id,
@@ -52,14 +80,18 @@ class ColorPicker extends Component {
         } = this.props;
 
         dispatch(changeEditorData(id, childId, { color: color.hex, key: elementKey }));
-    };
+    }
 
     componentDidMount() {
-        window.addEventListener('click', ::this.handleDocumentClick)
+        this.props.parentContainer.addEventListener('scroll', ::this._closePicker);
+        window.addEventListener('click', ::this._handleDocumentClick);
+        window.addEventListener('resize', ::this._closePicker);
     }
 
     componentWillUnmount () {
-        window.removeEventListener('click', ::this.handleDocumentClick)
+        this.props.parentContainer.removeEventListener('scroll', ::this._closePicker);
+        window.removeEventListener('click', ::this._handleDocumentClick);
+        window.removeEventListener('resize', ::this._closePicker);
     }
 
     render() {
@@ -67,22 +99,37 @@ class ColorPicker extends Component {
             defaultColor
         } = this.props;
 
+        const {
+            left,
+            top
+        } = this.state;
+
+
         return (
             <div styleName="container">
-                <div styleName="swatch" onClick={ this.handleOpen }>
+                <div
+                    ref="swatch"
+                    styleName="swatch"
+                    onClick={ ::this._handleOpen }
+                >
                     <div styleName="color" style={{
                         background: defaultColor
                     }} />
                 </div>
+
                 { this.state.displayColorPicker ? <div
                     styleName="popover"
+                    style={{
+                        left,
+                        top
+                    }}
                 >
                     <SketchPicker
                         ref="SketchPicker"
                         width={200}
                         color={defaultColor}
                         disableAlpha={true}
-                        onChange={this.handleChange}
+                        onChange={::this._handleChange}
                     />
                 </div> : null }
             </div>

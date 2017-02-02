@@ -27,7 +27,8 @@ class SwitchEditMode extends Component {
                 label="Edit mode"
                 defaultToggled={toggled}
                 labelStyle={{
-                    color: '#fff'
+                    color: '#fff',
+                    whiteSpace: 'nowrap'
                 }}
                 labelPosition="right"
                 onToggle={::this._onToggle}

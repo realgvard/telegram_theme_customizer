@@ -66,6 +66,7 @@ class MessageDispatcher extends Component {
         } = this.state;
 
         const {
+            historyComposeAreaFg,
             menuIconFg,
             menuIconFgOver,
             historyComposeAreaBg,
@@ -101,7 +102,7 @@ class MessageDispatcher extends Component {
                             transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1)',
                         }}
                         inputStyle={{
-
+                            color: historyComposeAreaFg.element.color
                         }}
                         onFocus={::this._onFocusSearch}
                         onBlur={::this._onBlurSearch}
@@ -213,6 +214,7 @@ class MessageDispatcher extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        historyComposeAreaFg: selector({ id: id.PLACEHOLDER_FG, childId: id.HISTORY_COMPOSE_AREA_FG, editor: state.editor }),
         placeholderFgActive: selector({ id: id.PLACEHOLDER_FG, childId: id.PLACEHOLDER_FG_ACTIVE, editor: state.editor }),
         placeholderFg: selector({ id: id.PLACEHOLDER_FG, editor: state.editor }),
         historyComposeAreaBg: selector({ id: id.HISTORY_COMPOSE_AREA_BG, editor: state.editor }),
