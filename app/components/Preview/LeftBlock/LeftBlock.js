@@ -20,7 +20,6 @@ import { selector } from 'components/SidebarEditor/selector';
 import * as id from 'config/idElements.config';
 
 // Styles
-import { getActiveStyle } from 'components/Preview/cssStyles.js';
 import styles from './LeftBlock.css';
 
 
@@ -81,7 +80,7 @@ class LeftBlock extends Component {
                 styleName='left-block'
                 style={{
                     background: dialogsBg.element.color,
-                    ...getActiveStyle(dialogsBg)
+                    ...dialogsBg.styles
                 }}
                 {...injectActionsToComponent({
                     id: dialogsBg.id,
@@ -100,7 +99,7 @@ class LeftBlock extends Component {
                                 marginTop: -4
                             }}
                             iconStyle={{
-                                ...getActiveStyle(menuIconFg)
+                                ...menuIconFg.styles
                             }}
                             {...injectActionsToComponent({
                                 id: menuIconFg.id,
@@ -119,7 +118,7 @@ class LeftBlock extends Component {
                     <div
                         styleName="search-input-wrapper"
                         style={{
-                            ...getActiveStyle(filterInputInactiveBg),
+                            ...filterInputInactiveBg.styles,
                             outlineOffset: 0
                         }}
                         {...injectActionsToComponent({
@@ -133,7 +132,7 @@ class LeftBlock extends Component {
                                 ref='labelHintText'
                                 style={{
                                     cursor: 'text',
-                                    ...getActiveStyle(placeholderFg)
+                                    ...placeholderFg.styles
                                 }}
                                 {...injectActionsToComponent({
                                     id: placeholderFg.id,
@@ -179,15 +178,15 @@ class LeftBlock extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        windowFg: selector({ id: id.PLACEHOLDER_FG, childId: id.WINDOW_FG, editor: state.editor }),
-        windowBg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, childId: id.WINDOW_BG, editor: state.editor }),
-        filterInputBorderFg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, childId: id.FILTER_INPUT_BORDER_FG, editor: state.editor }),
-        placeholderFgActive: selector({ id: id.PLACEHOLDER_FG, childId: id.PLACEHOLDER_FG_ACTIVE, editor: state.editor }),
-        placeholderFg: selector({ id: id.PLACEHOLDER_FG, editor: state.editor }),
-        filterInputInactiveBg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, editor: state.editor }),
-        menuIconFg: selector({ id: id.MENU_ICON_FG, editor: state.editor }),
-        menuIconFgOver: selector({ id: id.MENU_ICON_FG, childId: id.MENU_ICON_FG_OVER, editor: state.editor }),
-        dialogsBg: selector({ id: id.DIALOGS_BG, editor: state.editor })
+        windowFg: selector({ id: id.PLACEHOLDER_FG, key: 'windowFg', editor: state.editor }),
+        windowBg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, key: 'windowBg', editor: state.editor }),
+        filterInputBorderFg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, key: 'filterInputBorderFg', editor: state.editor }),
+        placeholderFgActive: selector({ id: id.PLACEHOLDER_FG, key: 'placeholderFgActive', editor: state.editor }),
+        placeholderFg: selector({ id: id.PLACEHOLDER_FG, key: 'placeholderFg', editor: state.editor }),
+        filterInputInactiveBg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, key: 'filterInputInactiveBg', editor: state.editor }),
+        menuIconFg: selector({ id: id.MENU_ICON_FG, key: 'menuIconFg', editor: state.editor }),
+        menuIconFgOver: selector({ id: id.MENU_ICON_FG, key: 'menuIconFgOver', editor: state.editor }),
+        dialogsBg: selector({ id: id.DIALOGS_BG, key: 'dialogsBg', editor: state.editor })
     }
 };
 

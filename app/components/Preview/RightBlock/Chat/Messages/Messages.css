@@ -1,0 +1,37 @@
+
+
+
+.container {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.inner-container {
+    padding: 20px;
+}
+
+.item {
+    font-size: 12px;
+}
+
+.item:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.item-inner-block {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.item + .item {
+    margin-top: 10px;
+}
+
+.interlocutor-sender {
+    float: right;
+    text-align: right;
+}

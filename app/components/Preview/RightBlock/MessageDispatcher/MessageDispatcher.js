@@ -22,7 +22,6 @@ import { selector } from 'components/SidebarEditor/selector';
 import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // Styles
-import { getActiveStyle } from 'components/Preview/cssStyles.js';
 import styles from './MessageDispatcher.css';
 
 
@@ -85,7 +84,7 @@ class MessageDispatcher extends Component {
                             ref='labelHintText'
                             style={{
                                 cursor: 'text',
-                                ...getActiveStyle(placeholderFg)
+                                ...placeholderFg.styles
                             }}
                             {...injectActionsToComponent({
                                 id: placeholderFg.id,
@@ -126,7 +125,7 @@ class MessageDispatcher extends Component {
                     background: historyComposeAreaBg.element.color,
                     borderTop: '1px solid #E7E7E7',
                     height: 46,
-                    ...getActiveStyle(historyComposeAreaBg)
+                    ...historyComposeAreaBg.styles
                 }}
                 iconElementLeft={
                     <IconButton
@@ -135,7 +134,7 @@ class MessageDispatcher extends Component {
                             width: 'auto',
                             padding: 0,
                             margin: '3px 2px 0',
-                            ...getActiveStyle(menuIconFg)
+                            ...menuIconFg.styles
                         }}
                         iconStyle={{
                             transform: 'rotate(-145deg)'
@@ -146,7 +145,7 @@ class MessageDispatcher extends Component {
                                 color={menuIconFg.element.color}
                                 hoverColor={menuIconFgOver.element.color}
                                 {...injectActionsToComponent({
-                                    id: id.MENU_ICON_FG,
+                                    id: menuIconFg.id,
                                     dispatch: this.props.dispatch
                                 })}
                             />
@@ -164,7 +163,7 @@ class MessageDispatcher extends Component {
                             }}
                             iconStyle={{
                                 fill: menuIconFg.element.color,
-                                ...getActiveStyle(menuIconFg)
+                                ...menuIconFg.styles
                             }}
                         >
                             <div>
@@ -172,7 +171,7 @@ class MessageDispatcher extends Component {
                                     color={menuIconFg.element.color}
                                     hoverColor={menuIconFgOver.element.color}
                                     {...injectActionsToComponent({
-                                        id: id.MENU_ICON_FG,
+                                        id: menuIconFg.id,
                                         dispatch: this.props.dispatch
                                     })}
                                 />
@@ -187,7 +186,7 @@ class MessageDispatcher extends Component {
                             }}
                             iconStyle={{
                                 fill: menuIconFg.element.color,
-                                ...getActiveStyle(menuIconFg)
+                                ...menuIconFg.styles
                             }}
                         >
                             <div>
@@ -195,7 +194,7 @@ class MessageDispatcher extends Component {
                                     color={menuIconFg.element.color}
                                     hoverColor={menuIconFgOver.element.color}
                                     {...injectActionsToComponent({
-                                        id: id.MENU_ICON_FG,
+                                        id: menuIconFg.id,
                                         dispatch: this.props.dispatch
                                     })}
                                 />
@@ -204,7 +203,7 @@ class MessageDispatcher extends Component {
                     </div>
                 }
                 {...injectActionsToComponent({
-                    id: id.HISTORY_COMPOSE_AREA_BG,
+                    id: historyComposeAreaBg.id,
                     dispatch: this.props.dispatch
                 })}
             />
@@ -214,12 +213,12 @@ class MessageDispatcher extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        historyComposeAreaFg: selector({ id: id.PLACEHOLDER_FG, childId: id.HISTORY_COMPOSE_AREA_FG, editor: state.editor }),
-        placeholderFgActive: selector({ id: id.PLACEHOLDER_FG, childId: id.PLACEHOLDER_FG_ACTIVE, editor: state.editor }),
-        placeholderFg: selector({ id: id.PLACEHOLDER_FG, editor: state.editor }),
-        historyComposeAreaBg: selector({ id: id.HISTORY_COMPOSE_AREA_BG, editor: state.editor }),
-        menuIconFg: selector({ id: id.MENU_ICON_FG, editor: state.editor }),
-        menuIconFgOver: selector({ id: id.MENU_ICON_FG, childId: id.MENU_ICON_FG_OVER, editor: state.editor }),
+        historyComposeAreaFg: selector({ id: id.PLACEHOLDER_FG, key: 'historyComposeAreaFg', editor: state.editor }),
+        placeholderFgActive: selector({ id: id.PLACEHOLDER_FG, key: 'placeholderFgActive', editor: state.editor }),
+        placeholderFg: selector({ id: id.PLACEHOLDER_FG, key: 'placeholderFgActive', editor: state.editor }),
+        historyComposeAreaBg: selector({ id: id.HISTORY_COMPOSE_AREA_BG, key: 'historyComposeAreaBg', editor: state.editor }),
+        menuIconFg: selector({ id: id.MENU_ICON_FG, key: 'menuIconFg', editor: state.editor }),
+        menuIconFgOver: selector({ id: id.MENU_ICON_FG, key: 'menuIconFgOver', editor: state.editor }),
     }
 };
 

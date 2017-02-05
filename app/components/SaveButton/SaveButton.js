@@ -86,7 +86,7 @@ class SaveButton extends Component {
         return (
             <RaisedButton
                 label="Save theme (!)"
-                secondary={true}
+                primary={true}
                 disabled={disabledButton}
                 onClick={::this._onButtonClick}
             />

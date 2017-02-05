@@ -3,6 +3,7 @@ import initialState from 'reducers/initialState';
 
 // Config
 import dataElements from 'config/dataElements.config';
+import baseElements from 'config/elements';
 
 // Constants
 import * as id from './constans';
@@ -63,12 +64,18 @@ const editor = (state = initialState.editor, action) => {
 
                 if(item.id === action.id) {
 
-                    item.settings.forEach(childItem => {
+                    item.collection.forEach(({
+                        elements,
+                        tabName
+                    }) => {
 
-                        if(childItem.id === action.childId) {
+                        elements.forEach(childItem => {
 
-                            childItem.color = action.data.color;
-                        }
+                            if(childItem.key === action.data.key) {
+
+                                childItem.color = action.data.color;
+                            }
+                        });
                     });
 
                     copyParentItem = item;
@@ -135,18 +142,16 @@ const editor = (state = initialState.editor, action) => {
                 editMode: action.mode
             };
 
+        // TOOD: refactor due change elements
         case id.PREPARE_DATA_FOR_SAVE:
 
             let newData = {};
 
-            state.elements.forEach(item => {
+            baseElements.forEach(childItem => {
 
-                item.settings.forEach(childItem => {
-
-                    if(!_.has(state.data, childItem.key) && !childItem.protected) {
-                        newData[childItem.key] = childItem.color;
-                    }
-                });
+                if(!_.has(state.data, childItem.key) && !childItem.protected) {
+                    newData[childItem.key] = childItem.color;
+                }
             });
 
             return {
@@ -170,6 +175,13 @@ const editor = (state = initialState.editor, action) => {
                 favoriteColors: newFavoriteColors
             };
 
+        case id.CHANGE_EDIT_BORDER_COLOR:
+
+            return {
+                ...state,
+                editBorderColor: action.color
+            };
+
         case id.RESET_EDITOR:
 
             return {
@@ -180,6 +192,8 @@ const editor = (state = initialState.editor, action) => {
                 backgroundType: 'background',
 
                 fileName: 'theme',
+
+                editBorderColor: '#e95e5e',
 
                 favoriteColors: [],
 

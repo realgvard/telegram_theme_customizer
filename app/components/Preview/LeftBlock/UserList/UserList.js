@@ -29,7 +29,6 @@ import { selector } from 'components/SidebarEditor/selector';
 import * as id from 'config/idElements.config';
 
 // Styles
-import { getActiveStyle } from 'components/Preview/cssStyles.js';
 import styles from './User-list.css';
 
 
@@ -160,7 +159,7 @@ class UserList extends Component {
                                         top: 12,
                                         fontSize: 16,
                                         color: historyPeerUserpicFg.element.color,
-                                        ...getActiveStyle(historyPeerUserpicFg)
+                                        ...historyPeerUserpicFg.styles
                                     }}
                                     backgroundColor={::this._getAvatarColor(colorKey)}
                                     {...injectActionsToComponent({
@@ -192,9 +191,8 @@ class UserList extends Component {
                                                     dialogsSentIconFgActive.element.color :
                                                     hovered ? dialogsSentIconFgOver.element.color : dialogsSentIconFg.element.color,
 
-                                            ...getActiveStyle(itemIsActive ?
-                                                                dialogsSentIconFgActive :
-                                                                hovered ? dialogsSentIconFgOver : dialogsSentIconFg)
+                                            ...itemIsActive ? dialogsSentIconFgActive.styles :
+                                                                hovered ? dialogsSentIconFgOver.styles : dialogsSentIconFg.styles
                                         }}
                                         {...injectActionsToComponent({
                                             id: itemIsActive ?
@@ -211,9 +209,8 @@ class UserList extends Component {
                                                     dialogsDateFgActive.element.color :
                                                     hovered ? dialogsDateFgOver.element.color : dialogsDateFg.element.color,
 
-                                            ...getActiveStyle(itemIsActive ?
-                                                                dialogsDateFgActive :
-                                                                hovered ? dialogsDateFgOver : dialogsDateFg)
+                                            ...itemIsActive ? dialogsDateFgActive.styles :
+                                                                hovered ? dialogsDateFgOver.styles : dialogsDateFg.styles
                                         }}
                                         {...injectActionsToComponent({
                                             id: itemIsActive ?
@@ -236,7 +233,7 @@ class UserList extends Component {
                                         margin: 0,
                                         top: 22,
                                         right: 10,
-                                        ...getActiveStyle(dialogsUnreadBg)
+                                        ...dialogsUnreadBg.styles
                                     }}
                                     badgeStyle={{
                                         backgroundColor: itemIsUnreaded ? dialogsUnreadBg.element.color : dialogsUnreadBgMuted.element.color,
@@ -261,7 +258,7 @@ class UserList extends Component {
                                                 width: 10,
                                                 height: 10,
                                                 fill: itemIsActive ? dialogsUnreadBgMutedActive.element.color : dialogsUnreadBgMuted.element.color,
-                                                ...getActiveStyle(itemIsActive ? dialogsUnreadBgMutedActive : dialogsUnreadBg)
+                                                ...itemIsActive ? dialogsUnreadBgMutedActive.styles : dialogsUnreadBg.styles
                                             }}
                                             {...injectActionsToComponent({
                                                 id: itemIsActive ? dialogsUnreadBgMutedActive.id : dialogsUnreadBg.id,
@@ -273,7 +270,7 @@ class UserList extends Component {
                             </div>}
                             style={{
                                 height: 62,
-                                ...getActiveStyle(itemIsActive ? dialogsBgActive : null || hovered ? dialogsBgOver : null)
+                                ...itemIsActive ? dialogsBgActive.styles : null || hovered ? dialogsBgOver.styles : null
                             }}
                             {...injectActionsToComponent({
                                 id: itemIsActive ? dialogsBgActive.id : false || hovered ? dialogsBgOver.id : false,
@@ -302,9 +299,8 @@ class UserList extends Component {
                                                 dialogsChatIconFgActive.element.color :
                                                 hovered ? dialogsChatIconFgOver.element.color : dialogsChatIconFg.element.color,
 
-                                        ...getActiveStyle(itemIsActive ?
-                                                            dialogsChatIconFgActive :
-                                                            hovered ? dialogsChatIconFgOver : dialogsChatIconFg)
+                                        ...itemIsActive ? dialogsChatIconFgActive.styles :
+                                                            hovered ? dialogsChatIconFgOver.styles : dialogsChatIconFg.styles
                                     }}
                                     {...injectActionsToComponent({
                                         id: itemIsActive ?
@@ -324,7 +320,7 @@ class UserList extends Component {
                                                 dialogsNameFgActive.element.color :
                                                 hovered ? dialogsNameFgOver.element.color : dialogsNameFg.element.color,
                                         
-                                        ...getActiveStyle(itemIsActive ? dialogsNameFgActive : hovered ? dialogsNameFgOver : dialogsNameFg)
+                                        ...itemIsActive ? dialogsNameFgActive.styles : hovered ? dialogsNameFgOver.styles : dialogsNameFg.styles
                                     }}
                                 >
                                     {primaryText}
@@ -334,9 +330,8 @@ class UserList extends Component {
                                     <span
                                         className={styles.verifiedIcon}
                                         style={{
-                                            ...getActiveStyle(itemIsActive ?
-                                                                dialogsVerifiedIconBgActive :
-                                                                hovered ? dialogsVerifiedIconBgOver : dialogsVerifiedIconBg),
+                                            ...itemIsActive ? dialogsVerifiedIconBgActive.styles :
+                                                                hovered ? dialogsVerifiedIconBgOver.styles : dialogsVerifiedIconBg.styles,
 
                                             outlineOffset: 0
                                         }}
@@ -397,9 +392,9 @@ class UserList extends Component {
                                             color: itemIsActive ?
                                                     dialogsDraftFgActive.element.color :
                                                     hovered ? dialogsDraftFgOver.element.color : dialogsDraftFg.element.color,
-                                            ...getActiveStyle(itemIsActive ?
-                                                                dialogsDraftFgActive :
-                                                                hovered ? dialogsDraftFgOver : dialogsDraftFg)
+
+                                            ...itemIsActive ? dialogsDraftFgActive.styles :
+                                                                hovered ? dialogsDraftFgOver.styles : dialogsDraftFg.styles
                                         }}
                                         {...injectActionsToComponent({
                                             id: itemIsActive ?
@@ -418,9 +413,8 @@ class UserList extends Component {
                                         color: itemIsActive ? dialogsTextFgServiceActive.element.color :
                                                 hovered ? dialogsTextFgServiceOver.element.color : windowActiveTextFg.element.color,
 
-                                        ...getActiveStyle(itemIsActive ?
-                                                            dialogsTextFgServiceActive :
-                                                            hovered ? dialogsTextFgServiceOver : windowActiveTextFg)
+                                        ...itemIsActive ? dialogsTextFgServiceActive.styles :
+                                                            hovered ? dialogsTextFgServiceOver.styles : windowActiveTextFg.styles
                                     }}
                                     {...injectActionsToComponent({
                                         id: itemIsActive ?
@@ -437,9 +431,9 @@ class UserList extends Component {
                                         color: itemIsActive ?
                                                 dialogsTextFgActive.element.color :
                                                 hovered ? dialogsTextFgOver.element.color : dialogsTextFg.element.color,
-                                        ...getActiveStyle(itemIsActive ?
-                                                            dialogsTextFgActive :
-                                                            hovered ? dialogsTextFgOver : dialogsTextFg)
+
+                                        ...itemIsActive ?dialogsTextFgActive.styles :
+                                                            hovered ? dialogsTextFgOver.styles : dialogsTextFg.styles
                                     }}
                                     {...injectActionsToComponent({
                                         id: itemIsActive ?
@@ -461,50 +455,50 @@ class UserList extends Component {
 function mapStateToProps(state, ownProps) {
 
     return {
-        historyPeer8UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, childId: id.HISTORY_PEER_8_USER_PIC_BG, editor: state.editor }),
-        historyPeer7UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, childId: id.HISTORY_PEER_7_USER_PIC_BG, editor: state.editor }),
-        historyPeer6UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, childId: id.HISTORY_PEER_6_USER_PIC_BG, editor: state.editor }),
-        historyPeer5UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, childId: id.HISTORY_PEER_5_USER_PIC_BG, editor: state.editor }),
-        historyPeer4UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, childId: id.HISTORY_PEER_4_USER_PIC_BG, editor: state.editor }),
-        historyPeer3UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, childId: id.HISTORY_PEER_3_USER_PIC_BG, editor: state.editor }),
-        historyPeer2UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, childId: id.HISTORY_PEER_2_USER_PIC_BG, editor: state.editor }),
-        historyPeer1UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, childId: id.HISTORY_PEER_1_USER_PIC_BG, editor: state.editor }),
-        dialogsDraftFgActive: selector({ id: id.DIALOGS_DRAFT_FG_ACTIVE, editor: state.editor }),
-        dialogsDraftFgOver: selector({ id: id.DIALOGS_DRAFT_FG_OVER, editor: state.editor }),
-        dialogsDraftFg: selector({ id: id.DIALOGS_DRAFT_FG, editor: state.editor }),
-        dialogsVerifiedIconFgActive: selector({ id: id.DIALOGS_VERIFIED_ICON_BG_ACTIVE, childId: id.DIALOGS_VERIFIED_ICON_FG_ACTIVE, editor: state.editor }),
-        dialogsVerifiedIconBgActive: selector({ id: id.DIALOGS_VERIFIED_ICON_BG_ACTIVE, editor: state.editor }),
-        dialogsVerifiedIconFgOver: selector({ id: id.DIALOGS_VERIFIED_ICON_BG_OVER, childId: id.DIALOGS_VERIFIED_ICON_FG_OVER, editor: state.editor }),
-        dialogsVerifiedIconBgOver: selector({ id: id.DIALOGS_VERIFIED_ICON_BG_OVER, editor: state.editor }),
-        dialogsVerifiedIconFg: selector({ id: id.DIALOGS_VERIFIED_ICON_BG, childId: id.DIALOGS_VERIFIED_ICON_FG, editor: state.editor }),
-        dialogsVerifiedIconBg: selector({ id: id.DIALOGS_VERIFIED_ICON_BG, editor: state.editor }),
-        dialogsSentIconFgOver: selector({ id: id.DIALOGS_SENT_ICON_FG_OVER, editor: state.editor }),
-        dialogsUnreadBgMutedOver: selector({ id: id.DIALOGS_UNREAD_BG, childId: id.DIALOGS_UNREAD_BG_MUTED_OVER, editor: state.editor }),
-        dialogsChatIconFgOver: selector({ id: id.DIALOGS_CHAT_ICON_FG_OVER, editor: state.editor }),
-        dialogsDateFgOver: selector({ id: id.DIALOGS_DATE_FG_OVER, editor: state.editor }),
-        dialogsTextFgServiceOver: selector({ id: id.DIALOGS_TEXT_FG_SERVICE_OVER, editor: state.editor }),
-        dialogsTextFgOver: selector({ id: id.DIALOGS_TEXT_FG_OVER, editor: state.editor }),
-        dialogsNameFgOver: selector({ id: id.DIALOGS_NAME_FG_OVER, editor: state.editor }),
-        dialogsUnreadBgMutedActive: selector({ id: id.DIALOGS_UNREAD_BG_MUTED_ACTIVE, editor: state.editor }),
-        dialogsSentIconFgActive: selector({ id: id.DIALOGS_SENT_ICON_FG_ACTIVE, editor: state.editor }),
-        dialogsSentIconFg: selector({ id: id.DIALOGS_SENT_ICON_FG, editor: state.editor }),
-        dialogsBgOver: selector({ id: id.DIALOGS_BG_OVER, editor: state.editor }),
-        dialogsChatIconFgActive: selector({ id: id.DIALOGS_CHAT_ICON_FG_ACTIVE, editor: state.editor }),
-        dialogsChatIconFg: selector({ id: id.DIALOGS_CHAT_ICON_FG, editor: state.editor }),
-        windowBgOver: selector({ id: id.WINDOW_BG_OVER, editor: state.editor }),
-        historyPeerUserpicFg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, editor: state.editor }),
-        dialogsTextFgServiceActive: selector({ id: id.DIALOGS_TEXT_FG_SERVICE_ACTIVE, editor: state.editor }),
-        windowActiveTextFg: selector({ id: id.WINDOW_ACTIVE_TEXT_FG, editor: state.editor }),
-        dialogsDateFgActive: selector({ id: id.DIALOGS_DATE_FG_ACTIVE, editor: state.editor }),
-        dialogsDateFg: selector({ id: id.DIALOGS_DATE_FG, editor: state.editor }),
-        dialogsTextFg: selector({ id: id.DIALOGS_TEXT_FG, editor: state.editor }),
-        dialogsNameFg: selector({ id: id.DIALOGS_NAME_FG, editor: state.editor }),
-        dialogsUnreadBgMuted: selector({ id: id.DIALOGS_UNREAD_BG, childId: id.DIALOGS_UNREAD_BG_MUTED, editor: state.editor }),
-        dialogsUnreadFg: selector({ id: id.DIALOGS_UNREAD_BG, childId: id.DIALOGS_UNREAD_FG, editor: state.editor }),
-        dialogsUnreadBg: selector({ id: id.DIALOGS_UNREAD_BG, editor: state.editor }),
-        dialogsTextFgActive: selector({ id: id.DIALOGS_TEXT_FG_ACTIVE, editor: state.editor }),
-        dialogsNameFgActive: selector({ id: id.DIALOGS_NAME_FG_ACTIVE, editor: state.editor }),
-        dialogsBgActive: selector({ id: id.DIALOGS_BG_ACTIVE, editor: state.editor }),
+        historyPeer8UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, key: 'historyPeer8UserpicBg', editor: state.editor }),
+        historyPeer7UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, key: 'historyPeer7UserpicBg', editor: state.editor }),
+        historyPeer6UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, key: 'historyPeer6UserpicBg', editor: state.editor }),
+        historyPeer5UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, key: 'historyPeer5UserpicBg', editor: state.editor }),
+        historyPeer4UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, key: 'historyPeer4UserpicBg', editor: state.editor }),
+        historyPeer3UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, key: 'historyPeer3UserpicBg', editor: state.editor }),
+        historyPeer2UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, key: 'historyPeer2UserpicBg', editor: state.editor }),
+        historyPeer1UserpicBg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, key: 'historyPeer1UserpicBg', editor: state.editor }),
+        historyPeerUserpicFg: selector({ id: id.HISTORY_PEER_USER_PIC_FG, key: 'historyPeerUserpicFg', editor: state.editor }),
+        dialogsDraftFgActive: selector({ id: id.DIALOGS_DRAFT_FG_ACTIVE, key: 'dialogsDraftFgActive', editor: state.editor }),
+        dialogsDraftFgOver: selector({ id: id.DIALOGS_DRAFT_FG_OVER, key: 'dialogsDraftFgOver', editor: state.editor }),
+        dialogsDraftFg: selector({ id: id.DIALOGS_DRAFT_FG, key: 'dialogsDraftFg', editor: state.editor }),
+        dialogsVerifiedIconFgActive: selector({ id: id.DIALOGS_VERIFIED_ICON_BG_ACTIVE, key: 'dialogsVerifiedIconFgActive', editor: state.editor }),
+        dialogsVerifiedIconBgActive: selector({ id: id.DIALOGS_VERIFIED_ICON_BG_ACTIVE, key: 'dialogsVerifiedIconBgActive', editor: state.editor }),
+        dialogsVerifiedIconFgOver: selector({ id: id.DIALOGS_VERIFIED_ICON_BG_OVER, key: 'dialogsVerifiedIconFgOver', editor: state.editor }),
+        dialogsVerifiedIconBgOver: selector({ id: id.DIALOGS_VERIFIED_ICON_BG_OVER, key: 'dialogsVerifiedIconBgOver', editor: state.editor }),
+        dialogsVerifiedIconFg: selector({ id: id.DIALOGS_VERIFIED_ICON_BG, key: 'dialogsVerifiedIconFg', editor: state.editor }),
+        dialogsVerifiedIconBg: selector({ id: id.DIALOGS_VERIFIED_ICON_BG, key: 'dialogsVerifiedIconBg', editor: state.editor }),
+        dialogsSentIconFgOver: selector({ id: id.DIALOGS_SENT_ICON_FG_OVER, key: 'dialogsSentIconFgOver', editor: state.editor }),
+        dialogsUnreadBgMutedOver: selector({ id: id.DIALOGS_UNREAD_BG, key: 'dialogsUnreadBgMutedOver', editor: state.editor }),
+        dialogsChatIconFgOver: selector({ id: id.DIALOGS_CHAT_ICON_FG_OVER, key: 'dialogsChatIconFgOver', editor: state.editor }),
+        dialogsDateFgOver: selector({ id: id.DIALOGS_DATE_FG_OVER, key: 'dialogsDateFgOver', editor: state.editor }),
+        dialogsTextFgServiceOver: selector({ id: id.DIALOGS_TEXT_FG_SERVICE_OVER, key: 'dialogsTextFgServiceOver', editor: state.editor }),
+        dialogsTextFgOver: selector({ id: id.DIALOGS_TEXT_FG_OVER, key: 'dialogsTextFgOver', editor: state.editor }),
+        dialogsNameFgOver: selector({ id: id.DIALOGS_NAME_FG_OVER, key: 'dialogsNameFgOver', editor: state.editor }),
+        dialogsUnreadBgMutedActive: selector({ id: id.DIALOGS_UNREAD_BG_MUTED_ACTIVE, key: 'dialogsUnreadBgMutedActive', editor: state.editor }),
+        dialogsSentIconFgActive: selector({ id: id.DIALOGS_SENT_ICON_FG_ACTIVE, key: 'dialogsSentIconFgActive', editor: state.editor }),
+        dialogsSentIconFg: selector({ id: id.DIALOGS_SENT_ICON_FG, key: 'dialogsSentIconFg', editor: state.editor }),
+        dialogsBgOver: selector({ id: id.DIALOGS_BG_OVER, key: 'dialogsBgOver', editor: state.editor }),
+        dialogsChatIconFgActive: selector({ id: id.DIALOGS_CHAT_ICON_FG_ACTIVE, key: 'dialogsChatIconFgActive', editor: state.editor }),
+        dialogsChatIconFg: selector({ id: id.DIALOGS_CHAT_ICON_FG, key: 'dialogsChatIconFg', editor: state.editor }),
+        windowBgOver: selector({ id: id.WINDOW_BG_OVER, key: 'windowBgOver', editor: state.editor }),
+        dialogsTextFgServiceActive: selector({ id: id.DIALOGS_TEXT_FG_SERVICE_ACTIVE, key: 'dialogsTextFgServiceActive', editor: state.editor }),
+        windowActiveTextFg: selector({ id: id.WINDOW_ACTIVE_TEXT_FG, key: 'windowActiveTextFg', editor: state.editor }),
+        dialogsDateFgActive: selector({ id: id.DIALOGS_DATE_FG_ACTIVE, key: 'dialogsDateFgActive', editor: state.editor }),
+        dialogsDateFg: selector({ id: id.DIALOGS_DATE_FG, key: 'dialogsDateFg', editor: state.editor }),
+        dialogsTextFg: selector({ id: id.DIALOGS_TEXT_FG, key: 'dialogsTextFg', editor: state.editor }),
+        dialogsNameFg: selector({ id: id.DIALOGS_NAME_FG, key: 'dialogsNameFg', editor: state.editor }),
+        dialogsUnreadBgMuted: selector({ id: id.DIALOGS_UNREAD_BG, key: 'dialogsUnreadBgMuted', editor: state.editor }),
+        dialogsUnreadFg: selector({ id: id.DIALOGS_UNREAD_BG, key: 'dialogsUnreadFg', editor: state.editor }),
+        dialogsUnreadBg: selector({ id: id.DIALOGS_UNREAD_BG, key: 'dialogsUnreadBg', editor: state.editor }),
+        dialogsTextFgActive: selector({ id: id.DIALOGS_TEXT_FG_ACTIVE, key: 'dialogsTextFgActive', editor: state.editor }),
+        dialogsNameFgActive: selector({ id: id.DIALOGS_NAME_FG_ACTIVE, key: 'dialogsNameFgActive', editor: state.editor }),
+        dialogsBgActive: selector({ id: id.DIALOGS_BG_ACTIVE, key: 'dialogsBgActive', editor: state.editor }),
         hoveredElementCount: state.editor.hoveredElementCount
     }
 };

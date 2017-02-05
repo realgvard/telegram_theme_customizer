@@ -13,6 +13,8 @@ export default {
 
         editMode: true,
 
+        editBorderColor: '#e95e5e',
+
         favoriteColors: [],
 
         fileName: 'theme',
@@ -23,6 +25,6 @@ export default {
     },
 
     metadata: {
-        version: '0.4.0'
+        version: '0.5.0'
     }
 }

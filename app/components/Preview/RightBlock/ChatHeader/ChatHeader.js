@@ -51,10 +51,10 @@ class ChatHeader extends Component {
                             style={{
                                 color: dialogsNameFg.element.color,
                                 marginTop: 8,
-                                ...getActiveStyle(dialogsNameFg)
+                                ...dialogsNameFg.styles
                             }}
                             {...injectActionsToComponent({
-                                id: id.DIALOGS_NAME_FG,
+                                id: dialogsNameFg.id,
                                 dispatch: this.props.dispatch
                             })}
                         >Eva Summer</span></div>
@@ -65,10 +65,10 @@ class ChatHeader extends Component {
                                 height: 10,
                                 letterSpacing: 0.5,
                                 fontWidth: 100,
-                                ...getActiveStyle(windowActiveTextFg)
+                                ...windowActiveTextFg.styles
                             }}
                             {...injectActionsToComponent({
-                                id: id.WINDOW_ACTIVE_TEXT_FG,
+                                id: windowActiveTextFg.id,
                                 dispatch: this.props.dispatch
                             })}
                         >online</span>
@@ -84,7 +84,7 @@ class ChatHeader extends Component {
                     borderBottom: '1px solid #E7E7E7',
                     height: 52,
                     lineHeight: '16px',
-                    ...getActiveStyle(topBarBg)
+                    ...topBarBg.styles
                 }}
                 iconElementRight={
                     <div>
@@ -94,7 +94,7 @@ class ChatHeader extends Component {
                             }}
                             iconStyle={{
                                 transform: 'rotate(90deg)',
-                                ...getActiveStyle(menuIconFg)
+                                ...menuIconFg.styles
                             }}
                         >
                             <div>
@@ -102,7 +102,7 @@ class ChatHeader extends Component {
                                     color={menuIconFg.element.color}
                                     hoverColor={menuIconFgOver.element.color}
                                     {...injectActionsToComponent({
-                                        id: id.MENU_ICON_FG,
+                                        id: menuIconFg.id,
                                         dispatch: this.props.dispatch
                                     })}
                                 />
@@ -113,7 +113,7 @@ class ChatHeader extends Component {
                                 marginTop: -6
                             }}
                             iconStyle={{
-                                ...getActiveStyle(menuIconFg)
+                                ...menuIconFg.styles
                             }}
                         >
                             <div>
@@ -121,7 +121,7 @@ class ChatHeader extends Component {
                                     color={menuIconFg.element.color}
                                     hoverColor={menuIconFgOver.element.color}
                                     {...injectActionsToComponent({
-                                        id: id.MENU_ICON_FG,
+                                        id: menuIconFg.id,
                                         dispatch: this.props.dispatch
                                     })}
                                 />
@@ -130,7 +130,7 @@ class ChatHeader extends Component {
                     </div>
                 }
                 {...injectActionsToComponent({
-                    id: id.TOP_BAR_BG,
+                    id: topBarBg.id,
                     dispatch: this.props.dispatch
                 })}
             />
@@ -141,11 +141,11 @@ class ChatHeader extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        windowActiveTextFg: selector({ id: id.WINDOW_ACTIVE_TEXT_FG, editor: state.editor }),
-        topBarBg: selector({ id: id.TOP_BAR_BG, editor: state.editor }),
-        dialogsNameFg: selector({ id: id.DIALOGS_NAME_FG, editor: state.editor }),
-        menuIconFgOver: selector({ id: id.MENU_ICON_FG, childId: id.MENU_ICON_FG_OVER, editor: state.editor }),
-        menuIconFg: selector({ id: id.MENU_ICON_FG, editor: state.editor }),
+        windowActiveTextFg: selector({ id: id.WINDOW_ACTIVE_TEXT_FG, key: 'windowActiveTextFg', editor: state.editor }),
+        topBarBg: selector({ id: id.TOP_BAR_BG, key: 'topBarBg', editor: state.editor }),
+        dialogsNameFg: selector({ id: id.DIALOGS_NAME_FG, key: 'dialogsNameFg', editor: state.editor }),
+        menuIconFgOver: selector({ id: id.MENU_ICON_FG, key: 'menuIconFgOver', editor: state.editor }),
+        menuIconFg: selector({ id: id.MENU_ICON_FG, key: 'menuIconFg', editor: state.editor }),
     }
 };
 

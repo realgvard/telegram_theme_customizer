@@ -18,7 +18,6 @@ import { selector } from 'components/SidebarEditor/selector';
 import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // Styles
-import { getActiveStyle } from 'components/Preview/cssStyles.js';
 import styles from './Preview.css';
 
 

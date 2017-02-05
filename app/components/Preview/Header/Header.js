@@ -22,7 +22,6 @@ import { selector } from 'components/SidebarEditor/selector';
 import * as id from 'config/idElements.config';
 
 // Styles
-import { getActiveStyle } from 'components/Preview/cssStyles.js';
 import styles from './Header.css';
 
 
@@ -39,12 +38,13 @@ class Header extends Component {
             titleButtonCloseBgOver
         } =  this.props;
 
+
         return (
             <div
                 styleName='container'
                 style={{
                     background: titleBg.element.color,
-                    ...getActiveStyle(titleBg)
+                    ...titleBg.styles
                 }}
                 {...injectActionsToComponent({
                     id: titleBg.id,
@@ -54,7 +54,7 @@ class Header extends Component {
                 <div styleName="buttons-container">
                     <HeaderButton
                         component={RemoveIcon}
-                        style={getActiveStyle(titleButtonFg)}
+                        style={titleButtonFg.styles}
                         iconStyle={{
                             paddingTop: 4,
                             marginBottom: -14,
@@ -73,7 +73,7 @@ class Header extends Component {
 
                     <HeaderButton
                         component={MinimizeIcon}
-                        style={getActiveStyle(titleButtonFg)}
+                        style={titleButtonFg.styles}
                         iconStyle={{
                             width: 16,
                             height: 16,
@@ -94,7 +94,7 @@ class Header extends Component {
 
                     <HeaderButton
                         component={ClearIcon}
-                        style={getActiveStyle(titleButtonCloseFg)}
+                        style={titleButtonCloseFg.styles}
                         iconStyle={{
                             width: 20,
                             height: 20,
@@ -120,13 +120,13 @@ class Header extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        titleButtonCloseFg: selector({ id: id.TITLE_BUTTON_CLOSE_FG, editor: state.editor }),
-        titleButtonCloseFgOver: selector({ id: id.TITLE_BUTTON_CLOSE_FG, childId: id.TITLE_BUTTON_CLOSE_FG_OVER, editor: state.editor }),
-        titleButtonCloseBgOver: selector({ id: id.TITLE_BUTTON_CLOSE_FG, childId: id.TITLE_BUTTON_CLOSE_BG_OVER, editor: state.editor }),
-        titleButtonBgOver: selector({ id: id.TITLE_BUTTON_FG, childId: id.TITLE_BUTTON_BG_OVER, editor: state.editor }),
-        titleButtonFgOver: selector({ id: id.TITLE_BUTTON_FG, childId: id.TITLE_BUTTON_FG_OVER, editor: state.editor }),
-        titleButtonFg: selector({ id: id.TITLE_BUTTON_FG, editor: state.editor }),
-        titleBg: selector({ id: id.TITLE_BG, editor: state.editor }),
+        titleButtonCloseFg: selector({ id: id.TITLE_BUTTON_CLOSE_FG, key: 'titleButtonCloseFg', editor: state.editor }),
+        titleButtonCloseFgOver: selector({ id: id.TITLE_BUTTON_CLOSE_FG, key: 'titleButtonCloseFgOver', editor: state.editor }),
+        titleButtonCloseBgOver: selector({ id: id.TITLE_BUTTON_CLOSE_FG, key: 'titleButtonCloseBgOver', editor: state.editor }),
+        titleButtonBgOver: selector({ id: id.TITLE_BUTTON_FG, key: 'titleButtonBgOver', editor: state.editor }),
+        titleButtonFgOver: selector({ id: id.TITLE_BUTTON_FG, key: 'titleButtonFgOver', editor: state.editor }),
+        titleButtonFg: selector({ id: id.TITLE_BUTTON_FG, key: 'titleButtonFg', editor: state.editor }),
+        titleBg: selector({ id: id.TITLE_BG, key: 'titleBg', editor: state.editor }),
     }
 };
 

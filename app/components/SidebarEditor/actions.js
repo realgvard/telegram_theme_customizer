@@ -30,11 +30,10 @@ export function setEditingElement(id) {
     }
 }
 
-export function changeEditorData(id, childId, data) {
+export function changeEditorData(id, data) {
     return {
         type: action.CHANGE_EDITOR_DATA,
         id,
-        childId,
         data
     }
 }
@@ -86,6 +85,15 @@ export function setFavoriteColor(color) {
         color
     }
 }
+
+export function changeEditBorderColor(color) {
+    return {
+        type: action.CHANGE_EDIT_BORDER_COLOR,
+        color
+    }
+}
+
+
 
 /**
  * Ijection event handlers for components

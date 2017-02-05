@@ -7,11 +7,16 @@ import {
     grey100,
 } from 'material-ui/styles/colors';
 
+import {
+    changeEditorData,
+} from 'components/SidebarEditor/actions';
+
 // Components
 import Drawer from 'material-ui/Drawer';
 import ColorPicker from 'components/ColorPicker';
 import UploadImage from 'components/UploadImage';
 import SwitchTypeOfImage from 'components/SwitchTypeOfImage';
+import {Tabs, Tab} from 'material-ui/Tabs';
 
 // Styles
 import styles from './SidebarEditor.css';
@@ -25,21 +30,25 @@ class SidebarEditor extends Component {
         super(props);
 
         this.state = {
-            isOpened: true
         }
+    }
+
+    _colorPickerChange(id, elementKey, color) {
+        const {
+            dispatch,
+        } = this.props;
+
+        dispatch(changeEditorData(id, { color: color.hex, key: elementKey }));
     }
 
     componentWillReceiveProps(nextProps) {
 
-        if(_.size(nextProps.elements) > 0 && !this.state.isOpened) {
-            this.setState({
-                isOpened: true
-            });
-        } else if (_.size(nextProps.elements) === 0 && this.state.isOpened) {
-            this.setState({
-                isOpened: false
+        if(nextProps.editingElement.id !== this.props.editingElement.id) {
+            this.refs.Tabs.setState({
+                selectedIndex: 0
             });
         }
+
     }
 
     componentDidMount() {
@@ -51,67 +60,94 @@ class SidebarEditor extends Component {
         const {
             version,
             editingElement: {
-                settings = []
+                collection = [],
+                id
             },
             muiTheme: {
                 palette
             }
         } = this.props;
 
-        const parentId = this.props.editingElement.id;
+        let controlOptions = <Tabs
+            ref="Tabs"
+            tabItemContainerStyle={{
+                marginBottom: 20,
+                display: 'inline-block',
+                width: 'auto'
+            }}
+            inkBarStyle={{
+                display: 'none'
+            }}
+        >
+            {collection.map(({
+                elements,
+                tabName
+            }) => {
 
-        let controlOptions = settings.map(({
-            id,
-            key,
-            label,
-            type,
-            color
-        }, index) => {
-            let currentEditing = <div
-                    styleName="editing-block"
-                    style={{
-                        backgroundColor: grey100
-                    }}
-                >
-                    <div styleName="editing-title">Editing:</div>
-                    <div styleName="editing-element" style={{ color: palette.accent2Color }}>{key}</div>
-                </div>;
+                return <Tab
+                         styleName="tab"
+                         buttonStyle={{
+                             height: 30,
+                             border: '2px solid',
+                             borderColor: grey100,
+                             borderBottom: 'none',
+                             padding: '0 20px'
+                         }}
+                         label={tabName}
+                        >
 
-            switch(type) {
+                        {elements.map(({
+                            key,
+                            label,
+                            type,
+                            color
+                        }, index) => {
+                            let currentEditing = <div
+                                styleName="editing-block"
+                                style={{
+                                    backgroundColor: grey100
+                                }}
+                            >
+                                <div styleName="editing-title">Editing:</div>
+                                <div styleName="editing-element" style={{ color: palette.accent1Color }}>{key}</div>
+                            </div>;
 
-                case 'file' :
-                    return <div styleName="editing-component">
-                            {currentEditing}
+                            switch(type) {
 
-                            <div styleName="image-input">
-                                <UploadImage label={label} id={parentId} childId={id} key={index} />
-                            </div>
+                                case 'file' :
+                                    return <div styleName="editing-component">
+                                        {currentEditing}
 
-                           <div styleName="switch-type-of-image">
-                               <SwitchTypeOfImage />
-                           </div>
-                        </div>;
+                                        <div styleName="image-input">
+                                            <UploadImage label={label} id={id} key={index} />
+                                        </div>
 
-                case 'colorPicker' :
-                    return <div styleName="editing-component">
-                        {currentEditing}
+                                        <div styleName="switch-type-of-image">
+                                            <SwitchTypeOfImage />
+                                        </div>
+                                    </div>;
 
-                        <div styleName="form-group" key={index}>
-                            <label styleName="control-label">{label}:</label>
-                            <label styleName="form-control">
-                                {this.refs.optionsContainer ?
-                                    <ColorPicker
-                                        id={parentId}
-                                        childId={id}
-                                        elementKey={key}
-                                        defaultColor={color}
-                                        parentContainer={this.refs.optionsContainer}
-                                    /> : null}
-                            </label>
-                        </div>
-                    </div>;
-            }
-        });
+                                case 'colorPicker' :
+                                    return <div styleName="editing-component">
+                                        {currentEditing}
+
+                                        <div styleName="form-group" key={index}>
+                                            <label styleName="control-label">{label}:</label>
+                                            <label styleName="form-control">
+                                                {this.refs.optionsContainer ?
+                                                    <ColorPicker
+                                                        defaultColor={color}
+                                                        parentContainer={this.refs.optionsContainer}
+                                                        onChange={this._colorPickerChange.bind(this, id, key)}
+                                                    /> : null}
+                                            </label>
+                                        </div>
+                                    </div>;
+                            }
+                        })}
+                     </Tab>
+            })}
+        </Tabs>;
 
 
         return (
@@ -161,7 +197,7 @@ const mapStateToProps = (state, ownProps) => {
         elements: state.editor.elements,
         editingElement: {
             id: element.id,
-            settings: element.settings
+            collection: element.collection
         }
     }
 };

@@ -14,14 +14,18 @@
     font-weight: 500;
 }
 
+.tab + .tab {
+    margin-left: 5px !important;
+}
+
 .options-block {
-    margin-top: 40px;
+    margin-top: 20px;
     height: 100%;
 }
 
 .control-options-block {
     padding: 0 20px;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 140px);
     overflow-y: auto;
 }
 

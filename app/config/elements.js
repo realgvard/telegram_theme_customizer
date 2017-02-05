@@ -99,7 +99,7 @@ export default [
         key: 'filterInputBorderFg',
         color: '#54c3f3',
         type: 'colorPicker',
-        label: 'Border-focus-color'
+        label: 'Border-color'
     },
     {
         key: 'windowBg',
@@ -110,6 +110,18 @@ export default [
     {
         key: 'titleBg',
         color: '#f1f1f1',
+        type: 'colorPicker',
+        label: 'Background-color'
+    },
+    {
+        key: 'titleFg',
+        color: '#acacac',
+        type: 'colorPicker',
+        label: 'Background-color'
+    },
+    {
+        key: 'titleFgActive',
+        color: '#3e3c3e',
         type: 'colorPicker',
         label: 'Background-color'
     },
@@ -389,4 +401,17 @@ export default [
         type: 'colorPicker',
         label: 'Text-active-color'
     },
+    {
+        key: 'msgInBg',
+        color: '#ffffff',
+        type: 'colorPicker',
+        label: 'Background-color'
+    },
+    {
+        key: 'msgOutBg',
+        color: '#effdde',
+        type: 'colorPicker',
+        label: 'Background-color'
+    },
+
 ]

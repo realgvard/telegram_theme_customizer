@@ -9,3 +9,4 @@ export const CHANGE_BACKGROUND_TYPE = 'components/SidebarEditor/CHANGE_BACKGROUN
 export const CHANGE_EDIT_MODE = 'components/SidebarEditor/CHANGE_EDIT_MODE';
 export const PREPARE_DATA_FOR_SAVE = 'components/SidebarEditor/PREPARE_DATA_FOR_SAVE';
 export const SET_FAVORITE_COLOR = 'components/SidebarEditor/SET_FAVORITE_COLOR';
+export const CHANGE_EDIT_BORDER_COLOR = 'components/SidebarEditor/CHANGE_EDIT_BORDER_COLOR';

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     greenA700,
     greenA200,
+    grey100,
     lightBlue800
 } from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -11,9 +12,13 @@ import './App.css';
 
 const muiTheme = getMuiTheme({
     palette: {
-        accent1Color: greenA700,
-        accent2Color: lightBlue800,
+        accent1Color: lightBlue800,
         primary1Color: greenA700,
+    },
+    tabs: {
+        backgroundColor: '#fff',
+        selectedTextColor: greenA700,
+        textColor: '#000'
     },
 });
 

@@ -3,51 +3,39 @@ import _ from 'lodash';
 import { getActiveStyle } from 'components/Preview/cssStyles.js';
 
 
-export function selector({ id, childId, editor }) {
+export function selector({ id, key, editor }) {
 
-    const collectionElements = _.head(_.filter(editor.elements, { id }));
-    const element = _.head(_.filter(collectionElements.settings, { id: childId ? childId : id }));
+    const foundGroup = _.find(editor.elements, { id });
+    let foundElement = null;
 
-    // console.log(element);
+    foundGroup.collection.forEach(obj => {
+
+
+        if(!foundElement) {
+            foundElement = _.find(obj.elements, {key})
+        } else {
+            // throw new Error('Found duplicate of object in group');
+        }
+    });
+
+    if(!foundElement) {
+        throw new Error(`By id: "${id}", result of search element by key "${key}" is empty`);
+    }
+
+    // console.log(foundGroup, foundElement)
 
     return {
         state: {
-            hovered: collectionElements.hovered,
-            editing: collectionElements.editing
+            hovered: foundGroup.hovered,
+            editing: foundGroup.editing
         },
         styles: getActiveStyle({
             state: {
-                hovered: collectionElements.hovered,
-                editing: collectionElements.editing
+                hovered: foundGroup.hovered,
+                editing: foundGroup.editing
             }
-        }),
-        element,
-        id: childId ? childId : id
+        }, editor),
+        element: foundElement,
+        id
     }
 }
-
-// import { getActiveStyle } from 'components/Preview/cssStyles.js';
-//
-//
-// export function selector({ id, childId, editor }) {
-//
-//     const collectionElements = _.head(_.filter(editor.elements, { id }));
-//
-//     const element = _.head(_.filter(collectionElements.settings, { id: childId ? childId : id }));
-//
-//     const _state = {
-//         state: {
-//             hovered: collectionElements.hovered,
-//             editing: collectionElements.editing
-//         }
-//     };
-//
-//
-//     return {
-//         state: _state,
-//         styles: getActiveStyle(_state),
-//         element,
-//         id: childId ? childId : id
-//     }
-// }
-

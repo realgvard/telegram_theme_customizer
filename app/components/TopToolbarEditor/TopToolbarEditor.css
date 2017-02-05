@@ -7,6 +7,44 @@
 .dialog-field {
 }
 
+.dialog-field + .dialog-field {
+    margin-top: 20px;
+}
+
+.column-1 {
+    width: 20%;
+}
+
+.column-2 {
+    width: 40%;
+}
+
+.column-3 {
+    width: 60%;
+}
+
+.column-4 {
+    width: 80%;
+}
+
+.column-5 {
+    width: 100%;
+}
+
 .settingsIco {
     cursor: pointer;
 }
+
+.title-color-picker {
+    line-height: 20px;
+    padding-top: 8px;
+    font-size: 12px;
+    color: rgb(153, 153, 153);
+    float: left;
+}
+
+.color-picker {
+    float: left;
+    margin-left: 20px;
+}
+

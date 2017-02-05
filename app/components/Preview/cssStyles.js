@@ -1,16 +1,20 @@
 import _ from 'lodash';
 
-const activeElementStyle = {
-    outline: '2px solid rgba(233, 94, 94, 1)',
-    outlineOffset: -2
-};
+export function getActiveStyle(componentData, editorStore) {
 
-export const defaultElementStyle = {
-    outline: 'inherit',
-    outlineOffset: -2
-};
+    const activeElementStyle = {
+        outline: `2px solid ${editorStore.editBorderColor}`,
+        outlineOffset: -2
+    };
 
-export function getActiveStyle(componentData) {
+    const defaultElementStyle = {
+        outline: 'inherit',
+        outlineOffset: -2
+    };
+
+    // if(editorStore) {
+    //     console.trace(editorStore)
+    // }
 
     if(componentData) {
         const {
@@ -18,7 +22,7 @@ export function getActiveStyle(componentData) {
             editing
         } = componentData.state;
 
-        return hovered || editing ? activeElementStyle : defaultElementStyle;
+        return editorStore.editMode && (hovered || editing) ? activeElementStyle : defaultElementStyle;
     } else {
 
         return defaultElementStyle;

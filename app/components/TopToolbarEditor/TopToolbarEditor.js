@@ -9,6 +9,7 @@ import {
 
 // Components
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
+import ColorPicker from 'components/ColorPicker';
 import {
     Toolbar,
     ToolbarGroup,
@@ -21,6 +22,12 @@ import SaveButton from 'components/SaveButton';
 import SwitchEditMode from 'components/SwitchEditMode';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
+
+// Actions
+import {
+    changeEditBorderColor
+} from 'components/SidebarEditor/actions';
+
 
 // Styles
 import styles from './TopToolbarEditor.css';
@@ -36,6 +43,10 @@ class TopToolbarEditor extends Component {
         this.state = {
             dialogIsOpen: false
         };
+    }
+
+    _colorPickerChange(color) {
+        this.props.dispatch(changeEditBorderColor(color.hex));
     }
 
     handleOpen() {
@@ -60,6 +71,7 @@ class TopToolbarEditor extends Component {
         ];
 
         const {
+            editBorderColor,
             muiTheme: {
                 palette
             }
@@ -73,7 +85,7 @@ class TopToolbarEditor extends Component {
             <div>
                 <Toolbar
                     style={{
-                        background: palette.accent2Color,
+                        background: palette.accent1Color,
                         color: '#fff',
                         padding: '0 20px'
                     }}
@@ -110,7 +122,6 @@ class TopToolbarEditor extends Component {
                             <SwitchEditMode />
                         </div>
 
-
                     </ToolbarGroup>
                 </Toolbar>
 
@@ -124,8 +135,23 @@ class TopToolbarEditor extends Component {
                     open={dialogIsOpen}
                     onRequestClose={this.handleClose}
                 >
-                    <div styleName="dialog-field">
+                    <div styleName="dialog-field column-5">
                         <FileNameField />
+                    </div>
+
+                    <div styleName="dialog-field column-4">
+                        <div styleName="title-color-picker">
+                            Preview hover/border border color:
+                        </div>
+
+                        <div styleName="color-picker">
+                            <ColorPicker
+                                watchWidth={100}
+                                position="absolute"
+                                onChange={::this._colorPickerChange}
+                                defaultColor={editBorderColor}
+                            />
+                        </div>
                     </div>
                 </Dialog>
             </div>
@@ -139,6 +165,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         version: state.metadata.version,
         elements: state.editor.elements,
+        editBorderColor: state.editor.editBorderColor,
         editingElement: {
             id: element.id,
             settings: element.settings
