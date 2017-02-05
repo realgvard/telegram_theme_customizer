@@ -11,6 +11,7 @@
 .title {
     margin: 0;
     font-size: 18px;
+    font-weight: 500;
 }
 
 .options-block {
@@ -58,7 +59,7 @@
 
 .editing-element {
     display: inline-block;
-    font-weight: bold;
+    font-weight: 500;
     margin-left: 9px;
 }
 

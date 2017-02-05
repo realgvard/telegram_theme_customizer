@@ -14,6 +14,7 @@ import { getActiveStyle } from 'components/Preview/cssStyles.js';
 import styles from './FileNameField.css';
 
 
+@CSSModules(styles)
 class FileNameField extends Component {
 
     _onChange(e, newValue) {
@@ -35,7 +36,7 @@ class FileNameField extends Component {
     render() {
         const {
             fileName,
-            disabled
+            // disabled
         } = this.props;
 
 
@@ -48,10 +49,9 @@ class FileNameField extends Component {
                     ref="FileName"
                     underlineShow={false}
                     defaultValue={fileName}
-                    disabled={disabled}
                     onChange={::this._onChange}
+                    fullWidth={true}
                     style={{
-                        width: '100%',
                         fontSize: 14,
                         border: '1px solid rgb(229, 229, 229)',
                         height: 36,
@@ -69,9 +69,9 @@ class FileNameField extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        disabled: Object.keys(state.editor.data).length > 0 || state.editor.backgroundData ? false : true,
+        // disabled: Object.keys(state.editor.data).length > 0 || state.editor.backgroundData ? false : true,
         fileName: state.editor.fileName
     }
 };
 
-export default connect(mapStateToProps)(CSSModules(FileNameField, styles));
+export default connect(mapStateToProps)(FileNameField);

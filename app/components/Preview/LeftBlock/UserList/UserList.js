@@ -288,7 +288,7 @@ class UserList extends Component {
                                 style={{
                                     fontSize: 12,
                                     letterSpacing: 0.5,
-                                    fontWeight: 'bold',
+                                    fontWeight: '500',
                                     display: 'inline-block',
                                 }}
                             >{PrimaryTextIcon ?
@@ -352,6 +352,7 @@ class UserList extends Component {
                                             style={{
                                                 width: 14,
                                                 height: 14,
+                                                position: 'absolute',
                                                 color: itemIsActive ?
                                                         dialogsVerifiedIconBgActive.element.color :
                                                         hovered ? dialogsVerifiedIconBgOver.element.color : dialogsVerifiedIconBg.element.color

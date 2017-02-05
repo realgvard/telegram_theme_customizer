@@ -45,7 +45,7 @@ class ChatHeader extends Component {
                                 fontSize: 12,
                                 letterSpacing: 0.5,
                                 marginTop: 8,
-                                fontWeight: 'bold',
+                                fontWeight: '500',
                             }}
                         ><span
                             style={{

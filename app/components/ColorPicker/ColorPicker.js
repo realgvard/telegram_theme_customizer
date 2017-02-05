@@ -5,16 +5,18 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 // Components
-import { SketchPicker } from 'react-color';
+import { SketchPicker, Compact, Swatch } from 'react-color';
 
 import {
-    changeEditorData
+    changeEditorData,
+    setFavoriteColor
 } from 'components/SidebarEditor/actions';
 
 // Styles
 import styles from './ColorPicker.css';
 
 
+@CSSModules(styles)
 class ColorPicker extends Component {
 
     constructor(props) {
@@ -31,6 +33,8 @@ class ColorPicker extends Component {
     }
 
     _closePicker() {
+        this._invokeFavoriteColor();
+
         this.setState({ displayColorPicker: false })
     }
 
@@ -56,19 +60,29 @@ class ColorPicker extends Component {
         let positionY = top + height;
 
         if((positionY + this.HEIGHT_COLOR_PICKER) > window.innerHeight) {
-            // console.log('fuck', positionY + this.HEIGHT_COLOR_PICKER - window.innerHeight)
             positionY = positionY - (positionY + this.HEIGHT_COLOR_PICKER - window.innerHeight);
         }
 
         setTimeout(() => {
-
-
             this.setState({
                 displayColorPicker: true,
                 left: left + width,
                 top: positionY
             });
+
+            this._setFocus();
         }, 0);
+    }
+
+    _invokeFavoriteColor() {
+        const color = this.props.defaultColor;
+
+        const isActive = this.state.displayColorPicker;
+
+        if(isActive) {
+
+            this.props.dispatch(setFavoriteColor(color));
+        }
     }
 
     _handleChange(color) {
@@ -82,9 +96,15 @@ class ColorPicker extends Component {
         dispatch(changeEditorData(id, childId, { color: color.hex, key: elementKey }));
     }
 
+    _setFocus() {
+        const component = ReactDOM.findDOMNode(this.refs.SketchPicker);
+
+        component.querySelector('input:first-child').focus();
+    }
+
     componentDidMount() {
         this.props.parentContainer.addEventListener('scroll', ::this._closePicker);
-        window.addEventListener('click', ::this._handleDocumentClick);
+        window.addEventListener('click', ::this._handleDocumentClick, true);
         window.addEventListener('resize', ::this._closePicker);
     }
 
@@ -96,7 +116,8 @@ class ColorPicker extends Component {
 
     render() {
         const {
-            defaultColor
+            defaultColor,
+            favoriteColors
         } = this.props;
 
         const {
@@ -129,12 +150,19 @@ class ColorPicker extends Component {
                         width={200}
                         color={defaultColor}
                         disableAlpha={true}
+                        presetColors={favoriteColors}
                         onChange={::this._handleChange}
                     />
-                </div> : null }
+                </div> : null}
             </div>
         );
     }
 }
 
-export default connect()(CSSModules(ColorPicker, styles));
+const mapStateToProps = (state) => {
+    return {
+        favoriteColors: state.editor.favoriteColors
+    }
+};
+
+export default connect(mapStateToProps)(ColorPicker);

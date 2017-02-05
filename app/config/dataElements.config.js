@@ -1,25 +1,423 @@
+import baseElements from './elements';
 import * as id from 'config/idElements.config';
+
+const collection =  [
+    {
+        id: id.WINDOW_BG_OVER,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['windowBgOver']
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_BG_ACTIVE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsBgActive']
+            }
+        ]
+    },
+    {
+        id: id.BACKGROUND,
+        items: [
+            {
+                tabName: 'Image',
+                keys: ['background'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_BG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsBg'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_NAME_FG_ACTIVE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsNameFgActive'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_TEXT_FG_ACTIVE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsTextFgActive'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_UNREAD_BG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsUnreadBg', 'dialogsUnreadBgMuted', 'dialogsUnreadFg', 'dialogsUnreadBgMutedOver'],
+            },
+        ]
+    },
+    {
+        id: id.DIALOGS_NAME_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsNameFg'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_TEXT_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsTextFg'],
+            }
+        ]
+    },
+    {
+        id: id.MENU_ICON_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['menuIconFg', 'menuIconFgOver'],
+            },
+        ]
+    },
+    {
+        id: id.FILTER_INPUT_INACTIVE_BG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['filterInputInactiveBg', 'filterInputBorderFg', 'windowBg'],
+            },
+        ]
+    },
+    {
+        id: id.TITLE_BG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['titleBg'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DATE_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsDateFg'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DATE_FG_ACTIVE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsDateFgActive'],
+            }
+        ]
+    },
+    {
+        id: id.WINDOW_ACTIVE_TEXT_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['windowActiveTextFg'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_TEXT_FG_SERVICE_ACTIVE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsTextFgServiceActive'],
+            }
+        ]
+    },
+    {
+        id: id.HISTORY_PEER_USER_PIC_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['historyPeerUserpicFg',
+                    'historyPeer1UserpicBg',
+                    'historyPeer2UserpicBg',
+                    'historyPeer3UserpicBg',
+                    'historyPeer4UserpicBg',
+                    'historyPeer5UserpicBg',
+                    'historyPeer6UserpicBg',
+                    'historyPeer7UserpicBg',
+                    'historyPeer8UserpicBg',
+                ],
+            }
+        ]
+    },
+    {
+        id: id.TOP_BAR_BG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['topBarBg'],
+            }
+        ]
+    },
+    {
+        id: id.HISTORY_COMPOSE_AREA_BG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['historyComposeAreaBg'],
+            }
+        ]
+    },
+    {
+        id: id.TITLE_BUTTON_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['titleButtonFg', 'titleButtonFgOver', 'titleButtonBgOver'],
+            },
+        ]
+    },
+    {
+        id: id.TITLE_BUTTON_CLOSE_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['titleButtonCloseFg', 'titleButtonCloseFgOver', 'titleButtonCloseBgOver'],
+            },
+        ]
+    },
+    {
+        id: id.PLACEHOLDER_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['placeholderFg', 'placeholderFgActive', 'windowFg', 'historyComposeAreaFg'],
+            },
+        ]
+    },
+    {
+        id: id.DIALOGS_CHAT_ICON_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsChatIconFg'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_CHAT_ICON_FG_OVER,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsChatIconFgOver'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_CHAT_ICON_FG_ACTIVE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsChatIconFgActive'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_BG_OVER,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsBgOver'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_SENT_ICON_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsSentIconFg'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_SENT_ICON_FG_ACTIVE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsSentIconFgActive'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_UNREAD_BG_MUTED_ACTIVE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsUnreadBgMutedActive'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_NAME_FG_OVER,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsNameFgOver'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_TEXT_FG_OVER,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsTextFgOver'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_TEXT_FG_SERVICE_OVER,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsTextFgServiceOver'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DATE_FG_OVER,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsDateFgOver'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_SENT_ICON_FG_OVER,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsSentIconFgOver'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_VERIFIED_ICON_BG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsVerifiedIconBg', 'dialogsVerifiedIconFg'],
+            },
+        ]
+    },
+    {
+        id: id.DIALOGS_VERIFIED_ICON_BG_OVER,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsVerifiedIconBgOver', 'dialogsVerifiedIconFgOver'],
+            },
+        ]
+    },
+    {
+        id: id.DIALOGS_VERIFIED_ICON_BG_ACTIVE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsVerifiedIconBgActive', 'dialogsVerifiedIconFgActive'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DRAFT_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsDraftFg'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DRAFT_FG_OVER,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsDraftFgOver'],
+            }
+        ]
+    },
+    {
+        id: id.DIALOGS_DRAFT_FG_ACTIVE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['dialogsDraftFgActive'],
+            }
+        ]
+    },
+];
+
+
+function getProcessedData(data) {
+    let result = [];
+
+
+    data.forEach(obj => {
+
+        let tempGroup = {};
+
+        tempGroup.id = obj.id;
+        tempGroup.collection = [];
+
+
+        obj.items.forEach(({ tabName, keys }) => {
+
+            let tempItem = {};
+
+            tempItem.tabName = tabName;
+            tempItem.elements = [];
+
+
+            keys.forEach(key => {
+
+                tempItem.elements.push(_.find(baseElements, { key }));
+            });
+
+            tempGroup.collection.push(tempItem);
+        });
+
+        result.push(tempGroup);
+    });
+
+    return result;
+}
+
+getProcessedData(collection)
 
 
 export default [
-    // {
-    //     id: id.WINDOW_BG,
-    //     settings: [
-    //         {
-    //             id: id.WINDOW_BG,
-    //             key: 'windowBg',
-    //             type: 'colorPicker',
-    //             label: 'Background-color',
-    //             color: '#ffffff',
-    //         }
-    //     ]
-    // },
     {
         id: id.WINDOW_BG_OVER,
         settings: [
             {
                 id: id.WINDOW_BG_OVER,
-                key: 'windowBg',
+                key: 'windowBgOver',
                 type: 'colorPicker',
                 label: 'Background-color',
                 color: '#f1f1f1',

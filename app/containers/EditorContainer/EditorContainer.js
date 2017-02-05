@@ -112,8 +112,8 @@ const mapStateToProps = (state, ownProps) => {
     // console.log(count)
 
     return {
-        isEdited: Object.keys(state.editor.data).length > 0 ? true : false,
-        version: _.get(state, 'metadata.version', false)
+        // isEdited: Object.keys(state.editor.data).length > 0 ? true : false,
+        version: _.get(state, 'metadata.version', null)
     }
 };
 

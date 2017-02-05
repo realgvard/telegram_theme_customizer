@@ -13,6 +13,8 @@ export default {
 
         editMode: true,
 
+        favoriteColors: [],
+
         fileName: 'theme',
 
         elements: _.cloneDeep(dataElements),

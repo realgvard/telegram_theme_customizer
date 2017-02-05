@@ -80,6 +80,13 @@ export function prepareDataForSave() {
     }
 }
 
+export function setFavoriteColor(color) {
+    return {
+        type: action.SET_FAVORITE_COLOR,
+        color
+    }
+}
+
 /**
  * Ijection event handlers for components
  * @param id <String>

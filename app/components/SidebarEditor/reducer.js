@@ -23,13 +23,6 @@ const editor = (state = initialState.editor, action) => {
 
     switch (action.type) {
 
-        // case id.SET_EDITOR_ELEMENTS:
-        //
-        //     return {
-        //         ...state,
-        //         elements: action.data,
-        //     };
-
         case id.SET_HOVER_ON_ELEMENT:
 
             newElementsData = state.elements;
@@ -61,6 +54,7 @@ const editor = (state = initialState.editor, action) => {
             };
 
         case id.CHANGE_EDITOR_DATA:
+
             let copyParentItem = null;
 
             newElementsData = state.elements;
@@ -117,6 +111,7 @@ const editor = (state = initialState.editor, action) => {
             };
 
         case id.CHANGE_FILE_NAME:
+
             const fileName = action.fileName.trim().length > 0 ? action.fileName : 'theme';
 
             return {
@@ -125,6 +120,7 @@ const editor = (state = initialState.editor, action) => {
             };
 
         case id.CHANGE_BACKGROUND_TYPE:
+
             const backgroundType = action.backgroundType.trim().length > 0 ? action.backgroundType : 'background';
 
             return {
@@ -158,6 +154,21 @@ const editor = (state = initialState.editor, action) => {
                 data: {...state.data, ...newData}
             };
 
+        case id.SET_FAVORITE_COLOR:
+
+            let newFavoriteColors = state.favoriteColors;
+
+            if(!newFavoriteColors.includes(action.color)) {
+
+                newFavoriteColors = newFavoriteColors.slice(0, 15);
+
+                newFavoriteColors.unshift(action.color);
+            }
+
+            return {
+                ...state,
+                favoriteColors: newFavoriteColors
+            };
 
         case id.RESET_EDITOR:
 
@@ -169,6 +180,8 @@ const editor = (state = initialState.editor, action) => {
                 backgroundType: 'background',
 
                 fileName: 'theme',
+
+                favoriteColors: [],
 
                 editMode: true,
 
@@ -182,4 +195,4 @@ const editor = (state = initialState.editor, action) => {
     }
 };
 
-export default editor
+export default editor;
