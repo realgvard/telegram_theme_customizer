@@ -10,3 +10,7 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+b, strong {
+  font-weight: 500;
+}

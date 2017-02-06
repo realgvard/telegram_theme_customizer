@@ -8,6 +8,8 @@ import {
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+// Styles
+import 'normalize.css';
 import './App.css';
 
 const muiTheme = getMuiTheme({

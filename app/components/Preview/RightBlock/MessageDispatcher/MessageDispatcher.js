@@ -84,6 +84,7 @@ class MessageDispatcher extends Component {
                             ref='labelHintText'
                             style={{
                                 cursor: 'text',
+                                color: placeholderFg.element.color,
                                 ...placeholderFg.styles
                             }}
                             {...injectActionsToComponent({
@@ -215,7 +216,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         historyComposeAreaFg: selector({ id: id.PLACEHOLDER_FG, key: 'historyComposeAreaFg', editor: state.editor }),
         placeholderFgActive: selector({ id: id.PLACEHOLDER_FG, key: 'placeholderFgActive', editor: state.editor }),
-        placeholderFg: selector({ id: id.PLACEHOLDER_FG, key: 'placeholderFgActive', editor: state.editor }),
+        placeholderFg: selector({ id: id.PLACEHOLDER_FG, key: 'placeholderFg', editor: state.editor }),
         historyComposeAreaBg: selector({ id: id.HISTORY_COMPOSE_AREA_BG, key: 'historyComposeAreaBg', editor: state.editor }),
         menuIconFg: selector({ id: id.MENU_ICON_FG, key: 'menuIconFg', editor: state.editor }),
         menuIconFgOver: selector({ id: id.MENU_ICON_FG, key: 'menuIconFgOver', editor: state.editor }),

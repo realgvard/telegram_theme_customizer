@@ -255,13 +255,13 @@ export default [
         key: 'placeholderFg',
         color: '#999999',
         type: 'colorPicker',
-        label: 'Text-color'
+        label: '"Search" and "Write a message" color'
     },
     {
         key: 'placeholderFgActive',
         color: '#aaaaaa',
         type: 'colorPicker',
-        label: 'Focus-color'
+        label: 'Search" and "Write a message" color'
     },
     {
         key: 'windowFg',

@@ -217,7 +217,15 @@ const collection =  [
         items: [
             {
                 tabName: 'Base',
-                keys: ['placeholderFg', 'placeholderFgActive', 'windowFg', 'historyComposeAreaFg'],
+                keys: ['placeholderFg'],
+            },
+            {
+                tabName: 'Focus',
+                keys: ['placeholderFgActive'],
+            },
+            {
+                tabName: 'Active',
+                keys: ['windowFg', 'historyComposeAreaFg'],
             },
         ]
     },
