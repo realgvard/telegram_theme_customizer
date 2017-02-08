@@ -4,7 +4,7 @@
 
 ### [Missing Components](#missing-components)
 
-You can agree in our community in the Telegram about everything that you want.
+There is an issue for every missing component or functionality.
 
 
 ## Community
