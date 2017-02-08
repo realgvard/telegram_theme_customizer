@@ -65,3 +65,6 @@ export const HISTORY_PEER_8_USER_PIC_BG = 'HISTORY_PEER_8_USER_PIC_BG';
 export const HISTORY_COMPOSE_AREA_FG = 'HISTORY_COMPOSE_AREA_FG';
 export const MSG_IN = 'MSG_IN';
 export const MSG_OUT = 'MSG_OUT';
+export const MSG_TEXT = 'MSG_TEXT';
+export const MSG_IN_DATE_FG = 'MSG_IN_DATE_FG';
+export const MSG_OUT_DATE_FG = 'MSG_OUT_DATE_FG';

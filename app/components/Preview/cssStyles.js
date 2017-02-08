@@ -8,7 +8,7 @@ export function getActiveStyle(componentData, editorStore) {
     };
 
     const defaultElementStyle = {
-        outline: 'inherit',
+        outline: 'none',
         outlineOffset: -2
     };
 

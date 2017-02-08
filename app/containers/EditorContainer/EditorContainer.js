@@ -89,7 +89,7 @@ class EditorContainer extends Component {
                     {/*</div>*/}
 
                     <div styleName="description">
-                        <strong>Telegram Theme Customizer (alpha)</strong> — editor for modification themes in telegram.
+                        <strong>Telegram Theme Customizer</strong> — editor for modification themes in telegram.
                         Just hover mouse on some of element below, and follow the next setting in the left bar.
                     </div>
 

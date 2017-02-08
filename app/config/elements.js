@@ -4,12 +4,14 @@ export default [
         type: 'colorPicker',
         label: 'Background-color',
         color: '#ffffff',
+        info: 'white: fallback for background'
     },
     {
         key: 'windowBgOver',
         type: 'colorPicker',
         label: 'Background-color',
         color: '#f1f1f1',
+        info: 'black: fallback for text'
     },
     {
         key: 'dialogsBgActive',
@@ -267,7 +269,7 @@ export default [
         key: 'windowFg',
         color: '#000000',
         type: 'colorPicker',
-        label: '"Search" color'
+        label: 'Text color'
     },
     {
         key: 'historyComposeAreaFg',
@@ -408,10 +410,47 @@ export default [
         label: 'Background-color'
     },
     {
+        key: 'msgInBgSelected',
+        color: '#c2dcf2',
+        type: 'colorPicker',
+        label: 'Background-color'
+    },
+    {
         key: 'msgOutBg',
         color: '#effdde',
         type: 'colorPicker',
         label: 'Background-color'
     },
+    {
+        key: 'msgOutBgSelected',
+        color: '#b7dbdb',
+        type: 'colorPicker',
+        label: 'Background-color'
+    },
+    {
+        key: 'msgInDateFg',
+        color: '#a0acb6',
+        type: 'colorPicker',
+        label: 'Text-color'
+    },
+    {
+        key: 'msgInDateFgSelected',
+        color: '#6a9cc5',
+        type: 'colorPicker',
+        label: 'Text-color'
+    },
+    {
+        key: 'msgOutDateFg',
+        color: '#6cc264',
+        type: 'colorPicker',
+        label: 'Text-color'
+    },
+    {
+        key: 'msgOutDateFgSelected',
+        color: '#50a79c',
+        type: 'colorPicker',
+        label: 'Text-color'
+    }
+
 
 ]

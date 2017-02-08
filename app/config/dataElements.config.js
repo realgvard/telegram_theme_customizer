@@ -397,6 +397,10 @@ const collection =  [
             {
                 tabName: 'Base',
                 keys: ['msgInBg'],
+            },
+            {
+                tabName: 'Selected',
+                keys: ['msgInBgSelected'],
             }
         ]
     },
@@ -406,9 +410,51 @@ const collection =  [
             {
                 tabName: 'Base',
                 keys: ['msgOutBg'],
+            },
+            {
+                tabName: 'Selected',
+                keys: ['msgOutBgSelected'],
             }
         ]
     },
+    {
+        id: id.MSG_TEXT,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['windowFg'],
+            }
+        ]
+    },
+    {
+        id: id.MSG_IN_DATE_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['msgInDateFg'],
+            },
+            {
+                tabName: 'Selected',
+                keys: ['msgInDateFgSelected'],
+            }
+        ]
+    },
+    {
+        id: id.MSG_OUT_DATE_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['msgOutDateFg'],
+            },
+            {
+                tabName: 'Selected',
+                keys: ['msgOutDateFgSelected'],
+            }
+        ]
+    },
+
+
+
 ];
 
 

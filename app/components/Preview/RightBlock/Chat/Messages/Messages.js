@@ -10,7 +10,7 @@ import SearchIcon from 'material-ui/svg-icons/action/search';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 // Config
-import chatMessages from 'config/chatMessages';
+import chatMessages from 'config/chatMessages.config';
 import * as id from 'config/idElements.config';
 
 // Actions
@@ -29,32 +29,63 @@ class Messages extends Component {
 
     render() {
         const {
+            windowFg,
             msgInBg,
             msgOutBg,
+            msgInDateFg,
+            msgOutDateFg
         } = this.props;
 
         const messagesView = chatMessages.map(({
                 type,
+                receivedDate,
                 message,
-                meSender,
-            }, index) => {
+                inlineCSSRules,
+            msgIn,
+            }) => {
 
                 switch(type) {
 
                     case 'text' :
                         return <div styleName={`item`}>
                                     <div
-                                        styleName={`item-inner-block ${meSender ? '' : 'interlocutor-sender'}`}
+                                        styleName={`item-inner-block ${msgIn ? '' : 'interlocutor-sender'}`}
                                         style={{
-                                            background: meSender ? msgInBg.element.color : msgOutBg.element.color,
-                                            ...meSender ? msgInBg.styles : msgOutBg.styles
+                                            background: msgIn ? msgInBg.element.color : msgOutBg.element.color,
+                                            ...msgIn ? msgInBg.styles : msgOutBg.styles
                                         }}
                                         {...injectActionsToComponent({
-                                            id: meSender ? msgInBg.id : msgOutBg.id,
+                                            id: msgIn ? msgInBg.id : msgOutBg.id,
                                             dispatch: this.props.dispatch
                                         })}
                                     >
-                                        {message}
+                                        <div
+                                            styleName="message"
+                                            style={{
+                                                paddingRight: inlineCSSRules ? 30 : 0,
+                                                color: windowFg.element.color,
+                                                ...windowFg.styles
+                                            }}
+                                            {...injectActionsToComponent({
+                                                id: windowFg.id,
+                                                dispatch: this.props.dispatch
+                                            })}
+                                        >
+                                            {message}
+                                        </div>
+                                        <span
+                                            styleName="received-date"
+                                            style={{
+                                                color: msgIn ? msgInDateFg.element.color : msgOutDateFg.element.color,
+                                                ...msgIn ? msgInDateFg.styles : msgOutDateFg.styles
+                                            }}
+                                            {...injectActionsToComponent({
+                                                id: msgIn ? msgInDateFg.id : msgOutDateFg.id,
+                                                dispatch: this.props.dispatch
+                                            })}
+                                        >
+                                            {receivedDate}
+                                        </span>
                                     </div>
                                 </div>;
 
@@ -75,6 +106,9 @@ class Messages extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
+        msgInDateFg: selector({ id: id.MSG_IN_DATE_FG, key: 'msgInDateFg', editor: state.editor }),
+        msgOutDateFg: selector({ id: id.MSG_OUT_DATE_FG, key: 'msgOutDateFg', editor: state.editor }),
+        windowFg: selector({ id: id.MSG_TEXT, key: 'windowFg', editor: state.editor }),
         msgInBg: selector({ id: id.MSG_IN, key: 'msgInBg', editor: state.editor }),
         msgOutBg: selector({ id: id.MSG_OUT, key: 'msgOutBg', editor: state.editor }),
     }

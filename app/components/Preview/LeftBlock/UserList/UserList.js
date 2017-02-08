@@ -22,7 +22,7 @@ import DoneIcon from 'material-ui/svg-icons/action/done';
 import PinnedIcon from './images/pinned.svg';
 
 // JS
-import userDataList from './content';
+import userDataList from 'config/userList.config';
 import { selector } from 'components/SidebarEditor/selector';
 
 // Config

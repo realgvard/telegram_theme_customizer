@@ -28,6 +28,8 @@ import {
     changeEditBorderColor
 } from 'components/SidebarEditor/actions';
 
+// Icons
+import Logo from './logo.svg';
 
 // Styles
 import styles from './TopToolbarEditor.css';
@@ -90,7 +92,13 @@ class TopToolbarEditor extends Component {
                         padding: '0 20px'
                     }}
                 >
-                    <ToolbarGroup firstChild={true} />
+                    <ToolbarGroup>
+                        <div styleName="logo">
+                            <Logo />
+                        </div>
+
+                        <span styleName="logo-description">Theme Customizer</span>
+                    </ToolbarGroup>
 
                     <ToolbarGroup>
                         <div

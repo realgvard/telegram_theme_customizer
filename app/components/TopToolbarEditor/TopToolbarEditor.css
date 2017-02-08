@@ -11,6 +11,23 @@
     margin-top: 20px;
 }
 
+.logo {
+    transform: scale(1.5);
+    border: 2px solid rgb(121, 183, 220);
+    border-radius: 50px;
+    cursor: default;
+}
+
+.logo svg {
+    display: block;
+}
+
+.logo-description {
+    margin-left: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 .column-1 {
     width: 20%;
 }

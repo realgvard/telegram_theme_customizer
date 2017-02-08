@@ -8,7 +8,7 @@
 }
 
 .inner-container {
-    padding: 20px;
+    padding: 15px;
 }
 
 .item {
@@ -25,6 +25,7 @@
     max-width: 80%;
     padding: 8px 12px;
     border-radius: 6px;
+    position: relative;
 }
 
 .item + .item {
@@ -34,4 +35,13 @@
 .interlocutor-sender {
     float: right;
     text-align: right;
+}
+
+.message {
+}
+
+.received-date {
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
 }
