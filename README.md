@@ -24,7 +24,7 @@ In our [community](https://t.me/theme_customizer) you will able to know all last
 
 ## Releasing
 
-On the first live is developer mode:
+On the first line is developer mode:
 
 ```sh
 webpack-dev-server
@@ -35,4 +35,4 @@ npm run build
 
 Made with :heart: on [React](https://github.com/facebook/react).
 
-Big thanks, all member of the [group](https://t.me/theme_customizer) for participating in develop an editor.
+Big thanks to all member of the [group](https://t.me/theme_customizer) for participating in develop an editor.
