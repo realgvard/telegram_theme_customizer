@@ -41,7 +41,8 @@ class Messages extends Component {
                 receivedDate,
                 message,
                 inlineCSSRules,
-            msgIn,
+                reply,
+                msgIn,
             }) => {
 
                 switch(type) {
@@ -59,6 +60,12 @@ class Messages extends Component {
                                             dispatch: this.props.dispatch
                                         })}
                                     >
+                                        {reply ? <div
+                                            styleName="reply"
+                                        >
+                                            <div styleName="reply-title">{reply.title}</div>
+                                            <div styleName="reply-text">{reply.text}</div>
+                                        </div> : null}
                                         <div
                                             styleName="message"
                                             style={{

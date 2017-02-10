@@ -11,6 +11,20 @@
     padding: 15px;
 }
 
+.reply {
+    border-left: 3px solid;
+    padding-left: 8px;
+    margin-bottom: 5px;
+}
+
+.reply-title {
+    font-weight: 500;
+}
+
+.reply-text {
+
+}
+
 .item {
     font-size: 12px;
 }
@@ -38,6 +52,7 @@
 }
 
 .message {
+
 }
 
 .received-date {

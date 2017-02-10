@@ -25,7 +25,7 @@
 
 .control-options-block {
     padding: 0 20px;
-    height: calc(100vh - 140px);
+    height: calc(100vh - 160px);
     overflow-y: auto;
 }
 
@@ -67,7 +67,29 @@
     margin-left: 9px;
 }
 
+.social-links {
+    border-bottom: 1px solid;
+    margin-bottom: 6px;
+}
 
+.social-link {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.social-link svg {
+    fill: #ccc;
+    transition: fill 250ms;
+}
+
+.social-link:hover svg {
+    fill: #bbb;
+}
+
+.social-link + .social-link {
+  margin-left: 10px;
+}
 
 .form-group {
     margin-top: 20px;
@@ -87,7 +109,7 @@
 
 .bottom-block {
     position: absolute;
-    bottom: 10px;
+    bottom: 5px;
     left: 0;
     right: 0;
     text-align: center;

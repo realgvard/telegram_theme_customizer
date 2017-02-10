@@ -2,29 +2,28 @@
 
 ## How Can I Help? :hand:
 
-### [Missing Components](#missing-components)
+### [Missing Modules and Components](#missing-components)
 
-There is an issue for every missing component or functionality.
-
+You can contribute to the development of missing modules and components.
 
 ## Community
 
-In our [community](https://t.me/theme_customizer) you will able to know all last news, also you can affect on next steps of functionality given your meaning.
+Your opinion and comments on existing functionality is of a high importance. Feel free to share your vision in our [group](https://t.me/theme_customizer) for the best results.
 
 ## [Support](#missing-components)
 
-|     Modules                              |        View            |
+|     Modules                              |      Components        |
 |------------------------------------------|------------------------|
-| ✓ Save theme                             | ✓ Layout of main page  |
-| ✓ Reset changes                          | *Layout of setting*    |
-| ✓ 73 options fir editing                 | *Layout of sticker*    |
-|   *Upload and apply own file of theme*   | *Layout of profile*    |
-|   *200 options for editing*              | *MacOs elements*       |
+| ✓ Save theme                             | ✓ <PreviewMainPage />  |
+| ✓ Reset changes                          | *<PreviewSetting />*   |
+| ✓ 73 options for editing                 | *<PreviewSticker />*   |
+|   *Upload and apply own file of theme*   | *<PreviewOfProfile />* |
+|   *200 options for editing*              | *MacOs components*     |
 |   *RGBA support*                         |                        |
 
 ## Releasing
 
-On the first line is developer mode:
+Note that you must execute webpack-dev-server in the developer mode
 
 ```sh
 webpack-dev-server
@@ -33,6 +32,6 @@ npm run build
 
 ## Credit
 
-Made with :heart: on [React](https://github.com/facebook/react).
+Made with :heart: by using [React](https://github.com/facebook/react).
 
-Big thanks to all member of the [group](https://t.me/theme_customizer) for participating in develop an editor.
+Big thanks to all [group](https://t.me/theme_customizer) members for your participation in the Theme Customizer development.

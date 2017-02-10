@@ -21,6 +21,7 @@ import {
 import { resetMetadata } from 'containers/App/actions';
 
 // JS
+import baseElements from 'config/elements';
 import intialState from 'reducers/initialState';
 
 // Styles
@@ -34,8 +35,9 @@ class EditorContainer extends Component {
         super(props);
 
         this.state = {
-            stepIndex: 0,
-            isEdited: false
+            countElements: null,
+            // stepIndex: 0,
+            // isEdited: false
         }
     }
 
@@ -60,6 +62,10 @@ class EditorContainer extends Component {
             version
         } = this.props;
 
+        this.setState({
+            countElements: baseElements.length
+        });
+
         if(!localStorage.getItem('reduxPersist:metadata') || version !== intialState.metadata.version) {
             dispatch(resetMetadata(intialState.metadata.version));
             dispatch(resetEditor());
@@ -68,7 +74,8 @@ class EditorContainer extends Component {
 
     render() {
         const {
-            stepIndex
+            countElements,
+            stepIndex,
         } = this.state;
 
 
@@ -91,6 +98,8 @@ class EditorContainer extends Component {
                     <div styleName="description">
                         <strong>Telegram Theme Customizer</strong> — editor for modification themes in telegram.
                         Just hover mouse on some of element below, and follow the next setting in the left bar.
+                        Now you able to edit: <strong>{countElements}</strong> areas. <br />
+                        Join to our <a target="blank" href="https://t.me/theme_customizer"><strong>group in Telegram</strong></a> to get help with your theme and don't skip the next update.
                     </div>
 
                     <SidebarEditor />
@@ -108,8 +117,8 @@ const mapStateToProps = (state, ownProps) => {
     // const count = _.reduce(state.editor.elements, (result, obj, key) => {
     //     return _.isNumber(result) ? result + obj.settings.length : obj.settings.length;
     // });
-    //
-    // console.log(count)
+
+
 
     return {
         // isEdited: Object.keys(state.editor.data).length > 0 ? true : false,

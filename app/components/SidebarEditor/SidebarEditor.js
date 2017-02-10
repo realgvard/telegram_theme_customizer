@@ -11,6 +11,10 @@ import {
     changeEditorData,
 } from 'components/SidebarEditor/actions';
 
+// Images
+import TelegramIcon from './images/telegram.svg';
+import GithubIcon from './images/github.svg';
+
 // Components
 import Drawer from 'material-ui/Drawer';
 import ColorPicker from 'components/ColorPicker';
@@ -178,8 +182,34 @@ class SidebarEditor extends Component {
                         </div>
                     </div>
 
-
                     <div styleName="bottom-block">
+                        <div
+                            styleName="social-links"
+                            style={{
+                                borderColor: grey100
+                            }}
+                        >
+                           <div styleName="social-link">
+                               <a
+                                   target="blank"
+                                   href="https://t.me/theme_customizer"
+                                   title="Open group in Telegram"
+                               >
+                                    <TelegramIcon />
+                               </a>
+                           </div>
+
+                            <div styleName="social-link">
+                                <a
+                                    target="blank"
+                                    href="https://github.com/realgvard/telegram_theme_customizer"
+                                    title="Open project in GitHub"
+                                >
+                                    <GithubIcon />
+                                </a>
+                            </div>
+                        </div>
+
                         <div>Telegram Theme Customizer (alpha)</div>
                         <div>Version {version}</div>
                     </div>
