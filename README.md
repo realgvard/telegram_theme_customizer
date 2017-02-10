@@ -14,10 +14,10 @@ Your opinion and comments on existing functionality is of a high importance. Fee
 
 |     Modules                              |      Components        |
 |------------------------------------------|------------------------|
-| ✓ Save theme                             | ✓ <PreviewMainPage />  |
-| ✓ Reset changes                          | *<PreviewSetting />*   |
-| ✓ 73 options for editing                 | *<PreviewSticker />*   |
-|   *Upload and apply own file of theme*   | *<PreviewOfProfile />* |
+| ✓ Save theme                             | ✓ Preview main page    |
+| ✓ Reset changes                          | *Preview setting *     |
+| ✓ 73 options for editing                 | *Preview sticker *     |
+|   *Upload and apply own file of theme*   | *Preview profile *     |
 |   *200 options for editing*              | *MacOs components*     |
 |   *RGBA support*                         |                        |
 
