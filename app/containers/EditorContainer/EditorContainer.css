@@ -24,9 +24,19 @@
   line-height: 22px;
 }
 
+.floating-button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
 @media screen and (max-width: 1400px) {
   .description {
     display: none;
   }
+
+  /*.floating-button {*/
+    /*display: none !important;*/
+  /*}*/
 
 }

@@ -17,6 +17,10 @@ const collection =  [
             {
                 tabName: 'Base',
                 keys: ['dialogsBgActive']
+            },
+            {
+                tabName: 'Active',
+                keys: ['activeButtonBgRipple']
             }
         ]
     },
@@ -262,6 +266,10 @@ const collection =  [
             {
                 tabName: 'Base',
                 keys: ['dialogsBgOver'],
+            },
+            {
+                tabName: 'Active',
+                keys: ['windowBgRipple']
             }
         ]
     },
@@ -478,6 +486,29 @@ const collection =  [
             }
         ]
     },
+    {
+        id: id.HISTORY_OUT_ICON_FG,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['historyOutIconFg'],
+            },
+            {
+                tabName: 'Selected',
+                keys: ['historyOutIconFgSelected'],
+            }
+        ]
+    },
+    {
+        id: id.MSG_SERVICE,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['msgServiceFg'],
+            },
+        ]
+    },
+
 
 ];
 

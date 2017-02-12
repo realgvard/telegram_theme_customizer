@@ -9,6 +9,7 @@ import Avatar from 'material-ui/Avatar';
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import Badge from 'material-ui/Badge';
+import FlatButton from 'material-ui/FlatButton';
 
 // Actions
 import { injectActionsToComponent } from 'components/SidebarEditor/actions';
@@ -270,6 +271,7 @@ class UserList extends Component {
                             </div>}
                             style={{
                                 height: 62,
+                                position: 'relative',
                                 ...itemIsActive ? dialogsBgActive.styles : null || hovered ? dialogsBgOver.styles : null
                             }}
                             {...injectActionsToComponent({

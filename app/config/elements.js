@@ -17,6 +17,7 @@ const elements = [
     {
         key: 'background',
         protected: true,
+        label: 'Chose background image',
         type: 'file',
     },
     {
@@ -255,6 +256,21 @@ const elements = [
     },
     {
         key: 'msgOutServiceFgSelected'
+    },
+    {
+        key: 'historyOutIconFg'
+    },
+    {
+        key: 'historyOutIconFgSelected'
+    },
+    {
+        key: 'activeButtonBgRipple'
+    },
+    {
+        key: 'windowBgRipple'
+    },
+    {
+        key: 'msgServiceFg'
     }
 
 ]

@@ -195,7 +195,8 @@ class SidebarEditor extends Component {
                         <div
                             styleName="social-links"
                             style={{
-                                borderColor: grey100
+                                borderColor: grey100,
+                                display: 'none'
                             }}
                         >
                            <div styleName="social-link">

@@ -22,6 +22,9 @@ const muiTheme = getMuiTheme({
         selectedTextColor: greenA700,
         textColor: '#000'
     },
+    ripple: {
+        color: '#000',
+    }
 });
 
 class App extends Component {

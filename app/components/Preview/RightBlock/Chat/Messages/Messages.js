@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 // Images
-import IconButton from 'material-ui/IconButton';
-import AppBar from 'material-ui/AppBar';
-import SearchIcon from 'material-ui/svg-icons/action/search';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import DoneAllIcon from 'material-ui/svg-icons/action/done-all';
 
 // Config
 import chatMessages from 'config/chatMessages.config';
@@ -20,7 +17,7 @@ import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 import { selector } from 'components/SidebarEditor/helpers/selector';
 
 // Styles
-import styles from './Messages.css';
+import styles from './Messages.scss';
 
 
 @CSSModules(styles, { allowMultiple: true })
@@ -28,6 +25,8 @@ class Messages extends Component {
 
     render() {
         const {
+            msgServiceFg,
+            historyOutIconFg,
             msgOutServiceFg,
             msgInServiceFg,
             msgInReplyBarColor,
@@ -43,15 +42,34 @@ class Messages extends Component {
                 type,
                 receivedDate,
                 message,
+                historyOutIcon,
                 inlineCSSRules,
                 reply,
                 msgIn,
+                dateTitle,
             }) => {
 
                 switch(type) {
 
+                    case 'date' :
+                        return <div styleName="item date-item">
+                                <div
+                                    styleName="date-block"
+                                    style={{
+                                        color: msgServiceFg.element.color,
+                                        ...msgServiceFg.styles
+                                    }}
+                                    {...injectActionsToComponent({
+                                        id: msgServiceFg.id,
+                                        dispatch: this.props.dispatch
+                                    })}
+                                >
+                                    {dateTitle}
+                                </div>
+                            </div>
+
                     case 'text' :
-                        return <div styleName={`item`}>
+                        return <div styleName="item">
                                     <div
                                         styleName={`item-inner-block ${msgIn ? '' : 'interlocutor-sender'}`}
                                         style={{
@@ -82,16 +100,16 @@ class Messages extends Component {
                                             >{reply.title}</div>
 
                                             <div
-                                                styleName="reply-text"
+                                                className="reply-text"
                                                 style={{
                                                     color: windowFg.element.color
                                                 }}
                                             >{reply.text}</div>
                                         </div> : null}
                                         <div
-                                            styleName="message"
+                                            className="message"
                                             style={{
-                                                paddingRight: inlineCSSRules ? 30 : 0,
+                                                marginRight: inlineCSSRules ? 60 : 0,
                                                 color: windowFg.element.color,
                                                 ...windowFg.styles
                                             }}
@@ -102,10 +120,12 @@ class Messages extends Component {
                                         >
                                             {message}
                                         </div>
+
                                         <span
                                             styleName="received-date"
                                             style={{
                                                 color: msgIn ? msgInDateFg.element.color : msgOutDateFg.element.color,
+                                                marginRight: inlineCSSRules ? 22 : 0,
                                                 ...msgIn ? msgInDateFg.styles : msgOutDateFg.styles
                                             }}
                                             {...injectActionsToComponent({
@@ -115,6 +135,21 @@ class Messages extends Component {
                                         >
                                             {receivedDate}
                                         </span>
+
+                                        {historyOutIcon ? <span styleName="icon-checked">
+                                            <DoneAllIcon
+                                                style={{
+                                                    color: historyOutIconFg.element.color,
+                                                    width: 16,
+                                                    height: 16,
+                                                    ...historyOutIconFg.styles
+                                                }}
+                                                {...injectActionsToComponent({
+                                                    id: historyOutIconFg.id,
+                                                    dispatch: this.props.dispatch
+                                                })}
+                                            />
+                                        </span> : null}
                                     </div>
                                 </div>;
 
@@ -135,6 +170,8 @@ class Messages extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
+        msgServiceFg: selector({ id: id.MSG_SERVICE, key: 'msgServiceFg', editor: state.editor }),
+        historyOutIconFg: selector({ id: id.HISTORY_OUT_ICON_FG, key: 'historyOutIconFg', editor: state.editor }),
         msgOutServiceFg: selector({ id: id.MSG_OUT_REPLY, key: 'msgOutServiceFg', editor: state.editor }),
         msgOutReplyBarColor: selector({ id: id.MSG_OUT_REPLY, key: 'msgOutReplyBarColor', editor: state.editor }),
         msgInServiceFg: selector({ id: id.MSG_IN_REPLY, key: 'msgInServiceFg', editor: state.editor }),

@@ -6,12 +6,16 @@ import { connect } from 'react-redux';
 import Preview from 'components/Preview';
 import SidebarEditor from 'components/SidebarEditor';
 import TopToolbarEditor from 'components/TopToolbarEditor';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ArrowForwardIcon from 'material-ui/svg-icons/navigation/arrow-forward';
 import {
     Step,
     Stepper,
     StepLabel,
 } from 'material-ui/Stepper';
+
+// Images
+import TelegramIcon from 'components/SidebarEditor/images/telegram.svg';
 
 // Actions
 import {
@@ -105,6 +109,15 @@ class EditorContainer extends Component {
                     <SidebarEditor />
 
                     <Preview />
+
+                    <FloatingActionButton
+                        styleName="floating-button"
+                        href="https://t.me/theme_customizer_channel"
+                        title="Open channel in Telegram"
+                        target="blank"
+                    >
+                        <TelegramIcon />
+                    </FloatingActionButton>
                 </div>
             </div>
         );

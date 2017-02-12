@@ -1,11 +1,16 @@
 export default [
     {
+        type: 'date',
+        dateTitle: 'December 26'
+    },
+    {
         type: 'text',
         receivedDate: '09:00',
         reply: {
             title: 'John Doe',
             text: 'Blablabla!'
         },
+        historyOutIcon: true,
         inlineCSSRules: true,
         message: 'John Lennon said that!'
     },
