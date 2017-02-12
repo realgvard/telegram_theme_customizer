@@ -12,14 +12,15 @@ Your opinion and comments on existing functionality is of a high importance. Fee
 
 ## [Support](#missing-components)
 
-|     Modules                              |      Components        |
-|------------------------------------------|------------------------|
-| ✓ Save theme                             | ✓ Preview main page    |
-| ✓ Reset changes                          | *Preview setting*      |
-| ✓ 73 options for editing                 | *Preview sticker*      |
-|   *Upload and apply own file of theme*   | *Preview profile*      |
-|   *200 options for editing*              | *MacOs components*     |
-|   *RGBA support*                         |                        |
+|     Modules                              |           Components           |
+|------------------------------------------|--------------------------------|
+| ✓ Save theme                             | ✓ Preview main page            |
+| ✓ Reset changes                          | *Preview setting*              |
+| ✓ 88 options for editing                 | *Preview sticker*              |
+| ✓ Hints for edit area                    | *Preview profile*              |
+|   *Upload and apply own file of theme*   | *Other platform components*    |
+|   *200 options for editing*              |                                |
+|   *RGBA support*                         |                                |
 
 ## Releasing
 
