@@ -19,7 +19,14 @@
 }
 
 .description {
-  margin: 50px 0 0;
+  margin: 40px 0 0;
   font-size: 15px;
   line-height: 22px;
+}
+
+@media screen and (max-width: 1400px) {
+  .description {
+    display: none;
+  }
+
 }

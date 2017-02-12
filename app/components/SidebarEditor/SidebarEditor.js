@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import {
     grey100,
+    grey500,
 } from 'material-ui/styles/colors';
 
 import {
@@ -14,6 +15,7 @@ import {
 // Images
 import TelegramIcon from './images/telegram.svg';
 import GithubIcon from './images/github.svg';
+import InfoOutline from 'material-ui/svg-icons/action/info-outline';
 
 // Components
 import Drawer from 'material-ui/Drawer';
@@ -104,23 +106,19 @@ class SidebarEditor extends Component {
                             key,
                             label,
                             type,
+                            info,
                             color
                         }, index) => {
                             let currentEditing = <div
                                 styleName="editing-block"
-                                style={{
-                                    backgroundColor: grey100
-                                }}
                             >
-                                <div styleName="editing-title">Editing:</div>
-                                <div styleName="editing-element" style={{ color: palette.accent1Color }}>{key}</div>
+                                <div styleName="editing-element" >{key}</div>
                             </div>;
 
                             switch(type) {
 
                                 case 'file' :
                                     return <div styleName="editing-component">
-                                        {currentEditing}
 
                                         <div styleName="image-input">
                                             <UploadImage label={label} id={id} key={index} />
@@ -133,18 +131,29 @@ class SidebarEditor extends Component {
 
                                 case 'colorPicker' :
                                     return <div styleName="editing-component">
-                                        {currentEditing}
 
                                         <div styleName="form-group" key={index}>
-                                            <label styleName="control-label">{label}:</label>
-                                            <label styleName="form-control">
-                                                {this.refs.optionsContainer ?
-                                                    <ColorPicker
-                                                        defaultColor={color}
-                                                        parentContainer={this.refs.optionsContainer}
-                                                        onChange={this._colorPickerChange.bind(this, id, key)}
-                                                    /> : null}
-                                            </label>
+                                            <div styleName="form-control-wrapper">
+                                                <div styleName="control-label">{currentEditing}</div>
+
+                                                <label styleName="form-control">
+                                                    {this.refs.optionsContainer ?
+                                                        <ColorPicker
+                                                            defaultColor={color}
+                                                            parentContainer={this.refs.optionsContainer}
+                                                            onChange={this._colorPickerChange.bind(this, id, key)}
+                                                        /> : null}
+                                                </label>
+                                            </div>
+
+                                            <div
+                                                styleName="editing-info"
+                                                style={{
+                                                    color: grey500
+                                                }}
+                                            >
+                                                {info}
+                                            </div>
                                         </div>
                                     </div>;
                             }

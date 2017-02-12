@@ -17,10 +17,13 @@ const dirs = {
 
 const config = {
 
-    // Entry points to the project
-    entry: [
-        './app/index.js',
-    ],
+    entry: {
+        app: [
+            './app/index.js',
+        ]
+    },
+
+    devtool: IS_PROD ? 'cheap-source-map': 'eval',
 
     output: {
         path: dirs.compiled,
@@ -32,24 +35,20 @@ const config = {
 
     // Server Configuration options
     devServer: {
-        contentBase: '../compiled/', // Relative directory for base of server
-        devtool: 'eval',
-        outputPath: dirs.compiled,
+        contentBase: dirs.compiled, // Relative directory for base of server
         hot: true, // Live-reload
         inline: true,
         port: 3000, // Port Number
         host: 'localhost', // Change to '0.0.0.0' for external facing server
     },
 
-    devtool: IS_PROD ? 'cheap-source-map': 'eval',
-
     plugins: [
 
         // Allows error warnings but does not stop compiling.
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
 
-        // Moves files
-        new ExtractTextPlugin('app.css', {
+        new ExtractTextPlugin({
+            filename: 'app.css',
             allChunks: true
         }),
 
@@ -70,34 +69,62 @@ const config = {
         new CleanWebpackPlugin(['compiled'], {
             root: path.join(__dirname, '..'),
             verbose: false
-        })
+        }),
+
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        }),
     ],
 
     module: {
-        loaders: [
+        rules: [
             {
                 // React-hot loader and
                 test: /\.js$/, // All .js files
-                loaders: ['react-hot', 'babel-loader'], // react-hot is like browser sync and babel loads jsx and es6-7
+                use: [
+                    {
+                        loader: 'react-hot-loader' // react-hot is like browser sync and babel loads jsx and es6-7
+                    },
+                    {
+                        loader: 'babel-loader'
+                    }
+                ],
                 exclude: [dirs.node_modules],
             },
 
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+                    ],
+                })
             },
 
             {
                 test: /\.(jpe?g|png|gif)$/i,
-                loaders: [
-                    'file?hash=sha512&digest=hex&name=[hash].[ext]',
-                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-                ]
+                use: [
+                    {
+                        loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]' // react-hot is like browser sync and babel loads jsx and es6-7
+                    },
+                    {
+                        loader: 'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
+                    }
+                ],
+            },
+
+            {
+                test: /\.tdesktop-theme$/,
+                use: 'raw-loader'
             },
 
             {
                 test: /\.svg$/,
-                loader: 'babel!svg-react'
+                use: [
+                    'babel-loader',
+                    'svg-react-loader'
+                ]
             }
         ],
     },
@@ -117,11 +144,10 @@ if (IS_PROD) {
 
 if (IS_DEV) {
     config.plugins.push(
-        // Enables Hot Modules Replacement
         new webpack.HotModuleReplacementPlugin()
     );
 
-    config.entry.unshift('webpack/hot/dev-server', 'webpack/hot/only-dev-server');
+    config.entry.app.unshift('webpack/hot/only-dev-server');
 
 }
 

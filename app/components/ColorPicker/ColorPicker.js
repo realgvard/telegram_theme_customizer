@@ -6,6 +6,7 @@ import _ from 'lodash';
 
 // Components
 import { SketchPicker, Compact, Swatch } from 'react-color';
+import Paper from 'material-ui/Paper';
 
 // Actions
 import {
@@ -156,12 +157,14 @@ class ColorPicker extends Component {
                     }}
                     onClick={ ::this._handleOpen }
                 >
-                    <div
+                    <Paper
+                        zDepth={1}
                         styleName="color"
                         style={{
                             background: defaultColor
                         }}
-                    />
+                    >
+                    </Paper>
                 </div>
 
                 { this.state.displayColorPicker ? <div
@@ -188,7 +191,7 @@ class ColorPicker extends Component {
 
 ColorPicker.defaultProps = {
     onChange: () => {},
-    defaultColor: '#000000',
+    defaultColor: '#ff00ff',
     position: 'fixed',
     className: '',
     watchWidth: '100%'

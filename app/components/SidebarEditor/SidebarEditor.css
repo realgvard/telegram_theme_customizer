@@ -31,11 +31,17 @@
 
 .control-label {
     line-height: 20px;
-    padding-top: 8px;
     font-size: 13px;
     float: left;
-    width: 55%;
+    width: 60%;
 }
+
+.form-control {
+    float: right;
+    width: 30%;
+    text-overflow: ellipsis;
+}
+
 
 .switch-type-of-image {
     margin: 20px 0 0;
@@ -54,7 +60,6 @@
 .editing-block {
     font-size: 14px;
     line-height: 1.55;
-    padding: 6px 15px;
 }
 
 .editing-title {
@@ -62,9 +67,7 @@
 }
 
 .editing-element {
-    display: inline-block;
     font-weight: 500;
-    margin-left: 9px;
 }
 
 .social-links {
@@ -91,8 +94,19 @@
   margin-left: 10px;
 }
 
+.editing-info {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.form-control-wrapper:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
 .form-group {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .form-group:after {
@@ -101,11 +115,9 @@
     display: block;
 }
 
-.form-control {
-    float: right;
-    width: 38%;
-    text-overflow: ellipsis;
-}
+
+
+
 
 .bottom-block {
     position: absolute;
@@ -118,5 +130,5 @@
 }
 
 .image-input {
-    margin-top: 20px;
+    margin-top: 15px;
 }
