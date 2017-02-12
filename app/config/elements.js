@@ -7,382 +7,258 @@ import { mergeScheme } from './helpers/parserOfScheme';
 const elements = [
     {
         key: 'windowBg',
-        type: 'colorPicker',
-        label: 'Background-color',
     },
     {
-        key: 'windowBgOver',
-        type: 'colorPicker',
-        label: 'Background-color',
+        key: 'windowBgOver'
     },
     {
-        key: 'dialogsBgActive',
-        type: 'colorPicker',
-        label: 'Background-color',
+        key: 'dialogsBgActive'
     },
     {
         key: 'background',
         protected: true,
         type: 'file',
-        label: 'Chose background images'
     },
     {
-        key: 'dialogsBg',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'dialogsBg'
     },
     {
-        key: 'dialogsNameFgActive',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'dialogsNameFgActive'
     },
     {
-        key: 'dialogsTextFgActive',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'dialogsTextFgActive'
     },
     {
-        key: 'dialogsUnreadBg',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'dialogsUnreadBg'
     },
     {
-        key: 'dialogsUnreadBgMuted',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'dialogsUnreadBgMuted'
     },
     {
-        key: 'dialogsUnreadFg',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'dialogsUnreadFg'
     },
     {
-        key: 'dialogsUnreadBgMutedOver',
-        type: 'colorPicker',
-        label: 'Background-hover-color'
+        key: 'dialogsUnreadBgMutedOver'
     },
     {
-        key: 'dialogsNameFg',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'dialogsNameFg'
     },
     {
-        key: 'dialogsTextFg',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'dialogsTextFg'
     },
     {
-        key: 'menuIconFg',
-        type: 'colorPicker',
-        label: 'Icon-color'
+        key: 'menuIconFg'
     },
     {
-        key: 'menuIconFgOver',
-        type: 'colorPicker',
-        label: 'Icon-hover-color'
+        key: 'menuIconFgOver'
     },
     {
-        key: 'filterInputInactiveBg',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'filterInputInactiveBg'
     },
     {
-        key: 'filterInputBorderFg',
-        type: 'colorPicker',
-        label: 'Border-color'
+        key: 'filterInputBorderFg'
     },
     {
-        key: 'windowBg',
-        type: 'colorPicker',
-        label: 'Background-color',
+        key: 'windowBg'
     },
     {
-        key: 'titleBg',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'titleBg'
     },
     {
-        key: 'titleFg',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'titleFg'
     },
     {
-        key: 'titleFgActive',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'titleFgActive'
     },
     {
-        key: 'dialogsDateFg',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'dialogsDateFg'
     },
     {
-        key: 'dialogsDateFgActive',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'dialogsDateFgActive'
     },
     {
-        key: 'windowActiveTextFg',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'windowActiveTextFg'
     },
     {
-        key: 'dialogsTextFgServiceActive',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'dialogsTextFgServiceActive'
     },
     {
-        key: 'historyPeerUserpicFg',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'historyPeerUserpicFg'
     },
     {
-        key: 'historyPeer1UserpicBg',
-        type: 'colorPicker',
-        label: 'Background-color (1)'
+        key: 'historyPeer1UserpicBg'
     },
     {
-        key: 'historyPeer2UserpicBg',
-        type: 'colorPicker',
-        label: 'Background-color (2)'
+        key: 'historyPeer2UserpicBg'
     },
     {
-        key: 'historyPeer3UserpicBg',
-        type: 'colorPicker',
-        label: 'Background-color (3)'
+        key: 'historyPeer3UserpicBg'
     },
     {
-        key: 'historyPeer4UserpicBg',
-        type: 'colorPicker',
-        label: 'Background-color (4)'
+        key: 'historyPeer4UserpicBg'
     },
     {
-        key: 'historyPeer5UserpicBg',
-        type: 'colorPicker',
-        label: 'Background-color (5)'
+        key: 'historyPeer5UserpicBg'
     },
     {
-        key: 'historyPeer6UserpicBg',
-        type: 'colorPicker',
-        label: 'Background-color (6)'
+        key: 'historyPeer6UserpicBg'
     },
     {
-        key: 'historyPeer7UserpicBg',
-        type: 'colorPicker',
-        label: 'Background-color (7)'
+        key: 'historyPeer7UserpicBg'
     },
     {
-        key: 'historyPeer8UserpicBg',
-        type: 'colorPicker',
-        label: 'Background-color (8)'
+        key: 'historyPeer8UserpicBg'
     },
     {
-        key: 'topBarBg',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'topBarBg'
     },
     {
-        key: 'historyComposeAreaBg',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'historyComposeAreaBg'
     },
     {
-        key: 'titleButtonFg',
-        type: 'colorPicker',
-        label: 'Icon-color'
+        key: 'titleButtonFg'
     },
     {
-        key: 'titleButtonFgOver',
-        type: 'colorPicker',
-        label: 'Icon-hover-color'
+        key: 'titleButtonFgOver'
     },
     {
-        key: 'titleButtonBgOver',
-        type: 'colorPicker',
-        label: 'Background-hover-color'
+        key: 'titleButtonBgOver'
     },
     {
-        key: 'titleButtonCloseFg',
-        type: 'colorPicker',
-        label: 'Icon-color'
+        key: 'titleButtonCloseFg'
     },
     {
-        key: 'titleButtonCloseFgOver',
-        type: 'colorPicker',
-        label: 'Icon-hover-color'
+        key: 'titleButtonCloseFgOver'
     },
     {
-        key: 'titleButtonCloseBgOver',
-        type: 'colorPicker',
-        label: 'Background-hover-color'
+        key: 'titleButtonCloseBgOver'
     },
     {
-        key: 'placeholderFg',
-        type: 'colorPicker',
-        label: '"Search" and "Write a message" color'
+        key: 'placeholderFg'
     },
     {
-        key: 'placeholderFgActive',
-        type: 'colorPicker',
-        label: 'Search" and "Write a message" color'
+        key: 'placeholderFgActive'
     },
     {
-        key: 'windowFg',
-        type: 'colorPicker',
-        label: 'Text color'
+        key: 'windowFg'
     },
     {
-        key: 'historyComposeAreaFg',
-        type: 'colorPicker',
-        label: '"Write a message" color'
+        key: 'historyComposeAreaFg'
     },
     {
-        key: 'dialogsChatIconFg',
-        type: 'colorPicker',
-        label: 'Icon-color'
+        key: 'dialogsChatIconFg'
     },
     {
-        key: 'dialogsChatIconFgOver',
-        type: 'colorPicker',
-        label: 'Icon-color'
+        key: 'dialogsChatIconFgOver'
     },
     {
-        key: 'dialogsChatIconFgActive',
-        type: 'colorPicker',
-        label: 'Icon-color'
+        key: 'dialogsChatIconFgActive'
     },
     {
-        key: 'dialogsBgOver',
-        type: 'colorPicker',
-        label: 'Background-hover-color'
+        key: 'dialogsBgOver'
     },
     {
-        key: 'dialogsSentIconFg',
-        type: 'colorPicker',
-        label: 'Background-hover-color'
+        key: 'dialogsSentIconFg'
     },
     {
-        key: 'dialogsSentIconFgActive',
-        type: 'colorPicker',
-        label: 'Icon-color'
+        key: 'dialogsSentIconFgActive'
     },
     {
-        key: 'dialogsUnreadBgMutedActive',
-        type: 'colorPicker',
-        label: 'Icon-color'
+        key: 'dialogsUnreadBgMutedActive'
     },
     {
-        key: 'dialogsNameFgOver',
-        type: 'colorPicker',
-        label: 'Text-hover-color'
+        key: 'dialogsNameFgOver'
     },
     {
-        key: 'dialogsTextFgOver',
-        type: 'colorPicker',
-        label: 'Text-hover-color'
+        key: 'dialogsTextFgOver'
     },
     {
-        key: 'dialogsTextFgServiceOver',
-        type: 'colorPicker',
-        label: 'Text-hover-color'
+        key: 'dialogsTextFgServiceOver'
     },
     {
-        key: 'dialogsDateFgOver',
-        type: 'colorPicker',
-        label: 'Text-hover-color'
+        key: 'dialogsDateFgOver'
     },
     {
-        key: 'dialogsSentIconFgOver',
-        type: 'colorPicker',
-        label: 'Text-hover-color'
+        key: 'dialogsSentIconFgOver'
     },
     {
-        key: 'dialogsVerifiedIconBg',
-        type: 'colorPicker',
-        label: 'Icon-background-color'
+        key: 'dialogsVerifiedIconBg'
     },
     {
-        key: 'dialogsVerifiedIconFg',
-        type: 'colorPicker',
-        label: 'Icon-background-color'
+        key: 'dialogsVerifiedIconFg'
     },
     {
-        key: 'dialogsVerifiedIconBgOver',
-        type: 'colorPicker',
-        label: 'Icon-hover-background-color'
+        key: 'dialogsVerifiedIconBgOver'
     },
     {
-        key: 'dialogsVerifiedIconFgOver',
-        type: 'colorPicker',
-        label: 'Icon-hover-background-color'
+        key: 'dialogsVerifiedIconFgOver'
     },
     {
-        key: 'dialogsVerifiedIconBgActive',
-        type: 'colorPicker',
-        label: 'Icon-active-background-color'
+        key: 'dialogsVerifiedIconBgActive'
     },
     {
-        key: 'dialogsVerifiedIconFgActive',
-        type: 'colorPicker',
-        label: 'Icon-active-background-color'
+        key: 'dialogsVerifiedIconFgActive'
     },
     {
-        key: 'dialogsDraftFg',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'dialogsDraftFg'
     },
     {
-        key: 'dialogsDraftFgOver',
-        type: 'colorPicker',
-        label: 'Text-hover-color'
+        key: 'dialogsDraftFgOver'
     },
     {
-        key: 'dialogsDraftFgActive',
-        type: 'colorPicker',
-        label: 'Text-active-color'
+        key: 'dialogsDraftFgActive'
     },
     {
-        key: 'msgInBg',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'msgInBg'
     },
     {
-        key: 'msgInBgSelected',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'msgInBgSelected'
     },
     {
-        key: 'msgOutBg',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'msgOutBg'
     },
     {
-        key: 'msgOutBgSelected',
-        type: 'colorPicker',
-        label: 'Background-color'
+        key: 'msgOutBgSelected'
     },
     {
-        key: 'msgInDateFg',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'msgInDateFg'
     },
     {
-        key: 'msgInDateFgSelected',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'msgInDateFgSelected'
     },
     {
-        key: 'msgOutDateFg',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'msgOutDateFg'
     },
     {
-        key: 'msgOutDateFgSelected',
-        type: 'colorPicker',
-        label: 'Text-color'
+        key: 'msgOutDateFgSelected'
+    },
+    {
+        key: 'msgInReplyBarColor',
+    },
+    {
+        key: 'msgInReplyBarSelColor',
+    },
+    {
+        key: 'msgInServiceFg'
+    },
+    {
+        key: 'msgInServiceFgSelected'
+    },
+    {
+        key: 'msgOutReplyBarColor',
+    },
+    {
+        key: 'msgOutReplyBarSelColor',
+    },
+    {
+        key: 'msgOutServiceFg'
+    },
+    {
+        key: 'msgOutServiceFgSelected'
     }
 
 ]
+
 
 
 export default mergeScheme(scheme, elements);

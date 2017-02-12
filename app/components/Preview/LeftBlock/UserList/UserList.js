@@ -23,7 +23,7 @@ import PinnedIcon from './images/pinned.svg';
 
 // JS
 import userDataList from 'config/userList.config';
-import { selector } from 'components/SidebarEditor/selector';
+import { selector } from 'components/SidebarEditor/helpers/selector';
 
 // Config
 import * as id from 'config/idElements.config';

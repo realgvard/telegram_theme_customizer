@@ -17,10 +17,9 @@ import * as id from 'config/idElements.config';
 import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // JS
-import { selector } from 'components/SidebarEditor/selector';
+import { selector } from 'components/SidebarEditor/helpers/selector';
 
 // Styles
-import { getActiveStyle } from 'components/Preview/cssStyles.js';
 import styles from './Messages.css';
 
 
@@ -29,6 +28,10 @@ class Messages extends Component {
 
     render() {
         const {
+            msgOutServiceFg,
+            msgInServiceFg,
+            msgInReplyBarColor,
+            msgOutReplyBarColor,
             windowFg,
             msgInBg,
             msgOutBg,
@@ -62,9 +65,28 @@ class Messages extends Component {
                                     >
                                         {reply ? <div
                                             styleName="reply"
+                                            style={{
+                                                borderLeftColor: msgIn ? msgInReplyBarColor.element.color : msgOutReplyBarColor.element.color,
+                                                ...msgIn ? msgInReplyBarColor.styles : msgOutReplyBarColor.styles
+                                            }}
+                                            {...injectActionsToComponent({
+                                                id: msgIn ? msgInReplyBarColor.id : msgOutReplyBarColor.id,
+                                                dispatch: this.props.dispatch
+                                            })}
                                         >
-                                            <div styleName="reply-title">{reply.title}</div>
-                                            <div styleName="reply-text">{reply.text}</div>
+                                            <div
+                                                styleName="reply-title"
+                                                style={{
+                                                    color: msgIn ? msgInServiceFg.element.color : msgOutServiceFg.element.color
+                                                }}
+                                            >{reply.title}</div>
+
+                                            <div
+                                                styleName="reply-text"
+                                                style={{
+                                                    color: windowFg.element.color
+                                                }}
+                                            >{reply.text}</div>
                                         </div> : null}
                                         <div
                                             styleName="message"
@@ -113,6 +135,10 @@ class Messages extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
+        msgOutServiceFg: selector({ id: id.MSG_OUT_REPLY, key: 'msgOutServiceFg', editor: state.editor }),
+        msgOutReplyBarColor: selector({ id: id.MSG_OUT_REPLY, key: 'msgOutReplyBarColor', editor: state.editor }),
+        msgInServiceFg: selector({ id: id.MSG_IN_REPLY, key: 'msgInServiceFg', editor: state.editor }),
+        msgInReplyBarColor: selector({ id: id.MSG_IN_REPLY, key: 'msgInReplyBarColor', editor: state.editor }),
         msgInDateFg: selector({ id: id.MSG_IN_DATE_FG, key: 'msgInDateFg', editor: state.editor }),
         msgOutDateFg: selector({ id: id.MSG_OUT_DATE_FG, key: 'msgOutDateFg', editor: state.editor }),
         windowFg: selector({ id: id.MSG_TEXT, key: 'windowFg', editor: state.editor }),

@@ -68,3 +68,5 @@ export const MSG_OUT = 'MSG_OUT';
 export const MSG_TEXT = 'MSG_TEXT';
 export const MSG_IN_DATE_FG = 'MSG_IN_DATE_FG';
 export const MSG_OUT_DATE_FG = 'MSG_OUT_DATE_FG';
+export const MSG_IN_REPLY = 'MSG_IN_REPLY';
+export const MSG_OUT_REPLY = 'MSG_OUT_REPLY';

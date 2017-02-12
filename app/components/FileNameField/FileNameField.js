@@ -10,7 +10,6 @@ import { changeFileName } from 'components/SidebarEditor/actions';
 import TextField from 'material-ui/TextField';
 
 // Styles
-import { getActiveStyle } from 'components/Preview/cssStyles.js';
 import styles from './FileNameField.css';
 
 

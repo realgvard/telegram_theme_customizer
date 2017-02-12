@@ -2,6 +2,10 @@ export default [
     {
         type: 'text',
         receivedDate: '09:00',
+        reply: {
+            title: 'John Doe',
+            text: 'Blablabla!'
+        },
         inlineCSSRules: true,
         message: 'John Lennon said that!'
     },

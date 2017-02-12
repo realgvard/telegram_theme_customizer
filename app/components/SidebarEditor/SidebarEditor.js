@@ -129,7 +129,7 @@ class SidebarEditor extends Component {
                                         </div>
                                     </div>;
 
-                                case 'colorPicker' :
+                                default :
                                     return <div styleName="editing-component">
 
                                         <div styleName="form-group" key={index}>

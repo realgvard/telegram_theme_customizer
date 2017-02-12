@@ -14,7 +14,7 @@ import TextField from 'material-ui/TextField';
 import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // JS
-import { selector } from 'components/SidebarEditor/selector';
+import { selector } from 'components/SidebarEditor/helpers/selector';
 
 // Config
 import * as id from 'config/idElements.config';

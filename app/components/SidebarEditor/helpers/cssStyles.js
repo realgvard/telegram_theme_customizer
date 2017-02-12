@@ -4,12 +4,12 @@ export function getActiveStyle(componentData, editorStore) {
 
     const activeElementStyle = {
         outline: `2px solid ${editorStore.editBorderColor}`,
-        outlineOffset: -2
+        outlineOffset: -1
     };
 
     const defaultElementStyle = {
         outline: 'none',
-        outlineOffset: -2
+        outlineOffset: -1
     };
 
     // if(editorStore) {

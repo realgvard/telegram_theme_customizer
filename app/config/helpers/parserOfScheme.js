@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 
-function _getColor(scheme, property) {
+function _getKeyColor(scheme, property) {
     const searchValue = /:.*;/;
     const isHex = /#[0-9a-fA-F]+/;
 
@@ -16,11 +16,11 @@ function _getColor(scheme, property) {
 
         // console.log('noe:', found, _getColor(property))
         // console.log('noe:', found)
-        return _getColor(scheme, _findProperty(scheme, found));
+        return _getKeyColor(scheme, _findProperty(scheme, found));
     }
 }
 
-function _getInfo(property) {
+function _getKeyInfo(property) {
     const searchComment = /\/\/.*/;
 
     return _.head(property.match(searchComment)).replace('//', '');
@@ -38,8 +38,8 @@ function _getCombinedProperties(scheme, item) {
     const property = _findProperty(scheme, item.key);
 
     return {
-        info: _getInfo(property),
-        color: _getColor(scheme, property)
+        info: _getKeyInfo(property),
+        color: _getKeyColor(scheme, property)
     };
 }
 

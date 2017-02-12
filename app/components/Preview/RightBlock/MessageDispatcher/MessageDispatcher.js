@@ -16,7 +16,7 @@ import InsertEmoticonIcon from 'material-ui/svg-icons/editor/insert-emoticon';
 import * as id from 'config/idElements.config';
 
 // JS
-import { selector } from 'components/SidebarEditor/selector';
+import { selector } from 'components/SidebarEditor/helpers/selector';
 
 // Actions
 import { injectActionsToComponent } from 'components/SidebarEditor/actions';

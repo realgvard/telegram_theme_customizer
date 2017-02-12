@@ -452,8 +452,32 @@ const collection =  [
             }
         ]
     },
-
-
+    {
+        id: id.MSG_IN_REPLY,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['msgInReplyBarColor', 'msgInServiceFg', 'windowFg'],
+            },
+            {
+                tabName: 'Selected',
+                keys: ['msgInReplyBarSelColor', 'msgInServiceFgSelected'],
+            }
+        ]
+    },
+    {
+        id: id.MSG_OUT_REPLY,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['msgOutReplyBarColor', 'msgOutServiceFg', 'windowFg'],
+            },
+            {
+                tabName: 'Selected',
+                keys: ['msgOutReplyBarSelColor', 'msgOutServiceFgSelected'],
+            }
+        ]
+    },
 
 ];
 

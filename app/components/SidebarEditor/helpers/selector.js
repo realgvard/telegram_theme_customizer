@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { getActiveStyle } from 'components/Preview/cssStyles.js';
+import { getActiveStyle } from './cssStyles.js';
 
 
 export function selector({ id, key, editor }) {

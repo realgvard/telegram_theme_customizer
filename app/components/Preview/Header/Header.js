@@ -16,7 +16,7 @@ import ClearIcon from 'material-ui/svg-icons/content/clear';
 import MinimizeIcon from 'material-ui/svg-icons/toggle/check-box-outline-blank';
 
 // JS
-import { selector } from 'components/SidebarEditor/selector';
+import { selector } from 'components/SidebarEditor/helpers/selector';
 
 // Config
 import * as id from 'config/idElements.config';
