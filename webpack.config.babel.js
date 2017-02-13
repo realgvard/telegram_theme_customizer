@@ -143,7 +143,6 @@ const config = {
 
 if (IS_PROD) {
     config.plugins.push(
-        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false

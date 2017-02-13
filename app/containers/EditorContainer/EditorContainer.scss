@@ -19,15 +19,36 @@
 }
 
 .description {
-  margin: 40px 0 0;
-  font-size: 15px;
+  margin: 20px 0 0;
+  font-size: 14px;
   line-height: 22px;
 }
 
-.floating-button {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
+.introduction {
+  border-bottom: 1px solid;
+  margin-top: 20px;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.links {
+  float: right;
+}
+
+.github-icon {
+  margin: 14px 14px 0 0;
+}
+
+
+.link-block {
+  float: left;
+
+  + .link-block {
+  }
 }
 
 @media screen and (max-width: 1400px) {
@@ -35,8 +56,5 @@
     display: none;
   }
 
-  /*.floating-button {*/
-    /*display: none !important;*/
-  /*}*/
 
 }

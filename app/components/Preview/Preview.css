@@ -1,7 +1,5 @@
 .container {
-  margin: 70px 0 0;
-  position: relative;
-  z-index: 10000;
+  margin: 50px 0 0;
 }
 
 .container:after {
