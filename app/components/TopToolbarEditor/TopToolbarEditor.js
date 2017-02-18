@@ -31,6 +31,9 @@ import {
 // Icons
 import Logo from './logo.svg';
 
+// JS
+import { getRgbaColorFromObject } from 'libs/colorParser';
+
 // Styles
 import styles from './TopToolbarEditor.css';
 
@@ -48,7 +51,9 @@ class TopToolbarEditor extends Component {
     }
 
     _colorPickerChange(color) {
-        this.props.dispatch(changeEditBorderColor(color.hex));
+        const rgba = getRgbaColorFromObject(color.rgb);
+
+        this.props.dispatch(changeEditBorderColor(rgba));
     }
 
     handleOpen() {
@@ -157,7 +162,8 @@ class TopToolbarEditor extends Component {
                                 watchWidth={100}
                                 position="absolute"
                                 onChange={::this._colorPickerChange}
-                                defaultColor={editBorderColor}
+                                defaultColor='#e95e5e'
+                                color={editBorderColor}
                             />
                         </div>
                     </div>

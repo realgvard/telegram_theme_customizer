@@ -16,11 +16,11 @@ Your opinion and comments on existing functionality is of a high importance. Fee
 |------------------------------------------|--------------------------------|
 | ✓ Save theme                             | ✓ Preview main page            |
 | ✓ Reset changes                          | *Preview setting*              |
-| ✓ 88 options for editing                 | *Preview sticker*              |
+| ✓ 94 options for editing                 | *Preview sticker*              |
 | ✓ Hints for edit area                    | *Preview profile*              |
 |   *Upload and apply own file of theme*   | *Other platform components*    |
 |   *200 options for editing*              |                                |
-|   *RGBA support*                         |                                |
+| ✓ RGBA support                           |                                |
 
 ## Releasing
 

@@ -15,14 +15,16 @@ import {
 // Images
 import TelegramIcon from './images/telegram.svg';
 import GithubIcon from './images/github.svg';
-import InfoOutline from 'material-ui/svg-icons/action/info-outline';
 
 // Components
 import Drawer from 'material-ui/Drawer';
 import ColorPicker from 'components/ColorPicker';
 import UploadImage from 'components/UploadImage';
 import SwitchTypeOfImage from 'components/SwitchTypeOfImage';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import { Tabs, Tab } from 'material-ui/Tabs';
+
+// JS
+import { rgbaToHex, getRgbaColorFromObject } from 'libs/colorParser';
 
 // Styles
 import styles from './SidebarEditor.css';
@@ -32,19 +34,17 @@ import styles from './SidebarEditor.css';
 @CSSModules(styles)
 class SidebarEditor extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-        }
-    }
-
     _colorPickerChange(id, elementKey, color) {
         const {
             dispatch,
         } = this.props;
 
-        dispatch(changeEditorData(id, { color: color.hex, key: elementKey }));
+
+        dispatch(changeEditorData(id, {
+            color: getRgbaColorFromObject(color.rgb),
+            key: elementKey,
+            colorData: rgbaToHex(color.hex, color.rgb.a)
+        }));
     }
 
     componentWillReceiveProps(nextProps) {
@@ -59,7 +59,6 @@ class SidebarEditor extends Component {
 
     componentDidMount() {
         this.forceUpdate();
-        // this.props.dispatch(initializeData(optionData));
     }
 
     render() {
@@ -107,7 +106,8 @@ class SidebarEditor extends Component {
                             label,
                             type,
                             info,
-                            color
+                            color,
+                            defaultColor
                         }, index) => {
                             let currentEditing = <div
                                 styleName="editing-block"
@@ -139,7 +139,8 @@ class SidebarEditor extends Component {
                                                 <label styleName="form-control">
                                                     {this.refs.optionsContainer ?
                                                         <ColorPicker
-                                                            defaultColor={color}
+                                                            color={color}
+                                                            defaultColor={defaultColor}
                                                             parentContainer={this.refs.optionsContainer}
                                                             onChange={this._colorPickerChange.bind(this, id, key)}
                                                         /> : null}

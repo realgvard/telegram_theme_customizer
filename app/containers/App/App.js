@@ -12,6 +12,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import 'normalize.css';
 import './App.css';
 
+// JS
+import { isSafari } from 'libs/browser';
+
+
 const muiTheme = getMuiTheme({
     palette: {
         accent1Color: lightBlue800,
@@ -27,12 +31,22 @@ const muiTheme = getMuiTheme({
     }
 });
 
+
 class App extends Component {
 
     render() {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
-                {this.props.children}
+                {isSafari() ?
+                    <div
+                        style={{
+                            margin: 10
+                        }}
+                    >
+                        Theme Customizer doesn't support <strong>Safari</strong> browser. Please, open it in Chrome or any other browsers. <br />
+                        Join to our <a target="blank" href="https://t.me/theme_customizer"><strong>group in Telegram</strong></a> to get help with your theme and don't skip the next update.
+                    </div>
+                : this.props.children}
             </MuiThemeProvider>
         );
     }

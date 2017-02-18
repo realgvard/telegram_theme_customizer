@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
-import { getActiveStyle } from './cssStyles.js';
+import { getActiveStyle } from 'libs/cssStyles.js';
+import { getParsedColor } from 'libs/colorParser';
 
 
 export function selector({ id, key, editor }) {

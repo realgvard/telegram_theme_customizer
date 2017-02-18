@@ -14,7 +14,7 @@ import * as id from 'config/idElements.config';
 import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // JS
-import { selector } from 'components/SidebarEditor/helpers/selector';
+import { selector } from 'libs/selector';
 
 // Styles
 import styles from './Messages.scss';
@@ -26,6 +26,7 @@ class Messages extends Component {
     render() {
         const {
             msgServiceFg,
+            msgServiceBg,
             historyOutIconFg,
             msgOutServiceFg,
             msgInServiceFg,
@@ -35,6 +36,8 @@ class Messages extends Component {
             msgInBg,
             msgOutBg,
             msgInDateFg,
+            msgInShadow,
+            msgOutShadow,
             msgOutDateFg
         } = this.props;
 
@@ -57,6 +60,7 @@ class Messages extends Component {
                                     styleName="date-block"
                                     style={{
                                         color: msgServiceFg.element.color,
+                                        background: msgServiceBg.element.color,
                                         ...msgServiceFg.styles
                                     }}
                                     {...injectActionsToComponent({
@@ -74,6 +78,7 @@ class Messages extends Component {
                                         styleName={`item-inner-block ${msgIn ? '' : 'interlocutor-sender'}`}
                                         style={{
                                             background: msgIn ? msgInBg.element.color : msgOutBg.element.color,
+                                            boxShadow: `0 2px 0 ${msgIn ? msgInShadow.element.color : msgOutShadow.element.color}`,
                                             ...msgIn ? msgInBg.styles : msgOutBg.styles
                                         }}
                                         {...injectActionsToComponent({
@@ -170,6 +175,9 @@ class Messages extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
+        msgServiceBg: selector({ id: id.MSG_SERVICE, key: 'msgServiceBg', editor: state.editor }),
+        msgOutShadow: selector({ id: id.MSG_OUT, key: 'msgOutShadow', editor: state.editor }),
+        msgInShadow: selector({ id: id.MSG_IN, key: 'msgInShadow', editor: state.editor }),
         msgServiceFg: selector({ id: id.MSG_SERVICE, key: 'msgServiceFg', editor: state.editor }),
         historyOutIconFg: selector({ id: id.HISTORY_OUT_ICON_FG, key: 'historyOutIconFg', editor: state.editor }),
         msgOutServiceFg: selector({ id: id.MSG_OUT_REPLY, key: 'msgOutServiceFg', editor: state.editor }),

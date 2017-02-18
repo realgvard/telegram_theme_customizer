@@ -12,7 +12,7 @@ import RightBlock from 'components/Preview/RightBlock';
 import * as id from 'config/idElements.config';
 
 // JS
-import { selector } from 'components/SidebarEditor/helpers/selector';
+import { selector } from 'libs/selector';
 
 // Actions
 import { injectActionsToComponent } from 'components/SidebarEditor/actions';

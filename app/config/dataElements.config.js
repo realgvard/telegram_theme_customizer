@@ -1,4 +1,4 @@
-import { getProcessedData } from './helpers/dataBuilder';
+import { getProcessedData } from 'libs/dataBuilder';
 import * as id from 'config/idElements.config';
 
 const collection =  [
@@ -404,11 +404,11 @@ const collection =  [
         items: [
             {
                 tabName: 'Base',
-                keys: ['msgInBg'],
+                keys: ['msgInBg', 'msgInShadow'],
             },
             {
                 tabName: 'Selected',
-                keys: ['msgInBgSelected'],
+                keys: ['msgInBgSelected', 'msgInShadowSelected'],
             }
         ]
     },
@@ -417,11 +417,11 @@ const collection =  [
         items: [
             {
                 tabName: 'Base',
-                keys: ['msgOutBg'],
+                keys: ['msgOutBg', 'msgOutShadow'],
             },
             {
                 tabName: 'Selected',
-                keys: ['msgOutBgSelected'],
+                keys: ['msgOutBgSelected', 'msgOutShadowSelected'],
             }
         ]
     },
@@ -504,8 +504,12 @@ const collection =  [
         items: [
             {
                 tabName: 'Base',
-                keys: ['msgServiceFg'],
+                keys: ['msgServiceFg', 'msgServiceBg'],
             },
+            {
+                tabName: 'Selected',
+                keys: ['msgServiceBgSelected'],
+            }
         ]
     },
 

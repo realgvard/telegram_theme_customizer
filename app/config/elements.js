@@ -1,7 +1,7 @@
 import scheme from './colors.tdesktop-theme';
 
 // JS
-import { mergeScheme } from './helpers/parserOfScheme';
+import { mergeScheme } from '../libs/parserOfScheme';
 
 
 const elements = [
@@ -271,9 +271,28 @@ const elements = [
     },
     {
         key: 'msgServiceFg'
+    },
+    {
+        key: 'msgInShadow'
+    },
+    {
+        key: 'msgInShadowSelected'
+    },
+    {
+        key: 'msgOutShadow'
+    },
+    {
+        key: 'msgOutShadowSelected'
+    },
+    {
+        key: 'msgServiceBg'
+    },
+    {
+        key: 'msgServiceBgSelected'
     }
 
-]
+
+];
 
 
 

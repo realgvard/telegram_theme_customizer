@@ -5,6 +5,9 @@ import initialState from 'reducers/initialState';
 import dataElements from 'config/dataElements.config';
 import baseElements from 'config/elements';
 
+// jS
+import { getParsedColor } from 'libs/colorParser';
+
 // Constants
 import * as id from './constans';
 
@@ -87,7 +90,7 @@ const editor = (state = initialState.editor, action) => {
                 editingElement: copyParentItem,
                 data: {
                     ...state.data,
-                    [action.data.key]: action.data.color
+                    [action.data.key]: action.data.colorData
                 },
                 elements: newElementsData
             };
@@ -150,7 +153,9 @@ const editor = (state = initialState.editor, action) => {
             baseElements.forEach(childItem => {
 
                 if(!_.has(state.data, childItem.key) && !childItem.protected) {
-                    newData[childItem.key] = childItem.color;
+                    const colorsAreEqual = getParsedColor(childItem.defaultColor) === childItem.color;
+
+                    newData[childItem.key] = colorsAreEqual ? childItem.defaultColor : childItem.color;
                 }
             });
 

@@ -1,0 +1,161 @@
+
+.container {
+    position: relative;
+
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+.paper {
+
+}
+
+.left-block {
+    float: left;
+    width: calc(100% - 18px);
+}
+
+.right-block {
+    float: right;
+    width: 18px;
+    padding-left: 6px;
+}
+
+.saturation {
+    position: relative;
+}
+
+.picker-bottom {
+
+}
+
+.material-picker {
+
+}
+
+.hue-container {
+    width: 12px;
+    position: relative;
+
+    div > div > div {
+        margin-left: 2px;
+        margin-top: -4px;
+    }
+}
+
+.alpha-container {
+    height: 12px;
+    position: relative;
+    margin-top: 6px;
+}
+
+.clearfix {
+    &:before {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+.footer {
+    margin-top: 10px;
+}
+
+.initial-color {
+    float: left;
+    width: 46px;
+    padding: 10px 6px 0;
+
+    :global {
+
+        .circle-picker {
+
+            span > div {
+
+                > div {
+                    border: 1px solid rgba(0,0,0,.10)!important;
+                }
+            }
+        }
+    }
+}
+
+.footer-block {
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+.small-title {
+    color: rgb(153, 153, 153);
+    margin: 0;
+    font-weight: normal;
+    cursor: default;
+}
+
+.favorite-color {
+    margin-top: 15px;
+
+    :global {
+
+        .circle-picker {
+            margin-bottom: 0 !important;
+
+            span > div {
+                margin: 6px !important;
+
+                > div {
+                    border: 1px solid rgba(0,0,0,.10)!important;
+                }
+            }
+        }
+    }
+}
+
+.hex-rgb-block {
+
+}
+
+.editable-input {
+    input {
+        border: none;
+        border-bottom: 1px solid rgb(238, 238, 238);
+        font-size: 15px;
+        margin-top: 12px;
+        height: 30px;
+        background: transparent;
+        outline: none;
+        width: 100%;
+    }
+
+    span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 11px;
+        color: rgb(153, 153, 153);
+        text-transform: capitalize;
+        cursor: default;
+    }
+}
+
+.hex-input {
+    width: 90px;
+    float: left;
+
+    input {
+        border-bottom: 2px solid rgb(34, 25, 77);
+    }
+}
+
+.rgb-input {
+    width: 28px;
+    float: left;
+    margin-left: 9px;
+}

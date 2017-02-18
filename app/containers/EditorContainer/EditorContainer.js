@@ -10,17 +10,9 @@ import {
 import Preview from 'components/Preview';
 import SidebarEditor from 'components/SidebarEditor';
 import TopToolbarEditor from 'components/TopToolbarEditor';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ArrowForwardIcon from 'material-ui/svg-icons/navigation/arrow-forward';
-import {
-    Step,
-    Stepper,
-    StepLabel,
-} from 'material-ui/Stepper';
 
 // Images
 import TelegramIcon from 'components/SidebarEditor/images/telegram.svg';
-import GitHubIcon from 'components/SidebarEditor/images/github.svg';
 import IconButton from 'material-ui/IconButton';
 
 // Actions
@@ -40,31 +32,6 @@ import styles from './EditorContainer.scss';
 
 @CSSModules(styles, { allowMultiple: true })
 class EditorContainer extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            countElements: null,
-            // stepIndex: 0,
-            // isEdited: false
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-
-        if(nextProps.isEdited && !this.state.isEdited) {
-            this.setState({
-                stepIndex: 1,
-                isEdited: true
-            });
-        } else if (!nextProps.isEdited && this.state.isEdited) {
-            this.setState({
-                stepIndex: 0,
-                isEdited: false
-            });
-        }
-    }
 
     componentWillMount() {
         const {
@@ -93,7 +60,6 @@ class EditorContainer extends Component {
     render() {
         const {
             countElements,
-            stepIndex,
         } = this.state;
 
 
@@ -102,17 +68,6 @@ class EditorContainer extends Component {
                 <TopToolbarEditor />
 
                 <div styleName="container">
-                    {/*<div styleName="stepper">*/}
-                        {/*<Stepper activeStep={stepIndex} connector={<ArrowForwardIcon />}>*/}
-                            {/*<Step>*/}
-                                {/*<StepLabel>Customize theme</StepLabel>*/}
-                            {/*</Step>*/}
-                            {/*<Step>*/}
-                                {/*<StepLabel>Save file of config and apply it in a Telegram</StepLabel>*/}
-                            {/*</Step>*/}
-                        {/*</Stepper>*/}
-                    {/*</div>*/}
-
                     <div
                         styleName="introduction"
                         style={{
@@ -133,7 +88,7 @@ class EditorContainer extends Component {
                             <div styleName="link-block">
 
                                 <IconButton
-                                    tooltip="Join to discuss on Telegram channel"
+                                    tooltip="Join to discuss group in Telegram"
                                     style={{
                                     }}
                                     iconStyle={{
@@ -146,24 +101,6 @@ class EditorContainer extends Component {
 
                                     />
                                 </IconButton>
-                            </div>
-
-                            <div styleName="link-block">
-                                <IconButton
-                                    tooltip="View project on GitHub"
-                                    style={{
-                                    }}
-                                    iconStyle={{
-                                        fill: '#bbb'
-                                    }}
-                                    href="https://github.com/realgvard/telegram_theme_customizer"
-                                    target="blank"
-                                >
-                                    <GitHubIcon
-
-                                    />
-                                </IconButton>
-
                             </div>
                         </div>
                     </div>
@@ -185,16 +122,8 @@ class EditorContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log(state.editor.elements)
-
-    // const count = _.reduce(state.editor.elements, (result, obj, key) => {
-    //     return _.isNumber(result) ? result + obj.settings.length : obj.settings.length;
-    // });
-
-
 
     return {
-        // isEdited: Object.keys(state.editor.data).length > 0 ? true : false,
         version: _.get(state, 'metadata.version', null)
     }
 };

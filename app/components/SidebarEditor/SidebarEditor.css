@@ -54,7 +54,7 @@
 .editing-component + .editing-component {
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 1px solid rgb(229, 229, 229);
+    border-top: 1px solid #f5f5f5;
 }
 
 .editing-block {

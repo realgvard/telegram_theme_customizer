@@ -16,7 +16,7 @@ import * as id from 'config/idElements.config';
 import { injectActionsToComponent } from 'components/SidebarEditor/actions';
 
 // JS
-import { selector } from 'components/SidebarEditor/helpers/selector';
+import { selector } from 'libs/selector';
 
 // Styles
 import styles from './Chat.css';

@@ -5,14 +5,17 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 // Components
-import { SketchPicker, Compact, Swatch } from 'react-color';
 import Paper from 'material-ui/Paper';
+import CustomColorPicker from './CustomColorPicker';
 
 // Actions
 import {
     changeEditorData,
     setFavoriteColor
 } from 'components/SidebarEditor/actions';
+
+// JS
+import { getParsedColor } from 'libs/colorParser';
 
 // Styles
 import styles from './ColorPicker.css';
@@ -24,7 +27,7 @@ class ColorPicker extends Component {
     constructor(props) {
         super(props);
 
-        this.HEIGHT_COLOR_PICKER = 290;
+        this.HEIGHT_COLOR_PICKER = 400;
 
         this.state = {
             displayColorPicker: false,
@@ -48,18 +51,6 @@ class ColorPicker extends Component {
 
             this._closePicker();
         }
-    }
-
-    _setPosition(x, y) {
-        setTimeout(() => {
-            this.setState({
-                displayColorPicker: true,
-                left: x,
-                top: y
-            });
-
-            this._setFocus();
-        }, 0);
     }
 
     _handleOpen() {
@@ -93,7 +84,7 @@ class ColorPicker extends Component {
     }
 
     _invokeFavoriteColor() {
-        const color = this.props.defaultColor;
+        const color = this.props.color;
 
         const isActive = this.state.displayColorPicker;
 
@@ -103,10 +94,14 @@ class ColorPicker extends Component {
         }
     }
 
-    _setFocus() {
-        const component = ReactDOM.findDOMNode(this.refs.SketchPicker);
-
-        component.querySelector('input:first-child').focus();
+    _setPosition(x, y) {
+        setTimeout(() => {
+            this.setState({
+                displayColorPicker: true,
+                left: x,
+                top: y
+            });
+        }, 0);
     }
 
     componentDidMount() {
@@ -146,6 +141,8 @@ class ColorPicker extends Component {
             top
         } = this.state;
 
+        const color = getParsedColor(this.props.color) === defaultColor ? defaultColor : this.props.color;
+
 
         return (
             <div styleName={`container ${className}`}>
@@ -161,7 +158,7 @@ class ColorPicker extends Component {
                         zDepth={1}
                         styleName="color"
                         style={{
-                            background: defaultColor
+                            background: color
                         }}
                     >
                     </Paper>
@@ -175,13 +172,14 @@ class ColorPicker extends Component {
                         position
                     }}
                 >
-                    <SketchPicker
+
+                    <CustomColorPicker
                         ref="SketchPicker"
-                        width={200}
-                        color={defaultColor}
-                        disableAlpha={true}
+                        color={color}
+                        defaultColor={getParsedColor(defaultColor)}
                         presetColors={favoriteColors}
                         onChange={onChange}
+                        onChangeCircle={onChange}
                     />
                 </div> : null}
             </div>
@@ -191,7 +189,7 @@ class ColorPicker extends Component {
 
 ColorPicker.defaultProps = {
     onChange: () => {},
-    defaultColor: '#ff00ff',
+    color: '#ff00ff',
     position: 'fixed',
     className: '',
     watchWidth: '100%'

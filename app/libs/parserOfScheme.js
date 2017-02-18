@@ -1,5 +1,8 @@
 import _ from 'lodash';
 
+// JS
+import { getParsedColor } from 'libs/colorParser';
+
 
 function _getKeyColor(scheme, property) {
     const searchValue = /:.*;/;
@@ -23,7 +26,7 @@ function _getKeyColor(scheme, property) {
 function _getKeyInfo(property) {
     const searchComment = /\/\/.*/;
 
-    return _.head(property.match(searchComment)).replace('//', '');
+    return _.head(property.match(searchComment)).replace('// ', '');
 }
 
 function _findProperty(scheme, key) {
@@ -39,7 +42,8 @@ function _getCombinedProperties(scheme, item) {
 
     return {
         info: _getKeyInfo(property),
-        color: _getKeyColor(scheme, property)
+        color: getParsedColor(_getKeyColor(scheme, property)),
+        defaultColor: _getKeyColor(scheme, property)
     };
 }
 
