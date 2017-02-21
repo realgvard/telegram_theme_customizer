@@ -26,6 +26,7 @@ class ChatHeader extends Component {
 
     render() {
         const {
+            shadowFg,
             dialogsNameFg,
             menuIconFg,
             menuIconFgOver,
@@ -36,6 +37,7 @@ class ChatHeader extends Component {
 
         return (
             <AppBar
+                styleName="container"
                 zDepth={0}
                 title={
                     <div>
@@ -80,7 +82,7 @@ class ChatHeader extends Component {
                 }}
                 style={{
                     background: topBarBg.element.color,
-                    borderBottom: '1px solid #E7E7E7',
+                    borderColor: shadowFg.element.color,
                     height: 52,
                     lineHeight: '16px',
                     ...topBarBg.styles
@@ -140,6 +142,7 @@ class ChatHeader extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
+        shadowFg: selector({ id: id.PREVIEW, key: 'shadowFg', editor: state.editor }),
         windowActiveTextFg: selector({ id: id.WINDOW_ACTIVE_TEXT_FG, key: 'windowActiveTextFg', editor: state.editor }),
         topBarBg: selector({ id: id.TOP_BAR_BG, key: 'topBarBg', editor: state.editor }),
         dialogsNameFg: selector({ id: id.DIALOGS_NAME_FG, key: 'dialogsNameFg', editor: state.editor }),

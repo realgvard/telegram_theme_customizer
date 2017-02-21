@@ -66,6 +66,7 @@ class MessageDispatcher extends Component {
 
         const {
             historyComposeAreaFg,
+            shadowFg,
             menuIconFg,
             menuIconFgOver,
             historyComposeAreaBg,
@@ -76,6 +77,7 @@ class MessageDispatcher extends Component {
 
         return (
             <AppBar
+                styleName="container"
                 zDepth={0}
                 title={
                     <TextField
@@ -124,7 +126,7 @@ class MessageDispatcher extends Component {
                 }}
                 style={{
                     background: historyComposeAreaBg.element.color,
-                    borderTop: '1px solid #E7E7E7',
+                    borderColor: shadowFg.element.color,
                     height: 46,
                     ...historyComposeAreaBg.styles
                 }}
@@ -214,6 +216,7 @@ class MessageDispatcher extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        shadowFg: selector({ id: id.PREVIEW, key: 'shadowFg', editor: state.editor }),
         historyComposeAreaFg: selector({ id: id.PLACEHOLDER_FG, key: 'historyComposeAreaFg', editor: state.editor }),
         placeholderFgActive: selector({ id: id.PLACEHOLDER_FG, key: 'placeholderFgActive', editor: state.editor }),
         placeholderFg: selector({ id: id.PLACEHOLDER_FG, key: 'placeholderFg', editor: state.editor }),

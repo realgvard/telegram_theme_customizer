@@ -24,7 +24,7 @@ import SwitchTypeOfImage from 'components/SwitchTypeOfImage';
 import { Tabs, Tab } from 'material-ui/Tabs';
 
 // JS
-import { rgbaToHex, getRgbaColorFromObject } from 'libs/colorParser';
+import { hexToArgb, getRgbaColorFromObject } from 'libs/colorParser';
 
 // Styles
 import styles from './SidebarEditor.css';
@@ -43,7 +43,7 @@ class SidebarEditor extends Component {
         dispatch(changeEditorData(id, {
             color: getRgbaColorFromObject(color.rgb),
             key: elementKey,
-            colorData: rgbaToHex(color.hex, color.rgb.a)
+            colorData: hexToArgb(color.hex, color.rgb.a)
         }));
     }
 

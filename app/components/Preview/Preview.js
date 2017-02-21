@@ -23,46 +23,44 @@ import styles from './Preview.css';
 
 class Preview extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-        }
-    }
-
     render() {
-        // const {
-        //     windowBg
-        // } = this.props;
-
-        // style={{
-        // ...getActiveStyle(windowBg)
-        // }}
-        // {...injectActionsToComponent({
-        //     id: windowBg.id,
-        //     dispatch: this.props.dispatch
-        // })}
+        const {
+            // windowBg,
+            shadowFg
+        } = this.props;
 
         return (
-            <Paper
-                zDepth={3}
-                rounded={true}
-                className={styles.container}
+            <div
+                styleName="wrapper"
+                style={{
+                    ...shadowFg.styles
+                }}
+                {...injectActionsToComponent({
+                    id: shadowFg.id,
+                    dispatch: this.props.dispatch
+                })}
             >
-                <div>
-                    <Header />
+                <Paper
+                    zDepth={3}
+                    rounded={true}
+                    styleName="container"
+                >
+                    <div>
+                        <Header />
 
-                    <LeftBlock />
+                        <LeftBlock />
 
-                    <RightBlock />
-                </div>
-            </Paper>
+                        <RightBlock />
+                    </div>
+                </Paper>
+            </div>
         );
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        shadowFg: selector({ id: id.PREVIEW, key: 'shadowFg', editor: state.editor }),
         // windowBg: selector({ id: id.WINDOW_BG, editor: state.editor }),
     }
 };

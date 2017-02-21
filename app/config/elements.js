@@ -289,6 +289,9 @@ const elements = [
     },
     {
         key: 'msgServiceBgSelected'
+    },
+    {
+        key: 'shadowFg'
     }
 
 

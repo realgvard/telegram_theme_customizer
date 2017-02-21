@@ -2,6 +2,5 @@
 
 
 .container {
-    height: calc(740px - 46px - 52px);
-    background-size: cover !important;
+    border-bottom: 1px solid;
 }

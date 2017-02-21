@@ -512,6 +512,15 @@ const collection =  [
             }
         ]
     },
+    {
+        id: id.PREVIEW,
+        items: [
+            {
+                tabName: 'Base',
+                keys: ['shadowFg'],
+            }
+        ]
+    }
 
 
 ];

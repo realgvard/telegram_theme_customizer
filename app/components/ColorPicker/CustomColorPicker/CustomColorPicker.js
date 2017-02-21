@@ -15,7 +15,7 @@ import PhotoshopPointerCircle from 'react-color/lib/components/photoshop/Photosh
 import Paper from 'material-ui/Paper';
 
 // JS
-import { rgbaToHex } from 'libs/colorParser';
+import { hexToArgb } from 'libs/colorParser';
 
 // Styles
 import styles from './CustomColorPicker.scss';
@@ -41,7 +41,7 @@ class CustomColorPicker extends Component {
     _getHexValue() {
         const alpha = this.props.rgb.a;
 
-        return (alpha !== 1 ? rgbaToHex(this.props.hex, alpha) : this.props.hex);
+        return (alpha !== 1 ? hexToArgb(this.props.hex, alpha) : this.props.hex);
     }
 
     render() {

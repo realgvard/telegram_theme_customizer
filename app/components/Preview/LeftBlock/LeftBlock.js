@@ -63,6 +63,7 @@ class LeftBlock extends Component {
         } = this.state;
 
         const {
+            shadowFg,
             windowFg,
             windowBg,
             filterInputBorderFg,
@@ -80,6 +81,7 @@ class LeftBlock extends Component {
                 styleName='left-block'
                 style={{
                     background: dialogsBg.element.color,
+                    borderColor: shadowFg.element.color,
                     ...dialogsBg.styles
                 }}
                 {...injectActionsToComponent({
@@ -178,6 +180,7 @@ class LeftBlock extends Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
+        shadowFg: selector({ id: id.PREVIEW, key: 'shadowFg', editor: state.editor }),
         windowFg: selector({ id: id.PLACEHOLDER_FG, key: 'windowFg', editor: state.editor }),
         windowBg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, key: 'windowBg', editor: state.editor }),
         filterInputBorderFg: selector({ id: id.FILTER_INPUT_INACTIVE_BG, key: 'filterInputBorderFg', editor: state.editor }),
